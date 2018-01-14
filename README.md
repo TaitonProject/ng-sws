@@ -1,27 +1,16 @@
 # NgSws
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.2.
+Это проект для разработки библиотек\компонентов\модулей для Angular 2\4\5
 
-## Development server
+## Ход создания и публикации модуля
+###1 В папке libs необходимо создать папку с названием создаваемого модуля + префикс 'sws'.
+###2 В ней необходимо создать package.json (по примеру с sws-pagination)
+###3 В папке src создать модуль\компоненты\сервис и т.д. (как и в обычном проекте)
+###4 В папке src оздать файл public_api.ts, в котором указать пути к компонентам\модулям, которые были созданы.
+###5 В package.json, относящегося ко всему проекту, прописать дополнитульную команду (по примеру с sws-pagination): 
+    "build:название_модуля": "rimraf dist && ng-packagr -p libs/sws-название_модуля/package.json",
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+###6 В корневом каталоге всего проекта запустить команду npm run build:азвание_модуля
+###7 После того, как библиотека будет собрана, необходимо войти в личный кабинет npm (создан отдельный аккаунт npm для данного проекта)
+###8 Перейти в корневой каталог собранной библиотеки и прописать npm publish
+###9 Изменения запушить на git, при изменении в существующих модулях необходимо поднимать версию пакета npm (https://docs.npmjs.com/cli/version)
