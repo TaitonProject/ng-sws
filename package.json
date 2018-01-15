@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "build:pagination": "rimraf dist && ng-packagr -p libs/sws-pagination/package.json",
+    "build:input": "rimraf dist && ng-packagr -p libs/sws-input/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
