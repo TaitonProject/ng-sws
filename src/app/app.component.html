@@ -1,3 +1,7 @@
 <div class="container">
 <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
 </div>
+<sws-input [formControl]="form.controls['name']" [label]="'Название'" [id]="'name'">
+
+</sws-input>
+<h3>{{form.get('name').value}}</h3>

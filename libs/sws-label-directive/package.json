@@ -1,20 +1,18 @@
 {
-  "name": "sws-input",
+  "name": "sws-label-directive",
   "version": "0.1.0",
-  "author": "Alexander <taitonproject@gmail.com>",
+  "author": "Evgeny <evgenmirsky@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": "^5.2.0",
-    "@angular/common": "^5.2.0",
-    "@angular/forms": "^5.2.0"
+    "@angular/core": "^5.2.0"
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "dist/sws-input",
+    "dest": "dist/sws-label-directive",
     "workingDirectory": "../.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"
     },
-    "dest": "../dist/sws-input"
+    "dest": "../dist/sws-label-directive"
   }
 }

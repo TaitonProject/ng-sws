@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { SwsPaginationModule } from '../../libs/sws-pagination/src/sws-pagination.module';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { SwsInputModule } from '../../libs/sws-input/src/sws-input.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
   imports: [
     BrowserModule,
     AppRoutingModule, 
-    SwsPaginationModule
+    SwsPaginationModule, 
+    SwsInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

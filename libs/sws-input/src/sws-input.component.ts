@@ -9,41 +9,25 @@ import {Observable} from 'rxjs';
 })
 export class SwsInputComponent implements OnInit, AfterViewInit {
 
-  @Input() value: any;
-  @Input() controlKey: FormControl;
-  @Input() emitEvent = true;
-  @Input() valueChangesDelay = 1000;
-  @Input() typeInput = 'number';
-  @Input() textColor: string;
-  @Input() placeholder = '';
-  @ViewChild('inputAny') inputAny: ElementRef;
-  @ViewChild('inputNumber') inputNumber: ElementRef;
+  @Input() formControl: FormControl;
+  @Input() id: string = '';
+  @Input() valueChangesDelay = 0;
+  @Input() readOnly: boolean;
+  @Input() label: string = '';
   @Output() emitChangeInput: EventEmitter<any> = new EventEmitter();
-  inputElement: ElementRef;
+
+  @ViewChild('input') inputElement: ElementRef;
 
   constructor() {
   }
 
   ngOnInit() {
-    if (!this.value || this.value === '') {
-      this.value = this.controlKey.value;
-    }
-    this.controlKey.valueChanges.subscribe(res => {
-      this.value = res;
-    });
+
   }
 
   ngAfterViewInit(): void {
-    this.setTypeInput();
     this.eventInput();
-  }
-
-  setTypeInput() {
-    if (this.typeInput === 'number') {
-      this.inputElement = this.inputNumber;
-    } else {
-      this.inputElement = this.inputAny;
-    }
+    console.log(this.formControl)
   }
 
   eventInput() {
@@ -52,11 +36,8 @@ export class SwsInputComponent implements OnInit, AfterViewInit {
       .debounceTime(this.valueChangesDelay);
 
     eventStream.subscribe(value => {
-      if (value === '') {
-        value = null;
-      }
       this.emitChangeInput.emit(value);
-      this.controlKey.patchValue(value, {emitEvent: this.emitEvent});
+      this.formControl.patchValue(value);
     });
   }
 }
