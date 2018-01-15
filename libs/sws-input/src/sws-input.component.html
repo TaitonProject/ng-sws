@@ -1,0 +1,2 @@
+<input #inputNumber *ngIf="typeInput == 'number'" [style.color]="textColor" [type]="typeInput" class="form-control input--text input--raw" [disabled]="controlKey?.touched" [value]="value" [placeholder]="placeholder" pattern='[0-9]{1,2}([\.][0-9]{1,2})?'>
+<input #inputAny *ngIf="typeInput != 'number'" [style.color]="textColor" [type]="typeInput"  class="form-control input--text input--raw" [disabled]="controlKey?.touched" [value]="value" [placeholder]="placeholder">
