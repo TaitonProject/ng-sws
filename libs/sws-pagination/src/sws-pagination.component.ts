@@ -23,6 +23,7 @@ export class SwsPaginationComponent implements OnInit {
   pages: Array<number>;
 
   constructor(private router: Router, private route: ActivatedRoute) {
+    console.log('route',this.route);
   }
 
   ngOnInit(): void {
