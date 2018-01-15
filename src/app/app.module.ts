@@ -1,10 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-
-import {AppComponent} from './app.component';
-import {SwsPaginationModule} from '../../libs/sws-pagination/src/sws-pagination.module';
-import {RouterModule} from '@angular/router';
+import { AppComponent } from './app.component';
+import { SwsPaginationModule } from '../../libs/sws-pagination/src/sws-pagination.module';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -13,11 +12,10 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([]),
-    SwsPaginationModule.forRoot()
+    AppRoutingModule, 
+    SwsPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { } 
