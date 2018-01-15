@@ -19,3 +19,4 @@
 ## Доп. информация
 
 * Стили для компонентов пишутся в их локальных файлах (название_модуля.component.css\scss). 
+* Для более подробной инйформации: [git проекта на основании котрого был сделан данный](https://github.com/dherges/ng-packagr), [доп. статья](https://medium.com/@nikolasleblanc/building-an-angular-4-component-library-with-the-angular-cli-and-ng-packagr-53b2ade0701e) 
