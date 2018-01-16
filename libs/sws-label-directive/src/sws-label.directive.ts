@@ -1,5 +1,4 @@
 import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit, AfterViewInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
 
 @Directive({
   selector: '[swsLabel]'
@@ -9,7 +8,7 @@ export class SWSLabelDirective implements AfterViewInit {
 
   parent;
   refChild;
-  id: string ='';
+  id: string = '';
   value: any;
 
   @Input('swsLabel') label: string = '';
@@ -19,11 +18,9 @@ export class SWSLabelDirective implements AfterViewInit {
   ngAfterViewInit() {
     this.parent = this.element.nativeElement.parentNode;
     this.refChild = this.element.nativeElement;
-    this.renderer.addClass(this.parent, 'sws-form-field');
-    this.renderer.addClass(this.refChild, 'sws-form-input');
-    
+
     if (this.label) {
-      if(this.element.nativeElement.value) {
+      if (this.element.nativeElement.value) {
         this.addClassToParent('active-lbl');
       }
       this.id = this.element.nativeElement.attributes.id.value
@@ -45,23 +42,9 @@ export class SWSLabelDirective implements AfterViewInit {
 
   @HostListener('focusout') onMouseFocusOut(): void {
     this.removeClassFromParent('active');
-    this.addClassToParent('touched');
-    if (this.refChildContainClass('ng-invalid')) {
-      this.addClassToParent('has-error');
-    } else if (this.refChildContainClass('ng-valid') && this.parentContainClass('has-error')) {
-      this.removeClassFromParent('has-error');
-    }
   }
 
-  @HostListener("input", ["$event.target.value"]) onInput(value) {
-    setTimeout(() => {
-      if (this.parentContainClass('touched') && this.refChildContainClass('ng-valid')) {
-        this.removeClassFromParent('has-error');
-      }
-      if (this.parentContainClass('touched') && this.refChildContainClass('ng-invalid')) {
-        this.addClassToParent('has-error');
-      }
-    }, 0);
+  @HostListener('keyup', ['$event.target.value']) onInput(value) {
     //проверяем на наличие value в поле для label
     if (value) {
       this.addClassToParent('active-lbl');
@@ -78,11 +61,11 @@ export class SWSLabelDirective implements AfterViewInit {
     this.renderer.removeClass(this.parent, cl);
   }
 
-  parentContainClass(cl:string): boolean {
+  parentContainClass(cl: string): boolean {
     return this.parent.classList.contains(cl);
   }
 
-  refChildContainClass(cl:string): boolean {
+  refChildContainClass(cl: string): boolean {
     return this.refChild.classList.contains(cl);
   }
 

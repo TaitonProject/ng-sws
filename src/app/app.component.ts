@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -19,8 +20,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl()
+      org: new FormControl()
     });
-    this.form.controls['name'].patchValue('123123');
+    this.form.controls['org'].patchValue('123123');
+    this.form.controls['org'].setValidators([Validators.required])
+    
   }
 }

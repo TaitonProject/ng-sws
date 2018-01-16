@@ -1,0 +1,9 @@
+.form-field-errors {
+  font-size: 12px;
+  line-height: 1;
+  color: #ff0000;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-family: Arial;
+}

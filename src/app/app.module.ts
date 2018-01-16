@@ -5,6 +5,9 @@ import { SwsPaginationModule } from '../../libs/sws-pagination/src/sws-paginatio
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { SwsInputModule } from '../../libs/sws-input/src/sws-input.module';
+import { SwsFormFieldErrorsModule } from '../../libs/sws-form-field-errors/src/sws-form-field-errors.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-label.module';
 
 
 @NgModule({
@@ -15,7 +18,11 @@ import { SwsInputModule } from '../../libs/sws-input/src/sws-input.module';
     BrowserModule,
     AppRoutingModule, 
     SwsPaginationModule, 
-    SwsInputModule
+    SwsInputModule,
+    SwsFormFieldErrorsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SWSLabelDirectiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
