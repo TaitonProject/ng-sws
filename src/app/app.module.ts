@@ -1,5 +1,5 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { SwsPaginationModule } from '../../libs/sws-pagination/src/sws-pagination.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,7 @@ import { SwsInputModule } from '../../libs/sws-input/src/sws-input.module';
 import { SwsFormFieldErrorsModule } from '../../libs/sws-form-field-errors/src/sws-form-field-errors.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-label.module';
+import { SWSTooltipModule } from '../../libs/sws-tooltip/src/sws-tooltip.module';
 
 
 @NgModule({
@@ -16,13 +17,14 @@ import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
-    SwsPaginationModule, 
+    AppRoutingModule,
+    SwsPaginationModule,
     SwsInputModule,
     SwsFormFieldErrorsModule,
     FormsModule,
     ReactiveFormsModule,
-    SWSLabelDirectiveModule
+    SWSLabelDirectiveModule,
+    SWSTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

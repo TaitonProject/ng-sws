@@ -8,6 +8,9 @@
     "build": "ng build --prod",
     "build:pagination": "rimraf dist && ng-packagr -p libs/sws-pagination/package.json",
     "build:input": "rimraf dist && ng-packagr -p libs/sws-input/package.json",
+    "build:error": "rimraf dist && ng-packagr -p libs/sws-form-field-errors/package.json",
+    "build:label": "rimraf dist && ng-packagr -p libs/sws-label-directive/package.json",
+    "build:tooltip": "rimraf dist && ng-packagr -p libs/sws-tooltip/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -26,6 +29,8 @@
     "classlist.js": "^1.1.20150312",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
+    "sws-input": "^0.1.2",
+    "sws-label-directive": "^0.1.1",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
