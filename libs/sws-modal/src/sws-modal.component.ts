@@ -1,7 +1,6 @@
-import { Component, OnInit, EventEmitter, Output, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
-import { IModalOptions } from '../../../../core/interfaces/modal-content';
+import { IModalOptions } from './interfaces/modal';
 
 @Component({
   selector: 'sws-modal',
