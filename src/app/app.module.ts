@@ -8,7 +8,7 @@ import { SwsInputModule } from '../../libs/sws-input/src/sws-input.module';
 import { SwsFormFieldErrorsModule } from '../../libs/sws-form-field-errors/src/sws-form-field-errors.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-label.module';
-import { SWSTooltipModule } from '../../libs/sws-tooltip/src/sws-tooltip.module';
+import { SWSTooltipModule } from '../../libs/sws-hint/src/sws-tooltip.module';
 
 
 @NgModule({

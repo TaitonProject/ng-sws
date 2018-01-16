@@ -1,9 +1,9 @@
 # tooltip
-sws-tooltip module to work in Angular 5
+sws-hint module to work in Angular 5
 ### To install simply run
-npm install npm install sws-tooltip.
+npm install sws-hint.
 To use it in your Angular 5 app import the module.
-import {SWSTooltipModule} from 'tooltip.module';
+import {SWSTooltipModule} from 'sws-hint';
 ```@NgModule({
 imports:[
 SWSTooltipModule
@@ -13,5 +13,5 @@ SWSTooltipModule
 In your components html input in html tag sws-tooltip="test". Default position in right. Also may be put position in left - sws-tooltip-pos="left"
 ###Important! Input to our css file style for tooltip
 ```
-@import "../node_modules/sws-tooltip/tooltip.css";
+@import "../node_modules/sws-hint/sws-tooltip.css";
 ``` 

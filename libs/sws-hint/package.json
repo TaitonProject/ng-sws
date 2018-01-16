@@ -1,5 +1,5 @@
 {
-  "name": "sws-tooltip",
+  "name": "sws-hint",
   "version": "0.0.0",
   "author": "Evgeny <evgenmirsky@gmail.com>",
   "license": "MIT",
@@ -8,11 +8,11 @@
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "dist/sws-tooltip",
+    "dest": "dist/sws-hint",
     "workingDirectory": "../.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"
     },
-    "dest": "../dist/sws-tooltip"
+    "dest": "../dist/sws-hint"
   }
 }

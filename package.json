@@ -10,7 +10,7 @@
     "build:input": "rimraf dist && ng-packagr -p libs/sws-input/package.json",
     "build:error": "rimraf dist && ng-packagr -p libs/sws-form-field-errors/package.json",
     "build:label": "rimraf dist && ng-packagr -p libs/sws-label-directive/package.json",
-    "build:tooltip": "rimraf dist && ng-packagr -p libs/sws-tooltip/package.json",
+    "build:hint": "rimraf dist && ng-packagr -p libs/sws-hint/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
