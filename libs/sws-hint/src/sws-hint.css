@@ -1,7 +1,7 @@
-.sws-tooltip-wrapper {
+.sws-hint-wrapper {
   position: relative;
 }
-.sws-tooltip-arrow {
+.sws-hint-arrow {
   position: absolute;
   width: 0;
   height: 0;
@@ -9,7 +9,7 @@
   border-style: solid;
   display: none;
 }
-.sws-tooltip-arrow__right {
+.sws-hint-arrow__right {
   top: 50%;
   right: 100%;
   margin-top: -5px;
@@ -17,7 +17,7 @@
   border-width: 5px 0 5px 5px;
   border-left-color: #252525;
 }
-.sws-tooltip-arrow__left {
+.sws-hint-arrow__left {
   top: 50%;
   left: 100%;
   margin-top: -5px;
@@ -25,7 +25,7 @@
   border-width: 5px 5px 5px 0;
   border-right-color: #252525;
 }
-.sws-tooltip {
+.sws-hint {
   position: absolute;
   height: 20px;
   color: #fff;
@@ -38,21 +38,21 @@
   text-transform: lowercase;
   display: none;
 }
-.sws-tooltip__left {
+.sws-hint__left {
   right: 100%;
   margin-right: 8px;
   top: 50%;
   margin-top: -10px;
 }
-.sws-tooltip__right {
+.sws-hint__right {
   left: 100%;
   margin-left: 8px;
   top: 50%;
   margin-top: -10px;
 }
-.sws-tooltip-wrapper.sws-tooltip__active .sws-tooltip {
+.sws-hint-wrapper.sws-hint__active .sws-hint {
   display: inline-block;
 }
-.sws-tooltip-wrapper.sws-tooltip__active .sws-tooltip-arrow {
+.sws-hint-wrapper.sws-hint__active .sws-hint-arrow {
   display: block;
 }

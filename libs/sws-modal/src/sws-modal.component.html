@@ -1,0 +1,18 @@
+<div class="reply-modal">
+  <div class="reply-modal__wrapper"></div>
+  <div class="reply-modal__inner" #modalInner [ngStyle]="{'max-width': width, 'margin-left': mLeft, 'margin-top': mHeight}">
+    <title-modal [title]="title" (onModalClose)="onModalClose.emit()"></title-modal>
+    <div class="reply-modal__content">
+      <ng-content></ng-content>
+    </div>
+
+    <div class="reply-modal__actions">
+      <button mat-button mat-raised-button (click)="onModalApply.emit()" *ngIf="options.type.block">{{ 'button.save' | translate }}</button>
+      <button mat-button mat-raised-button color="green" (click)="onModalClose.emit()" *ngIf="options.type.block">{{ 'button.cancel' | translate }}</button>
+      <button mat-button mat-raised-button (click)="onModalApply.emit()" *ngIf="options.type.delete">{{ 'button.yes' | translate }}</button>
+      <button mat-button mat-raised-button color="green" (click)="onModalClose.emit()" *ngIf="options.type.delete">{{ 'button.no' | translate }}</button>
+      <button mat-button mat-raised-button color="green" (click)="onModalClose.emit()" *ngIf="options.type.read">{{ 'button.close' | translate }}</button>
+      <button mat-button mat-raised-button color="green" (click)="onModalApply.emit(dataModal)">хотим передать</button>
+    </div>
+  </div>
+</div>

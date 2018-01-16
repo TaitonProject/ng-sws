@@ -1,18 +1,21 @@
 {
-  "name": "sws-hint",
-  "version": "0.0.3",
+  "name": "sws-modal",
+  "version": "0.0.0",
   "author": "Evgeny <evgenmirsky@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/core": "^5.2.0"
+    "@angular/core": "^5.2.0",
+    "@angular/common": "^5.2.0",
+    "@angular/material": "^5.0.4",
+    "@ngx-translate/core": "^9.1.0"
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "dist/sws-hint",
+    "dest": "dist/sws-modal",
     "workingDirectory": "../.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"
     },
-    "dest": "../dist/sws-hint"
+    "dest": "../dist/sws-modal"
   }
 }

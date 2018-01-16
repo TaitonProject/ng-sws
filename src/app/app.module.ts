@@ -9,6 +9,7 @@ import { SwsFormFieldErrorsModule } from '../../libs/sws-form-field-errors/src/s
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-label.module';
 import { SWSTooltipModule } from '../../libs/sws-hint/src/sws-tooltip.module';
+import { SWSModalModule } from '../../libs/sws-modal/src/sws-modal.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SWSTooltipModule } from '../../libs/sws-hint/src/sws-tooltip.module';
     FormsModule,
     ReactiveFormsModule,
     SWSLabelDirectiveModule,
-    SWSTooltipModule
+    SWSTooltipModule,
+    SWSModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

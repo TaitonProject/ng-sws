@@ -1,2 +1,2 @@
-export * from './sws-tooltip.directive';
-export * from './sws-tooltip.module';
+export * from './sws-hint.directive';
+export * from './sws-hint.module';

@@ -1,0 +1,43 @@
+.position {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.reply-modal {
+  @extend .position;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  &__wrapper {
+    background: rgba(0,0,0,.6);
+    opacity: .48;
+    position: absolute;
+    @extend .position;
+    z-index: 1000;
+  }
+  &__inner {
+    position: absolute;
+    z-index: 1001;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    background: #fff;
+    box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+    border-radius: 2px;
+    overflow: auto;
+    outline: 0;
+    opacity: 1;
+  }
+  &__content {
+    padding: 0 25px;
+    display: block;
+  }
+  &__actions {
+    text-align: right;
+    padding: 12px 20px 12px;
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+  }
+}

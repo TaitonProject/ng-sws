@@ -7,5 +7,11 @@
 <h3>{{form.get('org').value}}</h3>
 </form>
 <hr />
-<p><span [sws-tooltip]="'tooltip'">Наведи, появится tooltip</span></p>
+<p><span sws-hint="tooltip">Наведи, появится tooltip</span></p>
+<hr />
+<!-- <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
+  <div class="text-center">
+    <p>Ответ {{modalOptions.dataModal}}</p>
+  </div>
+</sws-modal> -->
 </div>

@@ -1,0 +1,30 @@
+.reply-modal {
+  &__title {
+    margin: 0 0 20px;
+    display: block;
+    font-family: Arial;
+    font-size: 18px;
+    line-height: 1.4;
+    color: rgb(255, 255, 255);
+    background: #006f25;
+    padding: 10px 20px;
+    position: relative;
+    font-weight: 400;
+    .title {
+      opacity: .79;
+    }
+    &-close {
+      position: absolute;
+      right: 8px;
+      top: 5px;
+      color: white;
+      cursor: pointer;
+      opacity: .79;
+      transition: 0.3s;
+      font-size: 15px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
