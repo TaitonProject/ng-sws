@@ -51,6 +51,10 @@ export class SWSHintDirective implements OnInit, OnDestroy {
       }
       case 'top': {
         this.position = 'sws-hint__top';
+        let div = this.renderer.createElement('div');
+        this.renderer.addClass(div, 'sws-hint-arrow');
+        this.renderer.addClass(div, 'sws-hint-arrow__top');
+        this.renderer.appendChild(this.element.nativeElement, div);
         break;
       }
       default: {
