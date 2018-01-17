@@ -1,7 +1,8 @@
-import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit } from "@angular/core";
+import { HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit, Component } from "@angular/core";
 
-@Directive({
-  selector: '[sws-hint]'
+@Component({
+  selector: '[sws-hint]',
+  styleUrls: ['sws-hint.css']
 })
 
 export class SWSHintDirective implements OnInit, OnDestroy {
