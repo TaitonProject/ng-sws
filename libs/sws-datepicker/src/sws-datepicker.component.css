@@ -44,7 +44,7 @@
   margin: 0;
   max-width: 100%;
   vertical-align: bottom;
-  padding: 0 0 3px 0;
+  padding: 0 0 5px 0;
 }
 .sws-form-field.has-error .sws-form-input {
   border-bottom-color: #ff0000;
@@ -60,6 +60,7 @@
   box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.58);
   border: 1px solid #afafaf;
 	border-radius: 4px;
+	z-index: 1;
 }
 
 .sws-datepicker-container .sws-datepicker-calendar-container .topbar-container {

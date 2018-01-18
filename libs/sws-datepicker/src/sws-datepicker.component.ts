@@ -294,7 +294,6 @@ export class NgDatepickerComponent implements ControlValueAccessor, OnInit, OnCh
     let date = parse(dateString);    
     if (!isValid(date)) {
       if (this.formControl.value) {
-        alert('Дата должна соответствовать формату "01.01.1980"');
         this.formControl.patchValue(format(this.innerValue, this.displayFormat, this.locale));
       }        
       return;
