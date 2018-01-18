@@ -7,7 +7,8 @@
   height: 0;
   border-color: transparent;
   border-style: solid;
-  display: none;
+  display: none !important;
+  z-index: 1;
 }
 .sws-hint-arrow__right {
   top: 50%;
@@ -25,6 +26,14 @@
   border-width: 5px 5px 0px 5px;
   border-top-color: #252525;
 }
+.sws-hint-arrow__bottom {
+  top: 0;
+  left: 5px;
+  margin-top: -5px;
+  margin-right: 3px;
+  border-width: 5px 5px 0px 5px;
+  border-top-color: #252525;
+}
 .sws-hint-arrow__left {
   top: 50%;
   left: 100%;
@@ -35,7 +44,7 @@
 }
 .sws-hint {
   position: absolute;
-  height: 20px;
+  min-height: 20px;
   color: #fff;
   background: #252525;
   border-radius: 2px;
@@ -45,6 +54,8 @@
   padding-right: 10px;
   text-transform: lowercase;
   display: none;
+  z-index: 1;
+  width: 70px;
 }
 .sws-hint__right {
   left: 100%;
@@ -57,6 +68,12 @@
   margin-left: 0px;
   top: -100%;
   margin-top: -8px;
+}
+.sws-hint__bottom {
+  left: 0;
+  margin-left: 0px;
+  top: 100%;
+  margin-top: 8px;
 }
 .sws-hint__left {
   right: 100%;

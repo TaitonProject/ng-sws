@@ -10,7 +10,7 @@ SWSHintModule
 ],
 })  
 ``` 
-In your components html input in html tag sws-hint="test". Default position in right. Also may be put position in left - sws-hint-pos="left"
+In your components html input in html tag sws-hint="test". Default position in right. Also may be put position in left, top, bottom. Example: - sws-hint-pos="left"
 ###Important! Input to our css file style for hint
 ```
 @import "../node_modules/sws-hint/sws-hint.css";

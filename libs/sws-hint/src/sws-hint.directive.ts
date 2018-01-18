@@ -1,8 +1,7 @@
-import { HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit, Component } from "@angular/core";
+import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit } from "@angular/core";
 
-@Component({
-  selector: '[sws-hint]',
-  styleUrls: ['sws-hint.css']
+@Directive({
+  selector: '[sws-hint]'
 })
 
 export class SWSHintDirective implements OnInit, OnDestroy {
@@ -40,6 +39,10 @@ export class SWSHintDirective implements OnInit, OnDestroy {
     switch (pos) {
       case 'bottom': {
         this.position = 'sws-hint__bottom';
+        let div = this.renderer.createElement('div');
+        this.renderer.addClass(div, 'sws-hint-arrow');
+        this.renderer.addClass(div, 'sws-hint-arrow__bottom');
+        this.renderer.appendChild(this.element.nativeElement, div);
         break;
       }
       case 'left': {
