@@ -37,10 +37,10 @@ const isNil = (value: Date | DatepickerOptions) => {
   templateUrl: 'sws-datepicker.component.html',
   styleUrls: ['sws-datepicker.component.css'],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgDatepickerComponent), multi: true }
+    { provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => SwsDatepickerComponent), multi: true }
   ]
 })
-export class NgDatepickerComponent implements ControlValueAccessor, OnInit, OnChanges, AfterViewInit {
+export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnChanges, AfterViewInit {
   @Input() options: DatepickerOptions;
 
   /**

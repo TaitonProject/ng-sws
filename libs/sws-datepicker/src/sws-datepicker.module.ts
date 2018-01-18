@@ -1,12 +1,12 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgDatepickerComponent } from './sws-datepicker.component';
+import { SwsDatepickerComponent } from './sws-datepicker.component';
 import { SWSLabelDirectiveModule } from 'sws-label-directive';
 
 @NgModule({
-  declarations: [ NgDatepickerComponent ],
+  declarations: [ SwsDatepickerComponent ],
   imports: [ CommonModule, FormsModule, ReactiveFormsModule, SWSLabelDirectiveModule ],
-  exports: [ NgDatepickerComponent ]
+  exports: [ SwsDatepickerComponent ]
 })
-export class NgDatepickerModule { }
+export class SwsDatepickerModule { }

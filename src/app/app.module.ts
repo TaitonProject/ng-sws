@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SWSLabelDirectiveModule } from '../../libs/sws-label-directive/src/sws-label.module';
 
 import { SWSHintModule } from '../../libs/sws-hint/src/sws-hint.module';
-import { NgDatepickerModule } from '../../libs/sws-datepicker/src/sws-datepicker.module';
+import { SwsDatepickerModule } from '../../libs/sws-datepicker/src/sws-datepicker.module';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { NgDatepickerModule } from '../../libs/sws-datepicker/src/sws-datepicker
     ReactiveFormsModule,
     SWSLabelDirectiveModule,
     SWSHintModule,
-    NgDatepickerModule
+    SwsDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
