@@ -1,0 +1,19 @@
+{
+  "name": "sws-datepicker",
+  "version": "0.1.0",
+  "author": "Evgeny <evgenmirsky@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^5.2.0",
+    "@angular/forms": "^5.2.0"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "dist/sws-datepicker",
+    "workingDirectory": "../.ng_build",
+    "lib": {
+      "entryFile": "src/public_api.ts"
+    },
+    "dest": "../dist/sws-datepicker"
+  }
+}

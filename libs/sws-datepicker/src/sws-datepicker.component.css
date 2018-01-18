@@ -1,0 +1,195 @@
+.datepicker-container {
+  display: flex;
+  margin-top: 100px;
+  justify-content: center;
+}
+  
+.sws-datepicker-position-bottom-left {
+	top: 40px;
+	right: 0;
+}
+
+.sws-datepicker-position-bottom-right {
+	top: 40px;
+	left: 0;
+}
+
+.sws-datepicker-position-top-left {
+	top: 0;
+	left: 0;
+}
+
+.sws-datepicker-position-top-right {
+  top: 0;
+  right: 50px;
+}
+
+.sws-datepicker-container {
+  position: relative;
+  display: block;
+}
+.sws-datepicker-container * {
+  box-sizing: border-box;
+}
+.sws-form-field {
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 15px;
+}
+.sws-form-field .sws-form-input {
+  width: 100%;
+  border:0;
+  border-bottom: 1px solid #949494;
+  outline: 0;
+  margin: 0;
+  max-width: 100%;
+  vertical-align: bottom;
+  padding: 0 0 3px 0;
+}
+.sws-form-field.has-error .sws-form-input {
+  border-bottom-color: #ff0000;
+}
+.sws-form-field.active .sws-form-input {
+  border-bottom-color: #f28909;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container {
+	position: absolute;
+	width: 302px;
+	background: #ffffff;
+  box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.58);
+  border: 1px solid #afafaf;
+	border-radius: 4px;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .topbar-container {
+	width: 100%;
+	height: 50px;
+	padding: 15px;
+  border-bottom: 1px solid #b9b9b9;
+  box-sizing: border-box;
+  text-align: center;
+  position: relative;
+}
+.calendar-arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -5px;
+}
+.calendar-arrow__left {  
+  left: 10px;
+}
+.calendar-arrow__right {
+  right: 10px;  
+}
+.sws-datepicker-container .sws-datepicker-calendar-container .topbar-container svg {
+  cursor: pointer;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .topbar-container svg g {
+	fill: #CED0DA;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .topbar-container .topbar-title {
+	color: #3D495C;
+	font-size: 14px;
+	font-weight: 600;
+  cursor: pointer;
+  padding: 0 20px;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container {
+	width: 100%;
+	height: 100%;
+	padding: 15px 10px 0;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-day-names {
+	color: #5d5d5d;
+  width: 100%;
+  text-align: center;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-day-names .day-name-unit {
+  display: inline-block;
+	width: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years {
+	padding: 15px 0;
+	width: 100%;
+	display: inline-block;
+	max-height: 275px;
+	overflow: hidden;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit {
+  width: 40px;
+  text-align: center;
+  line-height: 40px;
+	height: 40px;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 50%;
+	color: #3D495C;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-prev-month, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit.is-prev-month, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit.is-prev-month, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit.is-prev-month {
+	color: #A4A9B1;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-today, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit.is-today, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit.is-today, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit.is-today {
+	background: #A4A9B1;
+	color: #ffffff;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-selected, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit.is-selected, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit.is-selected, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit.is-selected {
+	background: #0e7d00;
+	color: #ffffff;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-disabled, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit.is-disabled, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit.is-disabled, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit.is-disabled {
+	cursor: not-allowed;
+	color: #A4A9B1;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-disabled:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-days .year-unit.is-disabled:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .day-unit.is-disabled:hover, .sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit.is-disabled:hover {
+	background: transparent;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years {
+	height: 264px;
+	display: block;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+.sws-datepicker-container .sws-datepicker-calendar-container .main-calendar-container .main-calendar-years .year-unit {
+	width: 60px;
+	border-radius: 10px;
+}
+.sws-datepicker-button {
+	position: absolute;
+	right: 0;
+	top: -3px;
+	background: none;
+	border: 0;
+	margin: 0;
+	outline: 0;
+	border-radius: 50%;
+	padding: 5px;
+	line-height: 1;
+	font-size: 0;
+	background: #fff;
+}
+.sws-datepicker-button:active {
+	background: #ddd;
+}
+.sws-form-field__use-label .sws-datepicker-button {
+	top: 7px;
+}

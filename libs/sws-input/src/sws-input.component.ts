@@ -13,16 +13,18 @@ import 'rxjs/add/operator/debounceTime';
 export class SwsInputComponent implements OnInit, AfterViewInit {
 
   @Input('control') formControl: FormControl;
-  @Input() id: string = '';
+  @Input() id = '';
   @Input() valueChangesDelay = 0;
   @Input() readOnly: boolean;
-  @Input() label: string = '';
-  @Output() emitChangeInput: EventEmitter<any> = new EventEmitter();
+  @Input() label = '';
+  @Output() emitChangeInput = new EventEmitter<any>();
   @ViewChild('input') inputElement: ElementRef;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.hasControl();
+  }
 
   ngAfterViewInit(): void {
     this.eventInput();
@@ -42,4 +44,11 @@ export class SwsInputComponent implements OnInit, AfterViewInit {
   keyup(ev: any) {
     this.formControl.patchValue(ev.target.value);
   }
+
+  private hasControl() {
+    if (this.formControl == null) {
+        console.error("Your formControl is null! Please check your input to component");
+    }
+  }
+
 }

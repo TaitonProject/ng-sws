@@ -1,0 +1,81 @@
+<div class="sws-datepicker-container sws-form-field" [ngClass]="{'has-error': formControl.invalid && (formControl.touched || isError)}">
+  <input #input type="text" *ngIf="!headless" 
+                    class="sws-form-input" 
+                    [swsLabel]="label" 
+                    [id]="id"
+                    [formControl]="formControl" 
+                    [readonly]="readOnly" 
+                    [disabled]="formControl.disable == true"
+                    (change)="changeValue(formControl.value)">
+  <button class="sws-datepicker-button" (click)="toggle()">
+    <svg fill="currentColor" focusable="false" height="15px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="15px">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"></path>
+    </svg>
+  </button>
+  <ng-content *ngIf="formControl?.touched || isError"></ng-content>
+  <div class="sws-datepicker-calendar-container sws-datepicker-position-{{position}}" *ngIf="isOpened">
+
+    <div class="topbar-container">
+      <div class="calendar-arrow calendar-arrow__left">
+      <svg width="7px" height="10px" viewBox="0 0 7 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="prevMonth()">
+        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g transform="translate(-923.000000, -1882.000000)" fill="#CED0DA">
+            <g transform="translate(80.000000, 1361.000000)">
+              <g transform="translate(0.000000, 430.000000)">
+                <g transform="translate(825.000000, 0.000000)">
+                  <g transform="translate(0.000000, 72.000000)">
+                    <g transform="translate(18.000000, 15.000000)">
+                      <polygon id="Back" points="6.015 4 0 9.013 6.015 14.025"></polygon>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+      </div>
+      <span class="topbar-title" (click)="toggleView()">{{ barTitle }}</span>
+      <div class="calendar-arrow calendar-arrow__right">
+      <svg width="7px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" (click)="nextMonth()">
+        <g id="Source-Sans---UI-Elements-Kit" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="White-Layout" transform="translate(-1182.000000, -1882.000000)" fill="#CED0DA">
+            <g id="Dropdowns-&amp;-Selector" transform="translate(80.000000, 1361.000000)">
+              <g id="Dropdowns" transform="translate(0.000000, 430.000000)">
+                <g id="Calendar" transform="translate(825.000000, 0.000000)">
+                  <g transform="translate(0.000000, 72.000000)" id="Top-Bar-Nav">
+                    <g transform="translate(18.000000, 15.000000)">
+                      <polygon id="Forward" transform="translate(262.007500, 9.012500) scale(-1, 1) translate(-262.007500, -9.012500) " points="265.015 4 259 9.013 265.015 14.025"></polygon>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+    </div>
+    <div class="main-calendar-container" *ngIf="view === 'days'">
+      <div class="main-calendar-day-names">
+        <span class="day-name-unit" *ngFor="let name of dayNames">{{ name }}</span>
+      </div>
+      <div class="main-calendar-days">
+        <span
+          class="day-unit"
+          *ngFor="let day of days; let i = index;"
+          [ngClass]="{ 'is-prev-month': !day.inThisMonth, 'is-today': day.isToday, 'is-selected': day.isSelected, 'is-disabled': !day.isSelectable }"
+          (click)="day.isSelectable && setDate(i)"
+        >
+          {{ day.day }}
+        </span>
+      </div>
+    </div>
+    <div class="main-calendar-container" *ngIf="view === 'years'">
+      <div class="main-calendar-years">
+        <span class="year-unit" *ngFor="let year of years; let i = index;" [ngClass]="{ 'is-selected': year.isThisYear }" (click)="setYear(i)">{{ year.year }}</span>
+      </div>
+    </div>
+  </div>
+</div>
