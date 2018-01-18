@@ -11,6 +11,7 @@
     "build:error": "rimraf dist && ng-packagr -p libs/sws-form-field-errors/package.json",
     "build:label": "rimraf dist && ng-packagr -p libs/sws-label-directive/package.json",
     "build:hint": "rimraf dist && ng-packagr -p libs/sws-hint/package.json",
+    "build:datepicker": "rimraf dist && ng-packagr -p libs/sws-datepicker/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

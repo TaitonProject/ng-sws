@@ -5,7 +5,10 @@
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": "^5.2.0",
-    "@angular/forms": "^5.2.0"
+    "@angular/common": "^5.2.0",
+    "@angular/forms": "^5.2.0",
+    "sws-label-directive": "~0.1.1",
+    "date-fns": "^1.29.0"
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
