@@ -17,6 +17,14 @@
   border-width: 5px 0 5px 5px;
   border-left-color: #252525;
 }
+.sws-hint-arrow__top {
+  top: -10%;
+  left: 5px;
+  margin-top: -5px;
+  margin-right: 3px;
+  border-width: 5px 5px 0px 5px;
+  border-top-color: #252525;
+}
 .sws-hint-arrow__left {
   top: 50%;
   left: 100%;
@@ -38,15 +46,21 @@
   text-transform: lowercase;
   display: none;
 }
-.sws-hint__left {
-  right: 100%;
-  margin-right: 8px;
-  top: 50%;
-  margin-top: -10px;
-}
 .sws-hint__right {
   left: 100%;
   margin-left: 8px;
+  top: 50%;
+  margin-top: -10px;
+}
+.sws-hint__top {
+  left: 0;
+  margin-left: 0px;
+  top: -100%;
+  margin-top: -8px;
+}
+.sws-hint__left {
+  right: 100%;
+  margin-right: 8px;
   top: 50%;
   margin-top: -10px;
 }
