@@ -57,7 +57,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
    * Datepicker dropdown position
    */
   @Input() position = 'top-right';
-  
+
   /**
    * Parametors, whitch we are sent to this component
    */
@@ -75,7 +75,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
   date: Date;
   barTitle: string;
   barTitleFormat: string;
-  barTitleIfEmpty: string ;
+  barTitleIfEmpty: string;
   minYear: number;
   maxYear: number;
   firstCalendarDay: number;
@@ -97,7 +97,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
   isValue: boolean = false;
   parent;
   isError: boolean = false;
-  
+
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
 
@@ -124,14 +124,14 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     //if we sent control not empty
     if (this.formControl.value) {
       this.date = parse(this.formControl.value);
-      this.isValue = true;    
+      this.isValue = true;
     }
     this.innerValue = this.date;
     this.init();
     //if we sent control empty
     if (!this.isValue) {
       this.formControl.patchValue('');
-    }    
+    }
     // Check if 'position' property is correct
     if (this.positions.indexOf(this.position) === -1) {
       throw new TypeError(`sws-datepicker: неверное значение для значения позиционирования '${this.position}' (expected: ${this.positions.join(', ')})`);
@@ -158,7 +158,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     this.barTitleFormat = this.options && this.options.barTitleFormat || 'MMMM YYYY';
     this.barTitleIfEmpty = this.options && this.options.barTitleIfEmpty || 'Кликните, чтобы выбрать дату';
     this.firstCalendarDay = this.options && this.options.firstCalendarDay || 1;
-    this.locale = this.options && { locale: this.options.locale } || {locale: ruLocale};
+    this.locale = this.options && { locale: this.options.locale } || { locale: ruLocale };
   }
 
   nextMonth(): void {
@@ -241,8 +241,11 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     }
 
     //this.displayValue = this.innerValue ? format(this.innerValue, this.displayFormat, this.locale) : '';
+    this.barTitle = this.innerValue ? format(start, this.barTitleFormat, this.locale) : this.barTitleIfEmpty;
+    if (this.formControl.value == format(this.innerValue, this.displayFormat, this.locale)) {
+      return;
+    }
     this.formControl.patchValue(format(this.innerValue, this.displayFormat, this.locale))
-    this.barTitle =  this.innerValue ? format(start, this.barTitleFormat, this.locale) : this.barTitleIfEmpty;
   }
 
   initYears(): void {
@@ -284,23 +287,23 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
 
   changeValue(val: string) {
     if (~val.indexOf("-")) {
-      val = val.replace( /-/g, ".");
+      val = val.replace(/-/g, ".");
     }
     if (~val.indexOf("/")) {
-      val.replace( /\//g, ".");
+      val.replace(/\//g, ".");
     }
-    let parts = val.split( '.' );
-    let dateString = parts[2] + '-' + parts[1] + '-'+ parts[0];
-    let date = parse(dateString);    
+    let parts = val.split('.');
+    let dateString = parts[2] + '-' + parts[1] + '-' + parts[0];
+    let date = parse(dateString);
     if (!isValid(date)) {
       if (this.formControl.value) {
         this.formControl.patchValue(format(this.innerValue, this.displayFormat, this.locale));
-      }        
+      }
       return;
     }
     this.writeValue(date);
   }
-  
+
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
   }
@@ -311,7 +314,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
 
   private hasControl() {
     if (this.formControl == null) {
-        console.error("Your formControl is null! Please check your input to component");
+      console.error("Your formControl is null! Please check your input to component");
     }
   }
 
@@ -329,7 +332,7 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     if (button == null) {
       return;
     }
-    
+
     if (e.target === button || button.contains(<any>e.target)) {
       this.addClassToParent('active-lbl');
       return;

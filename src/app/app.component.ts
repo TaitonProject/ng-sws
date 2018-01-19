@@ -22,5 +22,8 @@ export class AppComponent implements OnInit {
     this.form.controls['date'].patchValue('1980-12-01');
     this.form.controls['date'].setValidators([Validators.required]);
     this.form.controls['org'].setValidators([Validators.required]);
+    this.form.valueChanges.subscribe((res) => {
+      console.log(res)
+    })
   }
 }

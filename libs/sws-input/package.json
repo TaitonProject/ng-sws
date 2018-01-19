@@ -10,7 +10,8 @@
     "sws-label-directive": "^0.1.1"
   },
   "dependencies": {
-    "sws-label-directive": "~0.1.1"
+    "sws-label-directive": "~0.1.1",
+    "sws-form-field-errors": "^0.1.0"
   },
   "keywords":"Angular, Angular5, Angular 5, Angular5 input",
   "ngPackage": {
