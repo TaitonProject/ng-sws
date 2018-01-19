@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SWSHintDirective } from './sws-hint.directive';
+import { SwsHintDirective } from './sws-hint.directive';
 
 @NgModule({
   imports: [],
-  exports: [SWSHintDirective],
-  declarations: [SWSHintDirective]
+  exports: [SwsHintDirective],
+  declarations: [SwsHintDirective]
 })
 export class SWSHintModule { }

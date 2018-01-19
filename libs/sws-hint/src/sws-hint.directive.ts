@@ -4,7 +4,7 @@ import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnIni
   selector: '[sws-hint]'
 })
 
-export class SWSHintDirective implements OnInit, OnDestroy {
+export class SwsHintDirective implements OnInit, OnDestroy {
 
   position: string;
   @Input('sws-hint') hintTitle: string = '';

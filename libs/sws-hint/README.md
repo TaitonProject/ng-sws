@@ -3,10 +3,10 @@ sws-hint module to work in Angular 5
 ### To install simply run
 npm install sws-hint.
 To use it in your Angular 5 app import the module.
-import {SWSHintModule} from 'sws-hint';
+import {SwsHintModule} from 'sws-hint';
 ```@NgModule({
 imports:[
-SWSHintModule
+SwsHintModule
 ],
 })  
 ``` 

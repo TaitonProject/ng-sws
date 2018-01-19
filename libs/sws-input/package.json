@@ -9,6 +9,10 @@
     "@angular/forms": "^5.2.0",
     "sws-label-directive": "^0.1.1"
   },
+  "dependencies": {
+    "sws-label-directive": "~0.1.1"
+  },
+  "keywords":"Angular, Angular5, Angular 5, Angular5 input",
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "dest": "dist/sws-input",
