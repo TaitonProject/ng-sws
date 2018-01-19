@@ -4,7 +4,7 @@ import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnIni
   selector: '[swsLabel]'
 })
 
-export class SWSLabelDirective implements AfterViewInit {
+export class SwsLabelDirective implements AfterViewInit {
 
   parent;
   refChild;

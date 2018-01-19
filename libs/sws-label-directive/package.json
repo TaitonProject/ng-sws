@@ -6,6 +6,7 @@
   "peerDependencies": {
     "@angular/core": "^5.2.0"
   },
+  "keywords":"Angular, Angular5, Angular 5, Angular5 label",
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "dest": "dist/sws-label-directive",

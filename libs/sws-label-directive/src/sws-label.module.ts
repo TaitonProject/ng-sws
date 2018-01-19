@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { SWSLabelDirective } from './sws-label.directive';
+import { SwsLabelDirective } from './sws-label.directive';
 
 @NgModule({
   imports: [],
-  exports: [SWSLabelDirective],
-  declarations: [SWSLabelDirective]
+  exports: [SwsLabelDirective],
+  declarations: [SwsLabelDirective]
 })
-export class SWSLabelDirectiveModule { }
+export class SwsLabelDirectiveModule { }

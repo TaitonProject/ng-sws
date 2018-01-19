@@ -10,6 +10,11 @@
     "sws-label-directive": "~0.1.1",
     "date-fns": "^1.29.0"
   },
+  "dependencies": {
+    "date-fns": "https://www.npmjs.com/package/date-fns",
+    "sws-label-directive": "https://www.npmjs.com/package/sws-label-directive"
+  },
+  "keywords":"Angular, Angular5, Angular 5, Angular5 datepicker",
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
     "dest": "dist/sws-datepicker",
