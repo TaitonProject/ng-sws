@@ -1,12 +1,12 @@
 # hint/tooltip
-sws-hint module to work in Angular 5
+sws-hint directive to work in Angular 5
 ### To install simply run
 npm install sws-hint.
 To use it in your Angular 5 app import the module.
-import {SwsHintModule} from 'sws-hint';
+import {SwsHintDirective} from 'sws-hint';
 ```@NgModule({
 imports:[
-SwsHintModule
+SwsHintDirective
 ],
 })  
 ``` 
