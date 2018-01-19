@@ -121,8 +121,16 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     this.setOptions();
     this.initDayNames();
     this.initYears();
-    //if we sent control not empty
-    if (this.formControl.value) {
+    // Check if 'position' property is correct
+    if (this.positions.indexOf(this.position) === -1) {
+      throw new TypeError(`sws-datepicker: неверное значение для значения позиционирования '${this.position}' (expected: ${this.positions.join(', ')})`);
+    }
+  }
+
+  ngAfterViewInit() {
+    this.parent = this.elementRef.nativeElement.querySelector('.sws-form-input').parentNode;
+     //if we sent control not empty
+     if (this.formControl.value) {
       this.date = parse(this.formControl.value);
       this.isValue = true;
     }
@@ -132,14 +140,6 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     if (!this.isValue) {
       this.formControl.patchValue('');
     }
-    // Check if 'position' property is correct
-    if (this.positions.indexOf(this.position) === -1) {
-      throw new TypeError(`sws-datepicker: неверное значение для значения позиционирования '${this.position}' (expected: ${this.positions.join(', ')})`);
-    }
-  }
-
-  ngAfterViewInit() {
-    this.parent = this.elementRef.nativeElement.querySelector('.sws-form-input').parentNode;
   }
   ngOnChanges(changes: SimpleChanges) {
     if ('options' in changes) {

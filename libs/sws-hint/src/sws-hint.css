@@ -55,7 +55,7 @@
   text-transform: lowercase;
   display: none;
   z-index: 999;
-  width: 70px;
+  white-space: nowrap;
 }
 .sws-hint__right {
   left: 100%;

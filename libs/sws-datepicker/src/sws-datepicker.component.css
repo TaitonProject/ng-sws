@@ -187,6 +187,7 @@
 	line-height: 1;
 	font-size: 0;
 	background: #fff;
+	cursor: pointer;
 }
 .sws-datepicker-button:active {
 	background: #ddd;
