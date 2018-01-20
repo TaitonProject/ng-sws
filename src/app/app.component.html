@@ -19,6 +19,7 @@
     <p>Ответ {{modalOptions.dataModal}}</p>
   </div>
 </sws-modal> -->
+
 <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
     <sws-field-errors *ngIf="form.controls['date'].hasError('required')">Поле обязательное для заполнения</sws-field-errors>
 </sws-datepicker>

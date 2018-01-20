@@ -23,7 +23,7 @@ import {
 } from 'date-fns';
 import * as ruLocale from 'date-fns/locale/ru';
 import { DatepickerOptions } from './interfaces/DatepickerOptions';
-
+import "rxjs/add/operator/takeWhile";
 /**
  * Internal library helper that helps to check if value is empty
  * @param value
@@ -121,6 +121,33 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     this.setOptions();
     this.initDayNames();
     this.initYears();
+
+    //if we sent control not empty
+    if (this.formControl.value) {
+      this.isValue = true;
+      this.date = parse(this.formControl.value);
+      this.innerValue = this.date;
+    }
+
+      this.init();
+
+  //if we sent control not empty
+  this.formControl.valueChanges.takeWhile( ()=>!this.isValue).subscribe( (res) => {
+    if (res.length > 9) {
+      
+      this.date = parse(res);
+      this.isValue = true;
+      this.addClassToParent('active-lbl');
+      this.innerValue = this.date;
+      this.init();
+    }
+
+    //if we sent control empty
+    if (!this.isValue) {
+      this.innerValue = this.date;
+      this.init();
+    }
+  })
     // Check if 'position' property is correct
     if (this.positions.indexOf(this.position) === -1) {
       throw new TypeError(`sws-datepicker: неверное значение для значения позиционирования '${this.position}' (expected: ${this.positions.join(', ')})`);
@@ -129,17 +156,6 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
 
   ngAfterViewInit() {
     this.parent = this.elementRef.nativeElement.querySelector('.sws-form-input').parentNode;
-     //if we sent control not empty
-     if (this.formControl.value) {
-      this.date = parse(this.formControl.value);
-      this.isValue = true;
-    }
-    this.innerValue = this.date;
-    this.init();
-    //if we sent control empty
-    if (!this.isValue) {
-      this.formControl.patchValue('');
-    }
   }
   ngOnChanges(changes: SimpleChanges) {
     if ('options' in changes) {
@@ -156,24 +172,27 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     this.maxYear = this.options && this.options.maxYear || getYear(today) - 14;
     this.displayFormat = this.options && this.options.displayFormat || 'DD.MM.YYYY';
     this.barTitleFormat = this.options && this.options.barTitleFormat || 'MMMM YYYY';
-    this.barTitleIfEmpty = this.options && this.options.barTitleIfEmpty || 'Кликните, чтобы выбрать дату';
+    this.barTitleIfEmpty = this.options && this.options.barTitleIfEmpty || 'Кликните, чтобы выбрать год';
     this.firstCalendarDay = this.options && this.options.firstCalendarDay || 1;
     this.locale = this.options && { locale: this.options.locale } || { locale: ruLocale };
   }
 
   nextMonth(): void {
     this.date = addMonths(this.date, 1);
+    this.isValue = false;
     this.init();
   }
 
   prevMonth(): void {
     this.date = subMonths(this.date, 1);
+    this.isValue = false;
     this.init();
   }
 
   setDate(i: number): void {
     this.date = this.days[i].date;
     this.value = this.date;
+    this.isValue = true;
     this.init();
     this.close();
   }
@@ -245,7 +264,10 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     if (this.formControl.value == format(this.innerValue, this.displayFormat, this.locale)) {
       return;
     }
-    this.formControl.patchValue(format(this.innerValue, this.displayFormat, this.locale))
+    if (this.isValue) {
+      this.formControl.patchValue(format(this.innerValue, this.displayFormat, this.locale))
+    }
+    
   }
 
   initYears(): void {

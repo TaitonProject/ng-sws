@@ -5,6 +5,7 @@
                     [id]="id"
                     [formControl]="formControl" 
                     [readonly]="readOnly" 
+                    (keyup)="isValue=true"
                     [disabled]="formControl.disable == true"
                     (change)="changeValue(formControl.value)">
   <button class="sws-datepicker-button" (click)="toggle()">

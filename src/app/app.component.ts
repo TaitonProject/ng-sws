@@ -18,12 +18,13 @@ export class AppComponent implements OnInit {
       org: new FormControl(),
       date: new FormControl()
     });
-    this.form.controls['org'].patchValue('123123');
-    this.form.controls['date'].patchValue('1980-12-01'); 
+    //setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
+    //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
+    //this.form.controls['date'].patchValue('1995-02-26'); 
     this.form.controls['date'].setValidators([Validators.required]);
     this.form.controls['org'].setValidators([Validators.required]);
     this.form.valueChanges.subscribe((res) => {
-      console.log(res)
+     console.log("appp",res)
     })
   }
 }
