@@ -1,6 +1,6 @@
 {
   "name": "sws-hint",
-  "version": "0.1.5",
+  "version": "0.1.12",
   "author": "Evgeny <evgenmirsky@gmail.com>",
   "license": "MIT",
   "peerDependencies": {

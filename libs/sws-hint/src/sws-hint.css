@@ -43,7 +43,7 @@
   border-right-color: #252525;
 }
 .sws-hint {
-  position: absolute;
+  position: fixed;
   min-height: 20px;
   color: #fff;
   background: #252525;
@@ -57,32 +57,9 @@
   z-index: 999;
   white-space: nowrap;
 }
-.sws-hint__right {
-  left: 100%;
-  margin-left: 8px;
-  top: 50%;
-  margin-top: -10px;
-}
-.sws-hint__top {
-  left: 0;
-  margin-left: 0px;
-  top: -100%;
-  margin-top: -8px;
-}
-.sws-hint__bottom {
-  left: 0;
-  margin-left: 0px;
-  top: 100%;
-  margin-top: 8px;
-}
-.sws-hint__left {
-  right: 100%;
-  margin-right: 8px;
-  top: 50%;
-  margin-top: -10px;
-}
-.sws-hint-wrapper.sws-hint__active .sws-hint {
-  display: inline-block;
+
+.sws-hint__active .sws-hint {
+  display: block;
 }
 .sws-hint-wrapper.sws-hint__active .sws-hint-arrow {
   display: block;

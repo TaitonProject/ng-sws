@@ -1,4 +1,8 @@
 .container {
   max-width: 1200px;
   margin: 50px auto;
+  position: relative;
+}
+.pos-relative {
+  position: relative
 }

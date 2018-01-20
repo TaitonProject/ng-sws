@@ -1,6 +1,6 @@
 {
   "name": "sws-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.9",
   "author": "Evgeny <evgenmirsky@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
@@ -8,11 +8,13 @@
     "@angular/common": "^5.2.0",
     "@angular/forms": "^5.2.0",
     "sws-label-directive": "~0.1.1",
-    "date-fns": "^1.29.0"
+    "date-fns": "^1.29.0",
+    "rxjs": "^5.5.6"
   },
   "dependencies": {
     "date-fns": "^1.29.0",
-    "sws-label-directive": "~0.1.1"
+    "sws-label-directive": "~0.1.1",
+    "rxjs": "^5.5.6"
   },
   "keywords":"Angular, Angular5, Angular 5, Angular5 datepicker",
   "ngPackage": {

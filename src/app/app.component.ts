@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
       date: new FormControl()
     });
     //setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
+    this.form.controls['org'].patchValue('123123')
     //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
     //this.form.controls['date'].patchValue('1995-02-26'); 
     this.form.controls['date'].setValidators([Validators.required]);

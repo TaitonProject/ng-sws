@@ -7,12 +7,20 @@
 <h3>{{form.get('org').value}}</h3>
 </form>
 <hr />
+<div class="pos-relative">
 <p>
-  <span sws-hint="Отправленные">Наведи, появится tooltip</span> 
+  <span sws-hint="Отправленные">Наведи, появится tooltip</span>
+  </p>
+  <p>
   <span sws-hint="tooltip-top" sws-hint-pos="top">Наведи, появится ещё tooltip</span>
+  </p>
+  <p>
   <span sws-hint="tooltip-left" sws-hint-pos="left">Наведи, появится ещё tooltip</span>
+</p>
+<p>
   <span sws-hint="tooltip-bottom" sws-hint-pos="bottom">Наведи, появится ещё tooltip</span>
 </p>
+</div>
 <hr />
 <!-- <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
   <div class="text-center">
