@@ -24,9 +24,10 @@ export class SwsHintDirective implements OnInit, OnDestroy {
     const text = this.renderer.createText(this.hintTitle);
     this.renderer.addClass(this.span, 'sws-hint');
     this.renderer.addClass(this.span, this.position);
+    this.onSetPosition(this.hintPosition);
     this.renderer.appendChild(this.span, text);
     this.renderer.appendChild(this.element.nativeElement, this.span);
-    this.onSetPosition(this.hintPosition);
+    
   }
 
   @HostListener('mouseleave') onMouseLeave(): void {
