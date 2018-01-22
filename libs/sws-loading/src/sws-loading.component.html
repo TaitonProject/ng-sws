@@ -1,0 +1,18 @@
+<div *ngIf="loading" class="spin_center">
+  <div class="spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+<div *ngIf="notFound" class="algcenter">{{textNotFound}}</div>
+<div *ngIf="error" class="algcenter">{{textError}}<span (click)="loadData()" style="cursor: pointer; color:#FF8F3A"> Попробуйте еще раз</span>
+</div>
+
+<div *ngIf="loading">
+  Loading...
+</div>
+<div>notFound {{notFound}}</div>
+<div>loading {{loading}}</div>
+<div>error {{error}}</div>
+<ng-content *ngIf="!notFound && !loading && !error"></ng-content>

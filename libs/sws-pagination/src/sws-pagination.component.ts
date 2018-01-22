@@ -27,9 +27,13 @@ export class SwsPaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.calculateIndexes(params['page'] != null ? +params['page'] : 1)
-    });
+    if (this.navigated === true) {
+      this.route.queryParams.subscribe(params => {
+        this.calculateIndexes(params['page'] != null ? +params['page'] : 1)
+      });
+    } else {
+      this.calculateIndexes(1);
+    }
   }
 
   calculateIndexes(page: number): void {
@@ -75,8 +79,9 @@ export class SwsPaginationComponent implements OnInit {
   clickPage(page: number) {
     if ((page > 0 || page <= this.pagesCount) && (page != this.page)) {
       this.page = page;
-      if (this.navigated)
+      if (this.navigated) {
         this.navigateByPage(this.page);
+      }
       this.calculateIndexes(this.page);
       this.changePage.emit(this.page);
     }
