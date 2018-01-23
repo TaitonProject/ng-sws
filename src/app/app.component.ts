@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
 import 'rxjs/add/observable/combineLatest';
@@ -30,6 +30,15 @@ export class AppComponent implements OnInit, Loadable {
       org: new FormControl(),
       date: new FormControl()
     });
+    setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
+    //this.form.controls['org'].patchValue('123123')
+    //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
+    this.form.controls['date'].patchValue('1995-02-26'); 
+    this.form.controls['date'].setValidators([Validators.required]);
+    this.form.controls['org'].setValidators([Validators.required]);
+    this.form.valueChanges.subscribe((res) => {
+     console.log("appp",res)
+    })
   }
 
   setForm() {
