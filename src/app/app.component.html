@@ -1,0 +1,44 @@
+<div class="container">
+<sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
+<form [formGroup]="form">
+<sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
+  <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения</sws-field-errors>
+</sws-input>
+<h3>{{form.get('org').value}}</h3>
+</form>
+<hr />
+<div class="pos-relative">
+<p>
+  <span sws-hint="Отправленные">Наведи, появится tooltip</span>
+  </p>
+  <p>
+  <span sws-hint="tooltip-top" sws-hint-pos="top">Наведи, появится ещё tooltip</span>
+  </p>
+  <p>
+  <span sws-hint="tooltip-left" sws-hint-pos="left">Наведи, появится ещё tooltip</span>
+</p>
+<button sws-hint="Обновить" sws-hint-pos="left"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+<p>
+  <span sws-hint="tooltip-bottom" sws-hint-pos="bottom">Наведи, появится ещё tooltip</span>
+</p>
+</div>
+<hr />
+<!-- <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
+  <div class="text-center">
+    <p>Ответ {{modalOptions.dataModal}}</p>
+  </div>
+</sws-modal> -->
+
+<sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
+    <sws-field-errors *ngIf="form.controls['date'].hasError('required')">Поле обязательное для заполнения</sws-field-errors>
+</sws-datepicker>
+<h3>{{form.get('date').value}}</h3>
+
+
+<h3>Таблица</h3>
+<sws-table [func]="func" [form]="form" (data)="setData($event)">
+  <div *ngFor="let user of users?.slice(10, 40)">
+    <div>{{user.title}}</div>
+  </div>
+</sws-table>
+</div>

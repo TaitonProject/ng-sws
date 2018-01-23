@@ -31,8 +31,8 @@ export class SwsInputComponent implements OnInit, AfterViewInit {
   }
 
   eventInput() {
-    const eventStream = Observable.fromEvent(this.inputElement.nativeElement, 'input')
-      .map(val => {val['target'].value;console.log("dsd")})
+    const eventStream = Observable.fromEvent(this.inputElement.nativeElement, 'keyup')
+      .map(val => val['target'].value)
       .debounceTime(this.valueChangesDelay);
 
     eventStream.subscribe(value => {
