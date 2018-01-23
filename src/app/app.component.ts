@@ -56,5 +56,12 @@ export class AppComponent implements OnInit, Loadable {
 
   loadData(form: any, page: number): Observable<[Array<any>, number]> {
     return Observable.combineLatest(this.service.loadData(form, page), this.service.loadCountData(form));
+
+    // return Observable.combineLatest(this.service.loadData(form, page));
+
+    // Если нету запроса на кол-во объектов (с небольшим массивом имеем дело)
+    /*return Observable.combineLatest(this.service.loadData(form, page), Observable.create(function (observer) {
+      observer.next(15);
+    }));*/
   }
 }
