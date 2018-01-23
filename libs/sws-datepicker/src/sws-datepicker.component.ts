@@ -307,9 +307,16 @@ export class SwsDatepickerComponent implements ControlValueAccessor, OnInit, OnC
     }
   }
 
+  onParse(val: string) {
+    
+  }
+
   changeValue(val: string) {
     if (~val.indexOf("-")) {
       val = val.replace(/-/g, ".");
+    }
+    if (~val.indexOf(",")) {
+      val = val.replace(/,/g, ".");
     }
     if (~val.indexOf("/")) {
       val.replace(/\//g, ".");
