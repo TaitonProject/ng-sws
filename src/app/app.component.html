@@ -1,4 +1,4 @@
-<div class="container">  
+<div class="container">
 <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
 <form [formGroup]="form">
 <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
@@ -34,3 +34,11 @@
 </sws-datepicker>
 <h3>{{form.get('date').value}}</h3>
 </div>
+
+<h3>Таблица</h3>
+<sws-table [func]="func" [form]="form" (data)="setData($event)">
+  <div *ngFor="let user of users?.slice(10, 40)">
+    <div>{{user.title}}</div>
+  </div>
+</sws-table>
+
