@@ -3,6 +3,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
 import 'rxjs/add/observable/combineLatest';
+import 'rxjs/add/observable/of';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
 
 @Component({
@@ -15,8 +16,10 @@ export class AppComponent implements OnInit, Loadable {
   form: FormGroup;
   func: (form: any, page: number) => any;
   users: Array<any>;
+  obs: Observable<number>;
 
   constructor(private service: AppService) {
+    this.obs = Observable.of(20);
   }
 
   ngOnInit(): void {

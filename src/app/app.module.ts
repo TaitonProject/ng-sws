@@ -10,8 +10,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {SWSHintModule} from '../../libs/sws-hint/src/sws-hint.module';
 import {SwsDatepickerModule} from '../../libs/sws-datepicker/src/sws-datepicker.module';
-import {SwsTableModule} from '../../libs/sws-table/src/sws-table.module';
-import {AppService} from "./app.service";
+import {AppService} from './app.service';
+import {SwsLoadingModule} from 'sws-loading';
+import {SwsTableModule} from 'sws-table';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {AppService} from "./app.service";
     ReactiveFormsModule,
     SWSHintModule,
     SwsDatepickerModule,
-    SwsTableModule
+    SwsTableModule,
+    SwsLoadingModule,
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

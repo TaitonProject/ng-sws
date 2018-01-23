@@ -12,6 +12,8 @@
     "build:label": "rimraf dist && ng-packagr -p libs/sws-label-directive/package.json",
     "build:hint": "rimraf dist && ng-packagr -p libs/sws-hint/package.json",
     "build:datepicker": "rimraf dist && ng-packagr -p libs/sws-datepicker/package.json",
+    "build:loading": "rimraf dist && ng-packagr -p libs/sws-loading/package.json",
+    "build:table": "rimraf dist && ng-packagr -p libs/sws-table/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -36,6 +38,9 @@
     "rxjs": "^5.5.2",
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
+    "sws-loading": "^1.0.0",
+    "sws-pagin": "^1.0.1",
+    "sws-table": "^1.0.0",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
