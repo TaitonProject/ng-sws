@@ -12,18 +12,22 @@ import 'rxjs/add/observable/merge';
 })
 export class SwsTableComponent implements OnInit, OnDestroy {
 
-  @Input() form: FormGroup = new FormGroup({});
-  @Input() func: (form: any, page: number) => any;
+  @Input() form: FormGroup;
+  @Input() func: ((form: any, page: number) => any);
   @Input() pageSize = 10;
-  @Output() data: EventEmitter<Array<any>> = new EventEmitter<Array<any>>();
+  @Input() navigatePage = false;
+  @Output() data: EventEmitter<Array<any>>;
 
   obsData: Observable<any>;
-  page: BehaviorSubject<number> = new BehaviorSubject(1);
+  page: BehaviorSubject<number>;
   resultsLength: number;
   subscriptions: Subscription;
 
   constructor() {
+    this.form = new FormGroup({});
     this.subscriptions = new Subscription();
+    this.page = new BehaviorSubject(1);
+    this.data = new EventEmitter<Array<any>>();
   }
 
   ngOnInit() {
@@ -45,7 +49,13 @@ export class SwsTableComponent implements OnInit, OnDestroy {
 
   dataOut(data: any) {
     this.data.emit(data[0]);
-    this.resultsLength = data[1];
+    if (data[1] == null && data[0] != null) {
+      this.resultsLength = data[0].length;
+    } else if (data[1] != null) {
+      this.resultsLength = data[1];
+    } else {
+      this.resultsLength = null;
+    }
   }
 
   ngOnDestroy(): void {

@@ -33,12 +33,12 @@ export class AppComponent implements OnInit, Loadable {
     setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
     //this.form.controls['org'].patchValue('123123')
     //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
-    this.form.controls['date'].patchValue('1995-02-26'); 
+    this.form.controls['date'].patchValue('1995-02-26');
     this.form.controls['date'].setValidators([Validators.required]);
     this.form.controls['org'].setValidators([Validators.required]);
     this.form.valueChanges.subscribe((res) => {
-     console.log("appp",res)
-    })
+      // console.log('appp', res);
+    });
   }
 
   setForm() {

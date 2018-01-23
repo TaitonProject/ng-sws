@@ -1,5 +1,5 @@
 <sws-loading [download]="obsData" [dataObservable]="obsData" (dataOut)="dataOut($event)">
   <ng-content></ng-content>
 </sws-loading>
-<sws-pagination *ngIf="resultsLength" [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="false"
+<sws-pagination *ngIf="resultsLength" [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"
                 (changePage)="page.next($event)"></sws-pagination>

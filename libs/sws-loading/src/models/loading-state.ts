@@ -4,7 +4,6 @@ export abstract class LoadingState {
   public error: boolean;
 
   finishLoad(data: any) {
-    console.log('finishLoad')
     this.error = false;
     this.loading = false;
     if (data == null) {
@@ -15,14 +14,12 @@ export abstract class LoadingState {
   }
 
   startLoad() {
-    console.log('startLoad')
     this.error = false;
     this.notFound = false;
     this.loading = true;
   }
 
   errorLoad(error: any){
-    console.log('errorLoad')
     this.error = true;
     this.loading = false;
     console.error(error);
