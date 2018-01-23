@@ -44,6 +44,10 @@ export class AppComponent implements OnInit, Loadable {
     });
   }
 
+  openEvent(event: any) {
+
+  }
+
   setForm() {
     this.form.controls['org'].patchValue('123123');
     this.form.controls['date'].patchValue('1980-12-01');

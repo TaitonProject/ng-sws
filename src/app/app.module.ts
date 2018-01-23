@@ -13,6 +13,8 @@ import {SwsDatepickerModule} from '../../libs/sws-datepicker/src/sws-datepicker.
 import {AppService} from './app.service';
 import {SwsLoadingModule} from 'sws-loading';
 import {SwsTableModule} from 'sws-table';
+import {SwsAccordionModule} from "sws-accordion";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import {SwsTableModule} from 'sws-table';
     SwsDatepickerModule,
     SwsTableModule,
     SwsLoadingModule,
+    SwsAccordionModule,
+    BrowserAnimationsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

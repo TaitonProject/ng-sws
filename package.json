@@ -14,6 +14,7 @@
     "build:datepicker": "rimraf dist && ng-packagr -p libs/sws-datepicker/package.json",
     "build:loading": "rimraf dist && ng-packagr -p libs/sws-loading/package.json",
     "build:table": "rimraf dist && ng-packagr -p libs/sws-table/package.json",
+    "build:accordion": "rimraf dist && ng-packagr -p libs/sws-accordion/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -36,6 +37,7 @@
     "core-js": "^2.4.1",
     "date-fns": "^1.29.0",
     "rxjs": "^5.5.2",
+    "sws-accordion": "^1.0.0",
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
     "sws-loading": "^1.0.0",

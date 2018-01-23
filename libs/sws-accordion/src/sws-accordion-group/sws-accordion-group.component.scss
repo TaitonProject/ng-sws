@@ -1,0 +1,19 @@
+.accordion-group{
+  position: relative;
+
+  &.closed{
+    .panel-collapse{
+      max-height: 0;
+    }
+  }
+
+  .panel-heading{
+    cursor: pointer;
+  }
+
+  .panel-collapse{
+    overflow-y: hidden;
+    max-height: 1000px;
+    padding-left: 20px;
+  }
+}
