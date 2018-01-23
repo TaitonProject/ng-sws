@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SwsAccordionGroupComponent} from "./sws-accordion-group/sws-accordion-group.component";
+import {SwsAccordionGroupComponent} from './sws-accordion-group/sws-accordion-group.component';
 
 @Component({
   selector: 'sws-accordion',

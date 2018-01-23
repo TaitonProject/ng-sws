@@ -49,12 +49,26 @@
     <div>Загружено!</div>
   </sws-loading>
 
+  <h3>Аккордион</h3>
   <sws-accordion>
-    <sws-accordion-group [leftTitle]="'Аккордион 1'" [type]="'arrow'" [heading]="23" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордион 1'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 1
     </sws-accordion-group>
-    <sws-accordion-group [leftTitle]="'Аккордион 2'" [type]="'arrow'" [heading]="23" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 2
     </sws-accordion-group>
   </sws-accordion>
+
+  <h3>Табы</h3>
+  <tabs [contentStyle]="'tab-content'" [titleStyle]="'tabs_nav'">
+
+    <tab [title]="'Жилые комплексы: 0'">
+      Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы
+    </tab>
+
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+
+  </tabs>
 </div>
