@@ -5,6 +5,7 @@ import {SwsPaginationModule} from '../../libs/sws-pagination/src/sws-pagination.
 import {AppRoutingModule} from './app-routing.module';
 import {SwsInputModule} from '../../libs/sws-input/src/sws-input.module';
 import {SwsFormFieldErrorsModule} from '../../libs/sws-form-field-errors/src/sws-form-field-errors.module';
+import {SwsAccordionModule} from '../../libs/sws-accordion/src/sws-accordion.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -13,9 +14,7 @@ import {SwsDatepickerModule} from '../../libs/sws-datepicker/src/sws-datepicker.
 import {AppService} from './app.service';
 import {SwsLoadingModule} from 'sws-loading';
 import {SwsTableModule} from 'sws-table';
-import {SwsAccordionModule} from 'sws-accordion';
 import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
-
 
 @NgModule({
   declarations: [

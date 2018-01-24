@@ -11,6 +11,6 @@
     >{{heading}}</a>
   </div>
 </div>
-<div [@acc]="showAccord">
+<div [@acc]="showAccord" style="overflow: hidden">
   <ng-content [ngClass]="{'hidden': !show}"></ng-content>
 </div>
