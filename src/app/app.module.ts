@@ -15,11 +15,17 @@ import {SwsLoadingModule} from 'sws-loading';
 import {SwsTableModule} from 'sws-table';
 import {SwsAccordionModule} from 'sws-accordion';
 import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { AdHostDirective } from './ad-host.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ParentComponent,
+    ChildComponent,
+    AdHostDirective,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,8 @@ import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
     SwsTabsModule
   ],
   providers: [AppService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ChildComponent]
 })
 export class AppModule {
 }

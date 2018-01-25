@@ -1,0 +1,9 @@
+<input [(ngModel)]="inputVal">
+<div>{{inputVal}}</div>
+<button (click)="getComponent()">get component</button>
+<button (click)="destroyChild()">destroy!!!</button>
+<button (click)="createChild()">create!!!</button>
+<button (click)="setDataChild()">set data!!!</button>
+<app-child></app-child>
+<ng-template ad-host></ng-template>
+
