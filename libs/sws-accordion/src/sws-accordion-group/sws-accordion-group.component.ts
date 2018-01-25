@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChange} from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {SwsAccordionComponent} from "../sws-accordion.component";
+import {animate, state, style, transition, trigger} from '@angular/animations';
+import {SwsAccordionComponent} from '../sws-accordion.component';
 
 @Component({
   selector: 'sws-accordion-group',
@@ -10,13 +10,15 @@ import {SwsAccordionComponent} from "../sws-accordion.component";
     trigger('acc', [
       state('hdn', style({
         opacity: 0,
-        maxHeight: 0,
-        padding: 0
+        height: 0,
+        padding: 0,
+        visibility: 'hidden'
       })),
       state('opn', style({
         padding: '5px 0',
-        maxHeight: '5500px',
-        opacity: 1
+        height: '*',
+        opacity: 1,
+        visibility: 'visible'
       })),
       transition('hdn <=> opn', animate('450ms cubic-bezier(.47,.13,.58,1)'))
     ]),
@@ -32,8 +34,7 @@ export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
   @Input() colorLeftTitle: string;
   @Output() openEvent: EventEmitter<boolean> = new EventEmitter();
 
-
-  showAccord: string = 'hdn';
+  showAccord = 'hdn';
 
   constructor(private accordion: SwsAccordionComponent) {
     this.accordion.addGroup(this);
