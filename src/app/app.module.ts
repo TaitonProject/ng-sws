@@ -18,6 +18,7 @@ import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AdHostDirective } from './ad-host.directive';
+import {SwsYmapsModule} from "../../libs/sws-ymaps/src/sws-ymaps.module";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdHostDirective } from './ad-host.directive';
     SwsTableModule,
     SwsLoadingModule,
     SwsAccordionModule,
-    SwsTabsModule
+    SwsTabsModule,
+    SwsYmapsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent],
