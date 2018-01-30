@@ -18,7 +18,9 @@ import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AdHostDirective } from './ad-host.directive';
-import {SwsYmapsModule} from "../../libs/sws-ymaps/src/sws-ymaps.module";
+import {SwsYmapsModule} from '../../libs/sws-ymaps/src/sws-ymaps.module';
+import {SwsSnackbarModule} from '../../libs/sws-snackbar/src/sws-snackbar.module';
+import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";
 
 @NgModule({
   declarations: [
@@ -42,9 +44,10 @@ import {SwsYmapsModule} from "../../libs/sws-ymaps/src/sws-ymaps.module";
     SwsLoadingModule,
     SwsAccordionModule,
     SwsTabsModule,
-    SwsYmapsModule
+    SwsYmapsModule,
+    SwsSnackbarModule
   ],
-  providers: [AppService],
+  providers: [AppService, SwsSnackBarService],
   bootstrap: [AppComponent],
   entryComponents: [ChildComponent]
 })

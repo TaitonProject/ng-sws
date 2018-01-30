@@ -5,6 +5,7 @@ import {AppService} from './app.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
+import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,10 @@ export class AppComponent implements OnInit, Loadable {
   func: (form: any, page: number) => any;
   users: Array<any>;
   obs: Observable<number>;
+  goodMessage = 'Good';
+  badMessage = 'Bad';
 
-  constructor(private service: AppService) {
+  constructor(private service: AppService, public snackbar: SwsSnackBarService) {
     this.obs = Observable.of(20);
   }
 
@@ -71,4 +74,13 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
+
+  openSnackBar(msg: any) {
+    if (msg.length < 3) {
+      this.snackbar.successMessage(this.goodMessage);
+    } else {
+      this.snackbar.errorMessage(this.badMessage);
+    }
+  }
+
 }
