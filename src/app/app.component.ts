@@ -4,6 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/interval';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
 
 @Component({
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit, Loadable {
   func: (form: any, page: number) => any;
   users: Array<any>;
   obs: Observable<number>;
+  region: any;
 
   constructor(private service: AppService) {
     this.obs = Observable.of(20);
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit, Loadable {
     this.createFunc();
     this.createForm();
     this.setForm();
+
   }
 
   createForm() {
@@ -46,6 +49,11 @@ export class AppComponent implements OnInit, Loadable {
 
   openEvent(event: any) {
 
+  }
+
+  setRegion(region: any) {
+    console.log('re', region);
+    this.region = region.id;
   }
 
   setForm() {

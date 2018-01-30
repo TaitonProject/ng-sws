@@ -1,4 +1,3 @@
-<div>Регион: {{region}}</div>
 <select>
   <option *ngFor="let item of regions" [selected]="item?.text == region || item?.text == 'г.' + region">{{item?.text}}</option>
 </select>
