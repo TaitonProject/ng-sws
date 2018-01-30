@@ -12,7 +12,6 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class SwsInputComponent implements OnInit, AfterViewInit {
 
-  touched: boolean = false;
   @Input('control') formControl: FormControl;
   @Input() id = '';
   @Input() valueChangesDelay = 0;

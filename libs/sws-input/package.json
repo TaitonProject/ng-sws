@@ -1,6 +1,6 @@
 {
   "name": "sws-input",
-  "version": "0.1.8",
+  "version": "0.1.7",
   "author": "Alexander <taitonproject@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
