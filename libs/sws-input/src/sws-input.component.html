@@ -1,8 +1,10 @@
-<div class="sws-form-field" [ngClass]="{'has-error': formControl?.invalid && formControl?.touched}">
-<input #input [swsLabel]="label" 
+<div class="sws-form-field" [ngClass]="{'has-error': formControl?.invalid && touched}">
+<input #input [swsLabel]="label"
+              (blur)="touched=true"
               [id]="id"
-              [value]="formControl.value" 
+              [formControl]="formControl"   
               [readonly]="readOnly" 
-              [disabled]="formControl?.disable == true" class="sws-form-input">
-<ng-content *ngIf="formControl?.touched"></ng-content>
+              [attr.maxlength]="maxLength"
+              [disabled]="formControl?.disable == true" class="sws-form-input"> 
+<ng-content *ngIf="touched"></ng-content>
 </div>

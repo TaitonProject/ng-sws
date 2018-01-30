@@ -12,10 +12,12 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class SwsInputComponent implements OnInit, AfterViewInit {
 
+  touched: boolean = false;
   @Input('control') formControl: FormControl;
   @Input() id = '';
   @Input() valueChangesDelay = 0;
   @Input() readOnly: boolean;
+  @Input() maxLength: string ='';
   @Input() label = '';
   @Output() emitChangeInput = new EventEmitter<any>();
   @ViewChild('input') inputElement: ElementRef;
@@ -23,7 +25,7 @@ export class SwsInputComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    this.hasControl();
+    this.hasControl(); 
   }
 
   ngAfterViewInit(): void {
@@ -38,11 +40,11 @@ export class SwsInputComponent implements OnInit, AfterViewInit {
     eventStream.subscribe(value => {
       this.emitChangeInput.emit(value);
       this.formControl.patchValue(value);
-    });
+    });  
   }
 
   private hasControl() {
-    if (this.formControl == null) {
+    if (this.formControl == null) { 
         console.error("Your formControl is null! Please check your input to component");
     }
   }

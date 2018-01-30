@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { SwsLabelDirective } from './sws-label.directive';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [],
+  imports: [FormsModule],
   exports: [SwsLabelDirective],
   declarations: [SwsLabelDirective]
 })

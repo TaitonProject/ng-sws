@@ -16,6 +16,7 @@ export class SwsTableComponent implements OnInit, OnDestroy {
   @Input() func: ((form: any, page: number) => any);
   @Input() pageSize = 10;
   @Input() navigatePage = false;
+  @Input() refresh: EventEmitter<any>;
   @Output() data: EventEmitter<Array<any>>;
 
   obsData: Observable<any>;
@@ -25,6 +26,7 @@ export class SwsTableComponent implements OnInit, OnDestroy {
 
   constructor() {
     this.form = new FormGroup({});
+    this.refresh = new EventEmitter<any>();
     this.subscriptions = new Subscription();
     this.page = new BehaviorSubject(1);
     this.data = new EventEmitter<Array<any>>();
@@ -38,6 +40,7 @@ export class SwsTableComponent implements OnInit, OnDestroy {
     const displayDataChanges = [
       this.form.valueChanges,
       this.page,
+      this.refresh
     ];
     this.obsData = Observable.merge(...displayDataChanges);
     this.subscriptions.add(
