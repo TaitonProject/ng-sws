@@ -1,4 +1,5 @@
 import { Directive, HostListener, Input, OnDestroy, ElementRef, Renderer2, OnInit, AfterViewInit } from "@angular/core";
+import { FormControl } from "@angular/forms";
 
 @Directive({
   selector: '[swsLabel]'
@@ -12,10 +13,12 @@ export class SwsLabelDirective implements AfterViewInit {
   value: any;
 
   @Input('swsLabel') label: string = '';
+  @Input('formControl') formControl: FormControl;
 
   constructor(private element: ElementRef, private renderer: Renderer2) { }
 
   ngAfterViewInit() {
+    this.subFormControl();
     this.parent = this.element.nativeElement.parentNode;
     this.refChild = this.element.nativeElement;
 
@@ -36,22 +39,32 @@ export class SwsLabelDirective implements AfterViewInit {
     }
   }
 
-  @HostListener('focus') onMouseFocus(): void {
+  subFormControl(){
+    this.formControl.valueChanges.subscribe(res => {
+      if (res && res != ''){
+        this.addClassToParent('active');
+      } else {
+        this.removeClassFromParent('active');
+      }
+    })
+  }
+
+  /* @HostListener('focus') onMouseFocus(): void {
     this.addClassToParent('active');
   }
 
   @HostListener('focusout') onMouseFocusOut(): void {
     this.removeClassFromParent('active');
-  }
+  } */
 
-  @HostListener('keyup', ['$event.target.value']) onInput(value) {
+  /* @HostListener('keyup', ['$event.target.value']) onInput(value) {
     //проверяем на наличие value в поле для label
     if (value) {
       this.addClassToParent('active-lbl');
     } else {
       this.removeClassFromParent('active-lbl');
     }
-  }
+  } */
 
   addClassToParent(cl: string) {
     this.renderer.addClass(this.parent, cl);
