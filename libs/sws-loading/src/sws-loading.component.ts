@@ -1,14 +1,16 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, OnDestroy} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {LoadingState} from './models/loading-state';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'sws-loading, [sws-loading]',
   templateUrl: './sws-loading.component.html',
   styleUrls: ['./sws-loading.component.scss']
 })
-export class SwsLoadingComponent extends LoadingState implements OnInit, OnChanges {
+export class SwsLoadingComponent extends LoadingState implements OnInit, OnChanges, OnDestroy {
 
   @Input() dataObservable: Observable<any>;
   @Input() textNotFound = 'По текущим условиям поиска, записей не найдено.';
@@ -19,6 +21,7 @@ export class SwsLoadingComponent extends LoadingState implements OnInit, OnChang
   data: any;
   oldObs: Observable<any>;
   downloadChange = false;
+  subscription: Subscription = new Subscription();
 
   constructor() {
     super();
@@ -54,13 +57,17 @@ export class SwsLoadingComponent extends LoadingState implements OnInit, OnChang
 
   loadData() {
     super.startLoad();
-    this.dataObservable.distinctUntilChanged().subscribe(
+    this.subscription.add(this.dataObservable.distinctUntilChanged().subscribe(
       response => {
         this.data = response;
         this.dataOut.emit(response);
       },
       error => super.errorLoad(error),
-      () => super.finishLoad(this.data));
+      () => super.finishLoad(this.data)));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

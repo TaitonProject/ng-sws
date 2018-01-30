@@ -13,11 +13,13 @@ import {SWSHintModule} from '../../libs/sws-hint/src/sws-hint.module';
 import {SwsDatepickerModule} from '../../libs/sws-datepicker/src/sws-datepicker.module';
 import {AppService} from './app.service';
 import {SwsLoadingModule} from 'sws-loading';
-import {SwsTableModule} from 'sws-table';
+
 import {SwsTabsModule} from '../../libs/sws-tabs/src/sws-tabs.module';
 import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AdHostDirective } from './ad-host.directive';
+import {SwsYmapsModule} from "../../libs/sws-ymaps/src/sws-ymaps.module";
+import { SwsTableModule } from '../../libs/sws-table/src/sws-table.module';
 import {SwsYmapsModule} from '../../libs/sws-ymaps/src/sws-ymaps.module';
 import {SwsSnackbarModule} from '../../libs/sws-snackbar/src/sws-snackbar.module';
 import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";

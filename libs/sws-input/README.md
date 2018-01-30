@@ -30,9 +30,9 @@ Also you need sent to sws-datepicker parameter as formControl
 <sws-input [control]="form.controls['name']"></sws-input>
 ```
 
-If may sent any parameters 'label, id' or input any errors. Example:
+If may sent any parameters 'label, id, maxLength' or input any errors. Example:
 ```
-<sws-input [control]="form.controls['name']" [label]="'Your name'" [id]="'name'">
+<sws-input [control]="form.controls['name']" [label]="'Your name'" [maxLength]="10" [id]="'name'">
 <span *ngIf="form.controls['name'].hasError('required')">error</span>
 </sws-input>
 ```

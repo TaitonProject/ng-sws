@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
@@ -18,10 +18,12 @@ export class AppComponent implements OnInit, Loadable {
   func: (form: any, page: number) => any;
   users: Array<any>;
   obs: Observable<number>;
+  refresh: EventEmitter<any>;
   goodMessage = 'Good';
   badMessage = 'Bad';
 
   constructor(private service: AppService, public snackbar: SwsSnackBarService) {
+    this.refresh = new EventEmitter<any>();
     this.obs = Observable.of(20);
   }
 
@@ -34,25 +36,38 @@ export class AppComponent implements OnInit, Loadable {
   createForm() {
     this.form = new FormGroup({
       org: new FormControl(),
-      date: new FormControl()
+      date: new FormControl(),
+      ff: new FormControl()
     });
     setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
     //this.form.controls['org'].patchValue('123123')
     //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
     this.form.controls['date'].patchValue('1995-02-26');
     this.form.controls['date'].setValidators([Validators.required]);
-    this.form.controls['org'].setValidators([Validators.required]);
     this.form.valueChanges.subscribe((res) => {
       // console.log('appp', res);
     });
+    console.log('form control', this.form.get('org'));
   }
+
+  setDisable(){
+    this.form.controls['org'].disable({onlySelf: true, emitEvent: false});
+    console.log('form control', this.form.get('org'));
+  }
+
+  setEnable(){
+    this.form.controls['org'].enable({onlySelf: true, emitEvent: false});
+    console.log('form control', this.form.get('org'));
+  }
+
+  // setValue(string: any)
 
   openEvent(event: any) {
 
   }
 
   setForm() {
-    this.form.controls['org'].patchValue('123123');
+    //this.form.controls['org'].patchValue('123123');
     this.form.controls['date'].patchValue('1980-12-01');
   }
 

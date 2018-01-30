@@ -1,8 +1,9 @@
 <div class="sws-form-field" [ngClass]="{'has-error': formControl?.invalid && formControl?.touched}">
-<input #input [swsLabel]="label" 
+<input #input [swsLabel]="label"
               [id]="id"
-              [value]="formControl.value" 
+              [formControl]="formControl"   
               [readonly]="readOnly" 
-              [disabled]="formControl?.disable == true" class="sws-form-input">
+              [attr.maxlength]="maxLength"
+              [disabled]="formControl?.disable == true" class="sws-form-input"> 
 <ng-content *ngIf="formControl?.touched"></ng-content>
 </div>
