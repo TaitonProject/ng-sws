@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {SwsYmapsService} from './sws-ymaps.service';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
@@ -15,6 +15,7 @@ declare var ymaps: any;
 })
 export class SwsYmapsComponent implements OnInit, OnDestroy {
 
+  @Input() loadDataObs: Observable<Array<any>>;
   @Output() eventRegion: EventEmitter<Select2OptionData>;
   value: any;
   region: string;
@@ -23,7 +24,7 @@ export class SwsYmapsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   ready: Observable<any>;
 
-  constructor(public service: SwsYmapsService) {
+  constructor() {
     this.eventRegion = new EventEmitter();
     this.eventLocation = new EventEmitter();
     this.subscription = new Subscription();
@@ -32,7 +33,7 @@ export class SwsYmapsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.ready = Observable.of(ymaps).pipe(filter(res => res !== 'undefined'), distinctUntilChanged());
     this.subscription.add(this.ready.subscribe(res => this.setLocation()));
-    this.subscription.add(Observable.combineLatest(this.eventLocation, this.service.loadRegions()).subscribe(response => {
+    this.subscription.add(Observable.combineLatest(this.eventLocation, this.loadDataObs).subscribe(response => {
       this.regions = this.excludeWrongRegion(response[1]);
       this.setRegion(this.regions, response[0]);
     }));

@@ -15,7 +15,7 @@ import {Loadable} from '../../libs/sws-table/src/models/loadable';
 export class AppComponent implements OnInit, Loadable {
 
   form: FormGroup;
-  func: (form: any, page: number) => any;
+  func: (form: any, min?: number, max?: number) => any;
   users: Array<any>;
   obs: Observable<number>;
   region: any;
@@ -49,12 +49,12 @@ export class AppComponent implements OnInit, Loadable {
     console.log('form control', this.form.get('org'));
   }
 
-  setDisable(){
+  setDisable() {
     this.form.controls['org'].disable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
 
-  setEnable(){
+  setEnable() {
     this.form.controls['org'].enable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
@@ -83,8 +83,8 @@ export class AppComponent implements OnInit, Loadable {
     this.users = data;
   }
 
-  loadData(form: any, page: number): Observable<[Array<any>, number]> {
-    return Observable.combineLatest(this.service.loadData(form, page), this.service.loadCountData(form));
+  loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+    return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));
 
     // return Observable.combineLatest(this.service.loadData(form, page));
 

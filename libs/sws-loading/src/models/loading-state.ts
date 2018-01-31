@@ -19,7 +19,7 @@ export abstract class LoadingState {
     this.loading = true;
   }
 
-  errorLoad(error: any){
+  errorLoad(error: any) {
     this.error = true;
     this.loading = false;
     console.error(error);

@@ -13,10 +13,12 @@ import 'rxjs/add/observable/merge';
 export class SwsTableComponent implements OnInit, OnDestroy {
 
   @Input() form: FormGroup;
-  @Input() func: ((form: any, page: number) => any);
+  @Input() func: ((form: any, min?: number, max?: number) => any);
   @Input() pageSize = 10;
   @Input() navigatePage = false;
   @Input() refresh: EventEmitter<any>;
+  @Input() showAll: boolean;
+
   @Output() data: EventEmitter<Array<any>>;
 
   obsData: Observable<any>;
@@ -45,20 +47,34 @@ export class SwsTableComponent implements OnInit, OnDestroy {
     this.obsData = Observable.merge(...displayDataChanges);
     this.subscriptions.add(
       this.obsData.subscribe(() => {
-        this.obsData = this.func(this.form.value, this.page.getValue());
+        if (!this.showAll) {
+          this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+        } else {
+          this.obsData = this.func(this.form.value);
+        }
       })
     );
   }
 
   dataOut(data: any) {
     this.data.emit(data[0]);
-    if (data[1] == null && data[0] != null) {
-      this.resultsLength = data[0].length;
-    } else if (data[1] != null) {
-      this.resultsLength = data[1];
-    } else {
-      this.resultsLength = null;
+    if (!this.showAll) {
+      if (data[1] == null && data[0] != null) {
+        this.resultsLength = data[0].length;
+      } else if (data[1] != null) {
+        this.resultsLength = data[1];
+      } else {
+        this.resultsLength = null;
+      }
     }
+  }
+
+  calculateMin(page: number): number {
+    return (page - 1) * this.pageSize + 1;
+  }
+
+  calculateMax(page: number): number {
+    return this.pageSize * page;
   }
 
   ngOnDestroy(): void {
