@@ -6,6 +6,7 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/interval';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
+import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,11 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
+  goodMessage = 'Good';
+  badMessage = 'Bad';
+  open: boolean;
 
-  constructor(private service: AppService) {
+  constructor(private service: AppService, public snackbar: SwsSnackBarService) {
     this.refresh = new EventEmitter<any>();
     this.obs = Observable.of(20);
   }
@@ -49,12 +53,12 @@ export class AppComponent implements OnInit, Loadable {
     console.log('form control', this.form.get('org'));
   }
 
-  setDisable() {
+  setDisable(){
     this.form.controls['org'].disable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
 
-  setEnable() {
+  setEnable(){
     this.form.controls['org'].enable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
@@ -93,4 +97,14 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
+
+  openSnackBar(msg: any) {
+    this.open = true
+    if (msg.length < 3) {
+      this.snackbar.successMessage(this.goodMessage);
+    } else {
+      this.snackbar.errorMessage(this.badMessage);
+    }
+  }
+
 }

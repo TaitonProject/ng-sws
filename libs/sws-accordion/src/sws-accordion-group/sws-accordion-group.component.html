@@ -9,6 +9,8 @@
   <div *ngIf="type == 'arrow'" class="text" (click)="toggleOpen()">
     <a class="accordion__head" [ngClass]="{'collapsed': !isOpen}"
     >{{heading}}</a>
+    <span *ngIf="!isOpen" class="accordion__arrow__bottom"></span>
+    <span *ngIf="isOpen" class="accordion__arrow__top"></span>
   </div>
 </div>
 <div [@acc]="showAccord" style="overflow: hidden">
