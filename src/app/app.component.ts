@@ -21,6 +21,7 @@ export class AppComponent implements OnInit, Loadable {
   refresh: EventEmitter<any>;
   goodMessage = 'Good';
   badMessage = 'Bad';
+  open: boolean;
 
   constructor(private service: AppService, public snackbar: SwsSnackBarService) {
     this.refresh = new EventEmitter<any>();
@@ -91,6 +92,7 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   openSnackBar(msg: any) {
+    this.open = true
     if (msg.length < 3) {
       this.snackbar.successMessage(this.goodMessage);
     } else {

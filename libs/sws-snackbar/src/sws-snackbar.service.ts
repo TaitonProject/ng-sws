@@ -2,16 +2,20 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class SwsSnackBarService {
+  sm: string;
+  em: string;
 
   constructor() {
   }
 
   successMessage( message: string) {
-    console.log('message su', message);
+    this.sm = message;
+    console.log('message su!', this.sm);
   }
 
   errorMessage( message: string) {
-    console.log('message er', message);
+    this.em = message;
+    console.log('message er!', this.em);
   }
 
   /*    getError( errorMessage ) {
