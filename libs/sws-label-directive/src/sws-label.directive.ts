@@ -42,20 +42,20 @@ export class SwsLabelDirective implements AfterViewInit {
   subFormControl(){
     this.formControl.valueChanges.subscribe(res => {
       if (res && res != ''){
-        this.addClassToParent('active');
+        this.addClassToParent('active-lbl');
       } else {
-        this.removeClassFromParent('active');
+        this.removeClassFromParent('active-lbl');
       }
     })
   }
 
-  /* @HostListener('focus') onMouseFocus(): void {
+  @HostListener('focus') onMouseFocus(): void {
     this.addClassToParent('active');
   }
 
   @HostListener('focusout') onMouseFocusOut(): void {
     this.removeClassFromParent('active');
-  } */
+  }
 
   /* @HostListener('keyup', ['$event.target.value']) onInput(value) {
     //проверяем на наличие value в поле для label

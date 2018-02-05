@@ -1,7 +1,7 @@
 <div class="container">
   <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
   <form [formGroup]="form">
-    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'" [maxLength]="10">
+    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'"> 
       <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
       </sws-field-errors>
     </sws-input>
