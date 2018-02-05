@@ -1,5 +1,5 @@
 <div class="container">
-  <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
+<!--  <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
   <form [formGroup]="form">
     <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'"> 
       <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
@@ -29,27 +29,28 @@
       <span sws-hint="tooltip-bottom" sws-hint-pos="bottom">Наведи, появится ещё tooltip</span>
     </p>
   </div>
-  <hr/>
+  <hr/>-->
   <!-- <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
     <div class="text-center">
       <p>Ответ {{modalOptions.dataModal}}</p>
     </div>
   </sws-modal> -->
 
-  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
+<!--  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
     <sws-field-errors *ngIf="form.controls['date'].hasError('required')">Поле обязательное для заполнения
     </sws-field-errors>
   </sws-datepicker>
-  <h3>{{form.get('date').value}}</h3>
+  <h3>{{form.get('date').value}}</h3>-->
 
 
   <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
-  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)">
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" [showAll]="true" (data)="setData($event)">
     <div *ngFor="let user of users?.slice(10, 40)">
       <div>{{user.title}}</div>
     </div>
   </sws-table>
+<!--
 
   <h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
@@ -71,6 +72,7 @@
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
   </sws-accordion>
+-->
 
 <!--
   <h3>Табы</h3>
@@ -87,8 +89,8 @@
   </tabs>
 -->
 
-  <h3>Карта</h3>
-  <sws-ymaps></sws-ymaps>
+<!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
+  <h3>РЕГИОН: {{region | json}}</h3>-->
 </div>
 
 <!--<app-parent></app-parent>-->

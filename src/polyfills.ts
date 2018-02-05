@@ -60,6 +60,11 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';  // Included with Angular CLI.
 
 
+// import './../node_modules/angular-polifills';
+import '../node_modules/angular-polyfills/dist/blob';
+import '../node_modules/angular-polyfills/dist/formdata';
+import '../node_modules/angular-polyfills/dist/typedarray';
+
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

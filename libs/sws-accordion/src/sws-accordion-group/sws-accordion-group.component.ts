@@ -15,7 +15,7 @@ import {SwsAccordionComponent} from '../sws-accordion.component';
         visibility: 'hidden'
       })),
       state('opn', style({
-        padding: '5px 0',
+        padding: '*',
         height: '*',
         opacity: 1,
         visibility: 'visible'

@@ -4,7 +4,9 @@ import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/interval';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
+import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";
 
 @Component({
   selector: 'app-root',
@@ -14,12 +16,16 @@ import {Loadable} from '../../libs/sws-table/src/models/loadable';
 export class AppComponent implements OnInit, Loadable {
 
   form: FormGroup;
-  func: (form: any, page: number) => any;
+  func: (form: any, min?: number, max?: number) => any;
   users: Array<any>;
   obs: Observable<number>;
+  region: any;
   refresh: EventEmitter<any>;
+  goodMessage = 'Good';
+  badMessage = 'Bad';
+  open: boolean;
 
-  constructor(private service: AppService) {
+  constructor(private service: AppService, public snackbar: SwsSnackBarService) {
     this.refresh = new EventEmitter<any>();
     this.obs = Observable.of(20);
   }
@@ -48,12 +54,12 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   setDisable(){
-    this.form.controls['org'].disable({onlySelf: true, emitEvent: false}); 
+    this.form.controls['org'].disable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
 
-  setEnable(){ 
-    this.form.controls['org'].enable({onlySelf: true, emitEvent: false}); 
+  setEnable(){
+    this.form.controls['org'].enable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
 
@@ -61,6 +67,11 @@ export class AppComponent implements OnInit, Loadable {
 
   openEvent(event: any) {
 
+  }
+
+  setRegion(region: any) {
+    console.log('re', region);
+    this.region = region.id;
   }
 
   setForm() {
@@ -76,8 +87,8 @@ export class AppComponent implements OnInit, Loadable {
     this.users = data;
   }
 
-  loadData(form: any, page: number): Observable<[Array<any>, number]> {
-    return Observable.combineLatest(this.service.loadData(form, page), this.service.loadCountData(form));
+  loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+    return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));
 
     // return Observable.combineLatest(this.service.loadData(form, page));
 
@@ -86,4 +97,14 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
+
+  openSnackBar(msg: any) {
+    this.open = true
+    if (msg.length < 3) {
+      this.snackbar.successMessage(this.goodMessage);
+    } else {
+      this.snackbar.errorMessage(this.badMessage);
+    }
+  }
+
 }

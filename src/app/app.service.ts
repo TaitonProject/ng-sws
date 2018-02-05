@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
@@ -12,11 +12,21 @@ export class AppService {
 
   }
 
-  loadData(form: any, page: number): Observable<Array<any>> {
-    return this.http.get<Array<any>>(this.apiUrl + '/posts?page=' + page, {params: form});
+  loadData(form: any, min: number, max: number): Observable<Array<any>> {
+    const header = new HttpHeaders();
+    header.set('Access-Control-Allow-Origin', '*');
+    return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {params: form, headers: header});
   }
 
   loadCountData(form: any): Observable<number> {
-    return this.http.get<number>(this.apiUrlMock + '/count', {params: form});
+    const header = new HttpHeaders();
+    header.set('Access-Control-Allow-Origin', '*');
+    return this.http.get<number>(this.apiUrlMock + '/count', {params: form, headers: header});
+  }
+
+  loadRegions(): Observable<Array<any>> {
+    const header = new HttpHeaders();
+    header.set('Access-Control-Allow-Origin', '*');
+    return this.http.get<Array<any>>('http://sws.by/erzrf/erz-rest/api/v1/global/dictionary?type=building_regions', {headers: header});
   }
 }
