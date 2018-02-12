@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChange} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {SwsAccordionComponent} from '../sws-accordion.component';
 
@@ -24,9 +24,10 @@ import {SwsAccordionComponent} from '../sws-accordion.component';
     ]),
   ]
 })
-export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
+export class SwsAccordionGroupComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() heading: string;
+  @Input() sub: string;
   @Input() isOpen: boolean;
   @Input() index: number;
   @Input() leftTitle: string;
@@ -40,6 +41,14 @@ export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
 
   constructor(private accordion: SwsAccordionComponent) {
     this.accordion.addGroup(this);
+  }
+
+  ngOnInit(): void {
+    if (this.isOpen) {
+      this.showAccord = 'opn';
+    } else {
+      this.showAccord = 'hdn';
+    }
   }
 
   ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
