@@ -32,7 +32,9 @@ export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
   @Input() leftTitle: string;
   @Input() type: string;
   @Input() colorLeftTitle: string;
+  @Input() hasError: boolean = false;
   @Output() openEvent: EventEmitter<boolean> = new EventEmitter();
+  @Output() hasErrorOutput: EventEmitter<boolean> = new EventEmitter();
 
   showAccord = 'hdn';
 
@@ -60,6 +62,7 @@ export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
       this.showAccord = 'hdn';
     }
     this.openEvent.emit(this.isOpen);
+    if (this.hasError && !this.isOpen) this.hasErrorOutput.emit();    
     this.accordion.closeOthers(this);
   }
 

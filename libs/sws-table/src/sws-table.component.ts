@@ -57,7 +57,6 @@ export class SwsTableComponent implements OnInit, OnDestroy {
   }
 
   dataOut(data: any) {
-    this.data.emit(data[0]);
     if (!this.showAll) {
       if (data[1] == null && data[0] != null) {
         this.resultsLength = data[0].length;
@@ -66,6 +65,9 @@ export class SwsTableComponent implements OnInit, OnDestroy {
       } else {
         this.resultsLength = null;
       }
+      this.data.emit(data[0]);
+    } else {
+      this.data.emit(data);
     }
   }
 
