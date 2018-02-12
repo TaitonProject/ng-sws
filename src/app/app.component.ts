@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
@@ -6,7 +6,8 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/interval';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
-import {SwsSnackBarService} from "../../libs/sws-snackbar/src/sws-snackbar.service";
+import {ISnackbar} from '../../libs/sws-snackbar/src/interfaces/snack';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'app-root',
@@ -21,11 +22,16 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
-  goodMessage = 'Good';
-  badMessage = 'Bad';
-  open: boolean;
+  snackbarOptions: ISnackbar;
+  snackbarVisible = false;
+  messages = {
+    success: 'Успешно сохранено',
+    error: 'Ошибка'
+  };
+  errorObs: BehaviorSubject<any> = new BehaviorSubject(null);
+  successObs: BehaviorSubject<any> = new BehaviorSubject(null);
 
-  constructor(private service: AppService, public snackbar: SwsSnackBarService) {
+  constructor(private service: AppService) {
     this.refresh = new EventEmitter<any>();
     this.obs = Observable.of(20);
   }
@@ -34,6 +40,25 @@ export class AppComponent implements OnInit, Loadable {
     this.createFunc();
     this.createForm();
     this.setForm();
+  }
+
+  getWord(message: string) {
+    this.snackbarVisible = true;
+    if (message.length > 1) {
+      this.successObs.subscribe( data => {
+        this.snackbarOptions = {
+          message: {successMsg: 'Успешно сохранено'},
+          type: { successType: true }
+        };
+      });
+    } else {
+      this.errorObs.subscribe( data => {
+        this.snackbarOptions = {
+          message: {errorMsg: 'Произошла ошибка'},
+          type: { errorType: true }
+        };
+      });
+    }
   }
 
   createForm() {
@@ -53,12 +78,12 @@ export class AppComponent implements OnInit, Loadable {
     console.log('form control', this.form.get('org'));
   }
 
-  setDisable(){
+  setDisable() {
     this.form.controls['org'].disable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
 
-  setEnable(){
+  setEnable() {
     this.form.controls['org'].enable({onlySelf: true, emitEvent: false});
     console.log('form control', this.form.get('org'));
   }
@@ -98,13 +123,6 @@ export class AppComponent implements OnInit, Loadable {
     }));*/
   }
 
-  openSnackBar(msg: any) {
-    this.open = true
-    if (msg.length < 3) {
-      this.snackbar.successMessage(this.goodMessage);
-    } else {
-      this.snackbar.errorMessage(this.badMessage);
-    }
-  }
+
 
 }

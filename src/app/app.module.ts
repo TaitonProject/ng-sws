@@ -21,15 +21,8 @@ import { AdHostDirective } from './ad-host.directive';
 import {SwsYmapsModule} from '../../libs/sws-ymaps/src/sws-ymaps.module';
 import { SwsTableModule } from '../../libs/sws-table/src/sws-table.module';
 import {SwsSnackbarModule} from '../../libs/sws-snackbar/src/sws-snackbar.module';
-import {SwsSnackBarService} from '../../libs/sws-snackbar/src/sws-snackbar.service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ParentComponent,
-    ChildComponent,
-    AdHostDirective,
-  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -48,7 +41,13 @@ import {SwsSnackBarService} from '../../libs/sws-snackbar/src/sws-snackbar.servi
     SwsYmapsModule,
     SwsSnackbarModule
   ],
-  providers: [AppService, SwsSnackBarService],
+  declarations: [
+    AppComponent,
+    ParentComponent,
+    ChildComponent,
+    AdHostDirective
+  ],
+  providers: [AppService],
   bootstrap: [AppComponent],
   entryComponents: [ChildComponent]
 })
