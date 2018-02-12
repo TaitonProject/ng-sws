@@ -71,7 +71,7 @@ export class SwsAccordionGroupComponent implements OnInit, OnDestroy, OnChanges 
       this.showAccord = 'hdn';
     }
     this.openEvent.emit(this.isOpen);
-    if (this.hasError && !this.isOpen) this.hasErrorOutput.emit(this.hasError);    
+    if (this.hasError && !this.isOpen) this.hasErrorOutput.emit();    
     this.accordion.closeOthers(this);
   }
 

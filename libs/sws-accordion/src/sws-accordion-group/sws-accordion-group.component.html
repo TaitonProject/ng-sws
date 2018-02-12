@@ -6,7 +6,7 @@
       {{leftTitle}}</p>
   </div>
   <div *ngIf="type != 'arrow'" class="show_btn" [ngClass]="{'act': isOpen}" (click)="toggleOpen()">{{heading}}</div>
-  <div *ngIf="type == 'arrow'" class="text" (click)="toggleOpen()" [ngClass]="{'has-error': (!isOpen && hasError)}">
+  <div *ngIf="type == 'arrow'" class="accordion-title text" (click)="toggleOpen()" [ngClass]="{'has-error': (!isOpen && hasError)}">
     <a class="accordion__head" [ngClass]="{'collapsed': !isOpen}"
     >{{heading}}</a>
     <span *ngIf="!isOpen" class="accordion__arrow__bottom"></span>
