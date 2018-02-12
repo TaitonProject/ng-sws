@@ -62,7 +62,7 @@ export class SwsAccordionGroupComponent implements OnDestroy, OnChanges {
       this.showAccord = 'hdn';
     }
     this.openEvent.emit(this.isOpen);
-    if (this.hasError && !this.isOpen) this.hasErrorOutput.emit();    
+    if (this.hasError && !this.isOpen) this.hasErrorOutput.emit(this.hasError);    
     this.accordion.closeOthers(this);
   }
 

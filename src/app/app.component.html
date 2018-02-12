@@ -43,7 +43,7 @@
   <h3>{{form.get('date').value}}</h3>-->
 
 
-  <h3>Таблица</h3>
+<!--  <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
   <sws-table [func]="func" [form]="form" [refresh]="refresh" [showAll]="true" (data)="setData($event)">
     <div *ngFor="let user of users?.slice(10, 40)">
@@ -51,15 +51,14 @@
     </div>
   </sws-table>
 
-
-  <h3>Loading</h3>
+ <h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
     <div>Загружено!</div>
-  </sws-loading>
+  </sws-loading>-->
 
   <h3>Аккордион</h3>
   <sws-accordion>
-    <sws-accordion-group [heading]="'Аккордион 1'" [hasError]="true" [isOpen]="true" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордион 1'" [hasError]="true" [type]="'arrow'" [isOpen]="true" (hasErrorOutput)="hasErrorOutput($event)" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 1
     </sws-accordion-group>
     <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)">
@@ -72,7 +71,6 @@
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
   </sws-accordion>
-
 
 <!--
   <h3>Табы</h3>
@@ -91,6 +89,13 @@
 
 <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
   <h3>РЕГИОН: {{region | json}}</h3>-->
+
+  <h3>Snackbar</h3>
+
+  <button (click)="getWord('example')">Button</button>
+
+  <sws-snackbar [snackbarOptions]="snackbarOptions" [errorObs]="errorObs" [successObs]="successObs"></sws-snackbar>
+
 </div>
 
 <!--<app-parent></app-parent>-->

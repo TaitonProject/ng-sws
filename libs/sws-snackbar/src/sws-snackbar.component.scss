@@ -1,0 +1,26 @@
+.snackbar-module{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 17px;
+  padding: 15px 20px;
+  border-radius: 6px;
+  color: #7b7b7b;
+}
+.snackbar-success{
+  background: #c3ffd2;
+}
+.snackbar-error{
+  background: #ff857b;
+}
+.position-left{
+  left: 20px;
+  right: initial;
+}
+.position-right{
+  right: 20px;
+  bottom: 20px;
+}
+a.close{
+  cursor: pointer;
+}
