@@ -32,7 +32,6 @@ export class SwsTabComponent extends LoadingState implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     for (let propName in changes) {
-
       switch (propName) {
         case 'active': {
           if (this.active && this.dataObs && !this.loading) {
@@ -66,8 +65,9 @@ export class SwsTabComponent extends LoadingState implements OnInit, OnChanges {
    * И в данный момент не загружаются - возвращаем true
    * */
   needThisLoad(): boolean {
-    if (this.active && this.dataObs && !this.loading && this.download)
+    if (this.active && this.dataObs && !this.loading && this.download) {
       return true;
+    }
     return false;
   }
 
