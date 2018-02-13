@@ -71,6 +71,7 @@ export class AppComponent implements OnInit, Loadable {
     //this.form.controls['org'].patchValue('123123')
     //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
     this.form.controls['date'].patchValue('1995-02-26');
+    this.form.controls['ff'].setValidators([Validators.required]);
     this.form.controls['date'].setValidators([Validators.required]);
     this.form.valueChanges.subscribe((res) => {
       // console.log('appp', res);
@@ -91,7 +92,7 @@ export class AppComponent implements OnInit, Loadable {
   // setValue(string: any)
 
   openEvent(event: any) {
-
+    
   }
 
   hasErrorOutput(event) {
