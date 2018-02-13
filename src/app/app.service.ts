@@ -15,7 +15,8 @@ export class AppService {
   loadData(form: any, min: number, max: number): Observable<Array<any>> {
     const header = new HttpHeaders();
     header.set('Access-Control-Allow-Origin', '*');
-    return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {params: form, headers: header});
+    // return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {params: form, headers: header});
+    return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {headers: header});
   }
 
   loadCountData(form: any): Observable<number> {

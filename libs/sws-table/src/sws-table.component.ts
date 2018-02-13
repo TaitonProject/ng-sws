@@ -1,9 +1,10 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
+import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 
 @Component({
   selector: 'sws-table',
@@ -21,10 +22,13 @@ export class SwsTableComponent implements OnInit, OnDestroy {
 
   @Output() data: EventEmitter<Array<any>>;
 
+  @ViewChild('paginator') paginator: SwsPaginationComponent;
+
   obsData: Observable<any>;
   page: BehaviorSubject<number>;
   resultsLength: number;
   subscriptions: Subscription;
+  paginPage: number;
 
   constructor() {
     this.form = new FormGroup({});
@@ -46,9 +50,15 @@ export class SwsTableComponent implements OnInit, OnDestroy {
     ];
     this.obsData = Observable.merge(...displayDataChanges);
     this.subscriptions.add(
-      this.obsData.subscribe(() => {
+      this.obsData.subscribe((res) => {
         if (!this.showAll) {
-          this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+          console.log('res obsData', res);
+          if (typeof res !== 'number' && res !== undefined) {
+            this.paginator.clickPage(1);
+            // this.obsData = this.func(this.form.value, this.calculateMin(1), this.calculateMax(1));
+          } else {
+            this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+          }
         } else {
           this.obsData = this.func(this.form.value);
         }
