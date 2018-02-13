@@ -4,8 +4,9 @@ import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
+import {SwsPaginationComponent} from 'sws-pagin';
 
 @Component({
   selector: 'sws-table',
