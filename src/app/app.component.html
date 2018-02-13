@@ -1,5 +1,4 @@
 <div class="container">
-  <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
   <form [formGroup]="form">
     <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
       <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
@@ -47,7 +46,7 @@
   <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
   <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
-    <div *ngFor="let user of users">{{user | json}}</div>
+    <div *ngFor="let user of users?.slice(10,20)">{{user | json}}</div>
   </sws-table>
 
  <!--<h3>Loading</h3>

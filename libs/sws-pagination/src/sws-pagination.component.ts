@@ -1,13 +1,13 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-pagination',
   templateUrl: './sws-pagination.component.html',
   styleUrls: ['./sws-pagination.component.scss']
 })
-export class SwsPaginationComponent implements OnInit, OnChanges {
-
+export class SwsPaginationComponent implements OnInit {
 
   @Input() collectionSize: number;
   @Input() pageSize: number;
@@ -29,19 +29,11 @@ export class SwsPaginationComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     if (this.navigated === true) {
-      this.route.queryParams.subscribe(params => {
-        this.calculateIndexes(params['page'] != null ? +params['page'] : 1)
+      this.route.queryParamMap.pipe(debounceTime(20)).subscribe(params => {
+        this.calculateIndexes(+params.get('page'));
       });
     } else {
       this.calculateIndexes(1);
-    }
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
-    if (changes['page'] && !changes['page'].firstChange) {
-      this.calculateIndexes(changes['page'].currentValue);
-      this.clickPage(changes['page'].currentValue);
     }
   }
 

@@ -1,17 +1,19 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from 'sws-pagin';
+import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'sws-table',
   templateUrl: './sws-table.component.html',
   styleUrls: ['./sws-table.component.scss']
 })
-export class SwsTableComponent implements OnInit, OnDestroy {
+export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
+
 
   @Input() form: FormGroup;
   @Input() func: ((form: any, min?: number, max?: number) => any);
@@ -28,18 +30,23 @@ export class SwsTableComponent implements OnInit, OnDestroy {
   page: BehaviorSubject<number>;
   resultsLength: number;
   subscriptions: Subscription;
-  paginPage: number;
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
     this.form = new FormGroup({});
     this.refresh = new EventEmitter<any>();
     this.subscriptions = new Subscription();
-    this.page = new BehaviorSubject(1);
     this.data = new EventEmitter<Array<any>>();
   }
 
   ngOnInit() {
-    this.subChange();
+
+  }
+
+  ngAfterViewInit(): void {
+    this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
+      this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
+      this.subChange();
+    });
   }
 
   subChange() {
@@ -52,11 +59,10 @@ export class SwsTableComponent implements OnInit, OnDestroy {
     this.subscriptions.add(
       this.obsData.subscribe((res) => {
         if (!this.showAll) {
-          console.log('res obsData', res);
-          if (typeof res !== 'number' && res !== undefined) {
-            this.paginator.clickPage(1);
-          } else {
+          if (typeof res === 'number') {
             this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+          } else {
+            this.paginator.clickPage(1);
           }
         } else {
           this.obsData = this.func(this.form.value);

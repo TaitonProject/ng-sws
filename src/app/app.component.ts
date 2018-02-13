@@ -22,14 +22,6 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
-  snackbarOptions: ISnackbar;
-  snackbarVisible = false;
-  messages = {
-    success: 'Успешно сохранено',
-    error: 'Ошибка'
-  };
-  errorObs: BehaviorSubject<any> = new BehaviorSubject(null);
-  successObs: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private service: AppService) {
     this.refresh = new EventEmitter<any>();
@@ -42,24 +34,6 @@ export class AppComponent implements OnInit, Loadable {
     this.setForm();
   }
 
-  getWord(message: string) {
-    this.snackbarVisible = true;
-    if (message.length > 1) {
-      this.successObs.subscribe( data => {
-        this.snackbarOptions = {
-          message: {successMsg: 'Успешно сохранено'},
-          type: { successType: true }
-        };
-      });
-    } else {
-      this.errorObs.subscribe( data => {
-        this.snackbarOptions = {
-          message: {errorMsg: 'Произошла ошибка'},
-          type: { errorType: true }
-        };
-      });
-    }
-  }
 
   createForm() {
     this.form = new FormGroup({
@@ -67,15 +41,10 @@ export class AppComponent implements OnInit, Loadable {
       date: new FormControl(),
       ff: new FormControl()
     });
-    setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
-    //this.form.controls['org'].patchValue('123123')
-    //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
-    this.form.controls['date'].patchValue('1995-02-26');
+    // setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
+    // this.form.controls['date'].patchValue('1995-02-26');
     this.form.controls['ff'].setValidators([Validators.required]);
     this.form.controls['date'].setValidators([Validators.required]);
-    this.form.valueChanges.subscribe((res) => {
-      // console.log('appp', res);
-    });
     console.log('form control', this.form.get('org'));
   }
 
@@ -92,11 +61,11 @@ export class AppComponent implements OnInit, Loadable {
   // setValue(string: any)
 
   openEvent(event: any) {
-    
+
   }
 
   hasErrorOutput(event) {
-    console.log(event)
+    console.log(event);
   }
 
   setRegion(region: any) {
@@ -105,8 +74,7 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   setForm() {
-    //this.form.controls['org'].patchValue('123123');
-    this.form.controls['date'].patchValue('1980-12-01');
+    // this.form.controls['date'].patchValue('1980-12-01');
   }
 
   createFunc() {
@@ -127,7 +95,6 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
-
 
 
 }
