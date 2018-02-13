@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+import {SwsPaginationComponent} from 'sws-pagin';
 
 @Component({
   selector: 'sws-table',
@@ -55,7 +55,6 @@ export class SwsTableComponent implements OnInit, OnDestroy {
           console.log('res obsData', res);
           if (typeof res !== 'number' && res !== undefined) {
             this.paginator.clickPage(1);
-            // this.obsData = this.func(this.form.value, this.calculateMin(1), this.calculateMax(1));
           } else {
             this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
           }
