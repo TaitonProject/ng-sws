@@ -1,16 +1,6 @@
 <div class="container">
   <form [formGroup]="form">
-    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
-      <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <sws-input [control]="form.controls['ff']" [label]="'Название'" [id]="'ff'" [maxLength]="10">
-      <sws-field-errors *ngIf="form.controls['ff'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <h3>{{form.get('org')}}</h3>
-    <button (click)="setDisable()">disable</button>
-    <button (click)="setEnable()">enable</button>
+    <input formControlName="org">
   </form>
   <!--
   <hr/>
