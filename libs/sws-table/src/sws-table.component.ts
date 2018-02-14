@@ -5,8 +5,9 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
 // import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {SwsPaginationComponent} from 'sws-pagin';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-table',
@@ -32,7 +33,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   resultsLength: number;
   subscriptions: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private route: Router) {
     this.form = new FormGroup({});
     this.refresh = new EventEmitter<any>();
     this.subscriptions = new Subscription();
@@ -40,17 +41,19 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit(): void {
-    this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => {
+    let complete = false;
+    this.activatedRoute.queryParamMap.pipe(debounceTime(20)).subscribe((params: ParamMap) => {
       this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
       this.subChange();
+      complete = true;
     });
   }
 
   subChange() {
+    console.log('subChange');
     const displayDataChanges = [
       this.form.valueChanges,
       this.page,
