@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
@@ -6,7 +6,6 @@ import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/interval';
 import {Loadable} from '../../libs/sws-table/src/models/loadable';
-import {ISnackbar} from '../../libs/sws-snackbar/src/interfaces/snack';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
@@ -22,14 +21,10 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
-  snackbarOptions: ISnackbar;
-  snackbarVisible = false;
-  messages = {
-    success: 'Успешно сохранено',
-    error: 'Ошибка'
-  };
   errorObs: BehaviorSubject<any> = new BehaviorSubject(null);
   successObs: BehaviorSubject<any> = new BehaviorSubject(null);
+  successMsg = 'Успешно сохранено';
+  errorMsg = 'Ошибка';
 
   constructor(private service: AppService) {
     this.refresh = new EventEmitter<any>();
@@ -43,22 +38,19 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   getWord(message: string) {
-    this.snackbarVisible = true;
     if (message.length > 1) {
-      this.successObs.subscribe( data => {
-        this.snackbarOptions = {
-          message: {successMsg: 'Успешно сохранено'},
-          type: { successType: true }
-        };
-      });
+      this.successObs.next(this.successMsg);
     } else {
-      this.errorObs.subscribe( data => {
-        this.snackbarOptions = {
-          message: {errorMsg: 'Произошла ошибка'},
-          type: { errorType: true }
-        };
-      });
+      this.errorObs.next(this.errorMsg);
     }
+  }
+
+  getErr(){
+    this.getWord('10');
+  }
+
+  getSucc(){
+    this.getWord('');
   }
 
   createForm() {

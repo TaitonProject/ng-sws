@@ -91,10 +91,11 @@
   <h3>РЕГИОН: {{region | json}}</h3>-->
 
   <h3>Snackbar</h3>
-
+  <button (click)="getErr()">getErr</button>
+  <button (click)="getSucc()">getSucc</button>
   <button (click)="getWord('example')">Button</button>
 
-  <sws-snackbar [snackbarOptions]="snackbarOptions" [errorObs]="errorObs" [successObs]="successObs"></sws-snackbar>
+  <sws-snackbar [errorObs]="errorObs" [successObs]="successObs"></sws-snackbar>
 
 </div>
 

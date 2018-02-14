@@ -1,6 +1,11 @@
 export interface ISnackbar {
+  sMessage?: any;
+  sType?: any;
+  eType?: any;
+  eMessage?: string;
   message?: IMesssage;
-  type: IType;
+  // type?: IType;
+  type?: any;
   position?: IPosition;
 }
 export interface IMesssage {
