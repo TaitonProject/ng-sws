@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../libs/sws-label-directive/src/label.css";
 @import "../libs/sws-hint/src/sws-hint.css";
+.has-error {
+  background: #ddd;
+}
 

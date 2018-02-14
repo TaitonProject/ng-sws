@@ -1,4 +1,4 @@
-import {Component, OnInit, EventEmitter} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {AppService} from './app.service';
@@ -59,14 +59,10 @@ export class AppComponent implements OnInit, Loadable {
       date: new FormControl(),
       ff: new FormControl()
     });
-    setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
-    //this.form.controls['org'].patchValue('123123')
-    //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
-    this.form.controls['date'].patchValue('1995-02-26');
+    // setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
+    // this.form.controls['date'].patchValue('1995-02-26');
+    this.form.controls['ff'].setValidators([Validators.required]);
     this.form.controls['date'].setValidators([Validators.required]);
-    this.form.valueChanges.subscribe((res) => {
-      // console.log('appp', res);
-    });
     console.log('form control', this.form.get('org'));
   }
 
@@ -86,14 +82,17 @@ export class AppComponent implements OnInit, Loadable {
 
   }
 
+  hasErrorOutput(event) {
+    console.log(event);
+  }
+
   setRegion(region: any) {
     console.log('re', region);
     this.region = region.id;
   }
 
   setForm() {
-    //this.form.controls['org'].patchValue('123123');
-    this.form.controls['date'].patchValue('1980-12-01');
+    // this.form.controls['date'].patchValue('1980-12-01');
   }
 
   createFunc() {
@@ -114,7 +113,6 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
-
 
 
 }

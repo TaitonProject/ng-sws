@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange} from '@angular/core';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-import {SwsAccordionComponent} from '../sws-accordion.component';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { SwsAccordionComponent } from '../sws-accordion.component';
 
 @Component({
   selector: 'sws-accordion-group',
@@ -24,18 +24,22 @@ import {SwsAccordionComponent} from '../sws-accordion.component';
     ]),
   ]
 })
-export class SwsAccordionGroupComponent implements OnInit, OnDestroy, OnChanges {
+export class SwsAccordionGroupComponent implements OnInit, OnDestroy {
 
   @Input() heading: string;
   @Input() sub: string;
-  @Input() isOpen: boolean;
-  @Input() index: number;
+  @Input() isOpen: boolean = false; // открытие вкладки по умолчанию
+  @Input() index: number; // для индексов
   @Input() leftTitle: string;
   @Input() type: string;
   @Input() colorLeftTitle: string;
-  @Output() openEvent: EventEmitter<boolean> = new EventEmitter();
+  @Input() hasError: boolean = false; // получаем ошибки
+  @Output() openEvent: EventEmitter<boolean> = new EventEmitter(); //emit при открытии
+  @Output() hasErrorOutput: EventEmitter<boolean> = new EventEmitter(); //emit при ошибке
 
-  showAccord = 'hdn';
+  showAccord = 'hdn'; // css класс для скрытия
+  hasErrorOut: boolean; //переменная для добавления значения из sws-accordion.component
+  click: boolean; //смотрим был ли открыт аккордион
 
   constructor(private accordion: SwsAccordionComponent) {
     this.accordion.addGroup(this);
@@ -43,33 +47,31 @@ export class SwsAccordionGroupComponent implements OnInit, OnDestroy, OnChanges 
 
   ngOnInit(): void {
     if (this.isOpen) {
-      this.showAccord = 'opn';
+      this.showAccord = 'opn'
+      const index = this.accordion.groups.findIndex(acc => acc.isOpen == true);
+      this.accordion.openIndex = index !== -1 ? index : this.accordion.openIndex;
     } else {
       this.showAccord = 'hdn';
-    }
-  }
-
-  ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    for (const propName in changes) {
-      if (changes.hasOwnProperty(propName)) {
-        const changedProp = changes[propName];
-
-        if (!changedProp.isFirstChange()) {
-          this.accordion.groups[this.index + 1].toggleOpen();
-        }
-      }
     }
   }
 
   toggleOpen(): void {
-    this.isOpen = !this.isOpen;
-    if (this.isOpen) {
-      this.showAccord = 'opn';
-    } else {
-      this.showAccord = 'hdn';
+    const index = this.accordion.groups.findIndex(acc => acc.isOpen == true);
+    this.accordion.openIndex = index !== -1 ? index : this.accordion.openIndex; //находим индекс элемента в массиве
+    if (this.accordion.groups[this.accordion.openIndex]) { // если есть какая-то открытая вкладка
+      this.accordion.groups[this.accordion.openIndex].click = true; //добавляем клик по аккордиону
+      if (this.accordion.groups[this.accordion.openIndex].hasError && this.accordion.groups[this.accordion.openIndex].isOpen) { // если есть ошибка и был открыт, кидаем event
+        this.accordion.groups[this.accordion.openIndex].hasErrorOutput.emit(true); // кидаем event
+      }
     }
-    this.openEvent.emit(this.isOpen);
-    this.accordion.closeOthers(this);
+    this.isOpen = !this.isOpen; //закрываем вкладку
+    if (this.isOpen) {
+      this.showAccord = 'opn'; // добавляем соответствующие классы
+    } else {
+      this.showAccord = 'hdn';  // добавляем соответствующие классы
+    }
+    this.accordion.closeOthers(this); // пробегаем по массиву им закрываем все вкладки
+    this.openEvent.emit(this.isOpen); // кидаем event при открытии вкладки
   }
 
   ngOnDestroy() {

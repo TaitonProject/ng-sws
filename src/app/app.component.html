@@ -1,7 +1,6 @@
 <div class="container">
-<!--  <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
   <form [formGroup]="form">
-    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'" [maxLength]="10">
+    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
       <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
       </sws-field-errors>
     </sws-input>
@@ -13,6 +12,7 @@
     <button (click)="setDisable()">disable</button>
     <button (click)="setEnable()">enable</button>
   </form>
+  <!--
   <hr/>
   <div class="pos-relative">
     <p>
@@ -43,15 +43,13 @@
   <h3>{{form.get('date').value}}</h3>-->
 
 
-<!--  <h3>Таблица</h3>
+  <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
-  <sws-table [func]="func" [form]="form" [refresh]="refresh" [showAll]="true" (data)="setData($event)">
-    <div *ngFor="let user of users?.slice(10, 40)">
-      <div>{{user.title}}</div>
-    </div>
-  </sws-table>-->
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
+    <div *ngFor="let user of users?.slice(10,20)">{{user | json}}</div>
+  </sws-table>
 
-<!--  <h3>Loading</h3>
+ <!--<h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
     <div>Загружено!</div>
   </sws-loading>-->
@@ -72,20 +70,39 @@
     </sws-accordion-group>
   </sws-accordion>
 
-<!--
-  <h3>Табы</h3>
+  <!--<h3>Табы</h3>
   <tabs [contentStyle]="'tab-content'" [titleStyle]="'tabs_nav'">
-
     <tab [title]="'Жилые комплексы: 0'">
       Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы
     </tab>
-
     <tab [title]="'Бренды и застройщики: 0'">
       Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
     </tab>
-
-  </tabs>
--->
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+    <tab [title]="'Бренды и застройщики: 0'">
+      Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
+    </tab>
+  </tabs>-->
 
 <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
   <h3>РЕГИОН: {{region | json}}</h3>-->

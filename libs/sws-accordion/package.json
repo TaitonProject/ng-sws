@@ -1,6 +1,6 @@
 {
   "name": "sws-accordion",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "author": "Alexander <taitonproject@gmail.com>",
   "license": "MIT",
   "peerDependencies": {

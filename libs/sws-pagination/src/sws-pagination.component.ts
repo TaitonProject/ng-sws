@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-pagination',
@@ -28,8 +29,8 @@ export class SwsPaginationComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.navigated === true) {
-      this.route.queryParams.subscribe(params => {
-        this.calculateIndexes(params['page'] != null ? +params['page'] : 1)
+      this.route.queryParamMap.pipe(debounceTime(20)).subscribe(params => {
+        this.calculateIndexes(+params.get('page'));
       });
     } else {
       this.calculateIndexes(1);
@@ -87,7 +88,7 @@ export class SwsPaginationComponent implements OnInit {
     }
   }
 
-  navigateByPage(page: number){
+  navigateByPage(page: number) {
     this.router.navigate([], {queryParamsHandling: 'merge', queryParams: {'page': page}});
   }
 
