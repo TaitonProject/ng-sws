@@ -1,4 +1,4 @@
-<div *ngIf="showSnackbar" class="snackbar-module" [ngClass]="{'snackbar-success': snackbarOptions.sType, 'snackbar-error': snackbarOptions.eType}">
-  <messages [snackbarOptions]="snackbarOptions"></messages>
-  <a class="close" (click)="removeSnackbar()">&times;</a>
+<div class="sws-snackbar-inner" [ngClass]="{'snackbar-success': type =='success', 'snackbar-error': type =='error'}">
+  <p class="sws-snackbar-inner__close" (click)="closeSnackbar()">&times;</p>
+  <p class="sws-snackbar-inner__message">{{message}}</p>
 </div>

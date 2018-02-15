@@ -98,11 +98,9 @@
   <h3>РЕГИОН: {{region | json}}</h3>-->
 
   <h3>Snackbar</h3>
-  <button (click)="getErr()">getErr</button>
-  <button (click)="getSucc()">getSucc</button>
-  <button (click)="getWord('example')">Button</button>
 
-  <sws-snackbar [errorObs]="errorObs" [successObs]="successObs"></sws-snackbar>
+  <button (click)="addSnackBar('success','Успешноdsfds fsdf sf ds dsf sdfd s ds fdsf сохранено')">Успешно</button>
+  <button (click)="addSnackBar('error','Ошибка',10000)">Ошибка</button>
 
 </div>
 

@@ -1,12 +1,14 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
-import {AppService} from './app.service';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { AppService } from './app.service';
 import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/interval';
-import {Loadable} from '../../libs/sws-table/src/models/loadable';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import { Loadable } from '../../libs/sws-table/src/models/loadable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { SwsSnackbarComponent } from '../../libs/sws-snackbar/src/sws-snackbar.component';
+import { SnackbarService } from '../../libs/sws-snackbar/src/services/snackbar.service';
 
 @Component({
   selector: 'app-root',
@@ -21,12 +23,8 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
-  errorObs: BehaviorSubject<any> = new BehaviorSubject(null);
-  successObs: BehaviorSubject<any> = new BehaviorSubject(null);
-  successMsg = 'Успешно сохранено';
-  errorMsg = 'Ошибка';
 
-  constructor(private service: AppService) {
+  constructor(private service: AppService, private snackbarService: SnackbarService) {
     this.refresh = new EventEmitter<any>();
     this.obs = Observable.of(20);
   }
@@ -36,12 +34,8 @@ export class AppComponent implements OnInit, Loadable {
     this.createForm();
   }
 
-  getWord(message: string) {
-    if (message.length > 1) {
-      this.successObs.next(this.successMsg);
-    } else {
-      this.errorObs.next(this.errorMsg);
-    }
+  addSnackBar(type: string, mes: string, duration?: number) {
+    this.snackbarService.createSnackbar(type, mes, duration);
   }
 
   createForm() {
