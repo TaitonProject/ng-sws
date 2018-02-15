@@ -7,7 +7,7 @@ import 'rxjs/add/observable/merge';
 // import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {SwsPaginationComponent} from 'sws-pagin';
-import {debounceTime} from 'rxjs/operators';
+import {debounceTime, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-table',
@@ -45,7 +45,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     let complete = false;
-    this.activatedRoute.queryParamMap.takeWhile(() => !complete).pipe(debounceTime(20)).subscribe((params: ParamMap) => {
+    this.activatedRoute.queryParamMap.pipe(takeWhile(() => !complete), debounceTime(20)).subscribe((params: ParamMap) => {
       this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
       this.subChange();
       complete = true;
