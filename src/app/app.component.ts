@@ -32,7 +32,6 @@ export class AppComponent implements OnInit, Loadable {
   ngOnInit(): void {
     this.createFunc();
     this.createForm();
-    this.setForm();
   }
 
   addSnackBar(type: string, mes: string, duration?: number) {
@@ -41,50 +40,8 @@ export class AppComponent implements OnInit, Loadable {
 
   createForm() {
     this.form = new FormGroup({
-      org: new FormControl(),
-      date: new FormControl(),
-      ff: new FormControl()
+      org: new FormControl()
     });
-    setTimeout(() => this.form.controls['org'].patchValue('123123'), 3000);
-    //this.form.controls['org'].patchValue('123123')
-    //setTimeout(() => this.form.controls['date'].patchValue('1995-02-26'), 3000);
-    this.form.controls['date'].patchValue('1995-02-26');
-    this.form.controls['ff'].setValidators([Validators.required]);
-    this.form.controls['date'].setValidators([Validators.required]);
-    this.form.valueChanges.subscribe((res) => {
-      // console.log('appp', res);
-    });
-    console.log('form control', this.form.get('org'));
-  }
-
-  setDisable() {
-    this.form.controls['org'].disable({ onlySelf: true, emitEvent: false });
-    console.log('form control', this.form.get('org'));
-  }
-
-  setEnable() {
-    this.form.controls['org'].enable({ onlySelf: true, emitEvent: false });
-    console.log('form control', this.form.get('org'));
-  }
-
-  // setValue(string: any)
-
-  openEvent(event: any) {
-
-  }
-
-  hasErrorOutput(event) {
-    console.log(event)
-  }
-
-  setRegion(region: any) {
-    console.log('re', region);
-    this.region = region.id;
-  }
-
-  setForm() {
-    //this.form.controls['org'].patchValue('123123');
-    this.form.controls['date'].patchValue('1980-12-01');
   }
 
   createFunc() {
@@ -105,7 +62,6 @@ export class AppComponent implements OnInit, Loadable {
       observer.next(15);
     }));*/
   }
-
 
 
 }

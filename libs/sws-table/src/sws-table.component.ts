@@ -1,16 +1,21 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
+// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {SwsPaginationComponent} from 'sws-pagin';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-table',
   templateUrl: './sws-table.component.html',
   styleUrls: ['./sws-table.component.scss']
 })
-export class SwsTableComponent implements OnInit, OnDestroy {
+export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
+
 
   @Input() form: FormGroup;
   @Input() func: ((form: any, min?: number, max?: number) => any);
@@ -21,21 +26,37 @@ export class SwsTableComponent implements OnInit, OnDestroy {
 
   @Output() data: EventEmitter<Array<any>>;
 
+  @ViewChild('paginator') paginator: SwsPaginationComponent;
+
   obsData: Observable<any>;
+  obsLoadingData: Observable<any>;
   page: BehaviorSubject<number>;
   resultsLength: number;
   subscriptions: Subscription;
 
-  constructor() {
-    this.form = new FormGroup({});
+  constructor(private activatedRoute: ActivatedRoute) {
     this.refresh = new EventEmitter<any>();
     this.subscriptions = new Subscription();
-    this.page = new BehaviorSubject(1);
     this.data = new EventEmitter<Array<any>>();
   }
 
   ngOnInit() {
-    this.subChange();
+    this.initForm();
+  }
+
+  ngAfterViewInit(): void {
+    let complete = false;
+    this.activatedRoute.queryParamMap.takeWhile(() => !complete).pipe(debounceTime(20)).subscribe((params: ParamMap) => {
+      this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
+      this.subChange();
+      complete = true;
+    });
+  }
+
+  initForm() {
+    if (!this.form) {
+      this.form = new FormGroup({});
+    }
   }
 
   subChange() {
@@ -46,11 +67,15 @@ export class SwsTableComponent implements OnInit, OnDestroy {
     ];
     this.obsData = Observable.merge(...displayDataChanges);
     this.subscriptions.add(
-      this.obsData.subscribe(() => {
+      this.obsData.subscribe((res) => {
         if (!this.showAll) {
-          this.obsData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+          if (typeof res === 'number') {
+            this.obsLoadingData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+          } else {
+            this.paginator.clickPage(1);
+          }
         } else {
-          this.obsData = this.func(this.form.value);
+          this.obsLoadingData = this.func(this.form.value);
         }
       })
     );
@@ -84,4 +109,5 @@ export class SwsTableComponent implements OnInit, OnDestroy {
       this.subscriptions.unsubscribe();
     }
   }
+
 }

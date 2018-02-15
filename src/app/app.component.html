@@ -1,17 +1,6 @@
 <div class="container">
-  <sws-pagination [collectionSize]="100" [pageSize]="5"></sws-pagination>
   <form [formGroup]="form">
-    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
-      <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <sws-input [control]="form.controls['ff']" [label]="'Название'" [id]="'ff'" [maxLength]="10">
-      <sws-field-errors *ngIf="form.controls['ff'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <h3>{{form.get('org')}}</h3>
-    <button (click)="setDisable()">disable</button>
-    <button (click)="setEnable()">enable</button>
+    <input formControlName="org">
   </form>
   <!--
   <hr/>
@@ -44,36 +33,34 @@
   <h3>{{form.get('date').value}}</h3>-->
 
 
-<!--  <h3>Таблица</h3>
+  <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
-  <sws-table [func]="func" [form]="form" [refresh]="refresh" [showAll]="true" (data)="setData($event)">
-    <div *ngFor="let user of users?.slice(10, 40)">
-      <div>{{user.title}}</div>
-    </div>
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
+    <div *ngFor="let user of users?.slice(10,20)">{{user | json}}</div>
   </sws-table>
 
- <h3>Loading</h3>
+ <!--<h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
     <div>Загружено!</div>
   </sws-loading>-->
 
-  <!--<h3>Аккордион</h3>
+  <h3>Аккордион</h3>
   <sws-accordion>
-    <sws-accordion-group [heading]="'Аккордион 1'" [hasError]="form.controls['ff'].invalid" [type]="'arrow'"  (hasErrorOutput)="hasErrorOutput($event)">
+    <sws-accordion-group [heading]="'Аккордион 1'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 1
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 2'"   [type]="'arrow'">
+    <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 2
     </sws-accordion-group>
     <sws-accordion-group [heading]="'Аккордино 3'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 3
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 4'"   (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
-  </sws-accordion>-->
+  </sws-accordion>
 
-  <h3>Табы</h3>
+  <!--<h3>Табы</h3>
   <tabs [contentStyle]="'tab-content'" [titleStyle]="'tabs_nav'">
     <tab [title]="'Жилые комплексы: 0'">
       Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы
@@ -105,7 +92,7 @@
     <tab [title]="'Бренды и застройщики: 0'">
       Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
     </tab>
-  </tabs>
+  </tabs>-->
 
 <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
   <h3>РЕГИОН: {{region | json}}</h3>-->
@@ -114,8 +101,6 @@
 
   <button (click)="addSnackBar('success','Успешноdsfds fsdf sf ds dsf sdfd s ds fdsf сохранено')">Успешно</button>
   <button (click)="addSnackBar('error','Ошибка',10000)">Ошибка</button>
-
- 
 
 </div>
 
