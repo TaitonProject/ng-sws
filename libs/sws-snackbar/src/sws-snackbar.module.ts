@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SwsSnackbarComponent } from './sws-snackbar.component';
-import {MessagesComponent} from './messages/messages.component';
+import { SnackbarService } from './services/snackbar.service';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  exports: [SwsSnackbarComponent, MessagesComponent],
-  declarations: [SwsSnackbarComponent, MessagesComponent]
+  exports: [SwsSnackbarComponent],
+  declarations: [SwsSnackbarComponent],
+  entryComponents: [SwsSnackbarComponent],
+  providers: [SnackbarService]
 })
 export class SwsSnackbarModule { }

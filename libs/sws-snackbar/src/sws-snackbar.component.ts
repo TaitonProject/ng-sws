@@ -1,31 +1,20 @@
-import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
-import {ISnackbar} from './interfaces/snack';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import { Component, Input, EventEmitter, ViewEncapsulation, } from '@angular/core';
 
 @Component({
   selector: 'sws-snackbar',
   templateUrl: './sws-snackbar.component.html',
-  styleUrls: ['./sws-snackbar.component.scss']
+  styleUrls: ['./sws-snackbar.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class SwsSnackbarComponent implements OnInit {
+export class SwsSnackbarComponent {
 
-  @Input() errorObs: BehaviorSubject<any>;
-  @Input() successObs: BehaviorSubject<any>;
-  @Input() snackbarOptions: any;
+  @Input() type: string;
+  @Input() message: string;
+  close: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit() {
-/*    this.errorObs.subscribe( (data) => {
-      console.log('error');
-    });
-    this.successObs.subscribe( (data) => {
-      console.log('success');
-    });*/
+  closeSnackbar() {
+    this.close.emit();
   }
-
-  removeSnackbar() {
-    this.snackbarOptions = null;
-  }
-
 }
