@@ -16,7 +16,6 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
-
   @Input() form: FormGroup;
   @Input() func: ((form: any, min?: number, max?: number) => any);
   @Input() pageSize = 10;
@@ -73,6 +72,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
             this.obsLoadingData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
           } else {
             this.paginator.clickPage(1);
+            this.page.next(1);
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);

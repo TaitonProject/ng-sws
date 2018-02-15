@@ -48,6 +48,7 @@ export class AppComponent implements OnInit, Loadable {
     this.form = new FormGroup({
       org: new FormControl()
     });
+    this.form.valueChanges.subscribe(res => console.log('form change', res));
   }
 
   createFunc() {
@@ -69,5 +70,8 @@ export class AppComponent implements OnInit, Loadable {
     }));*/
   }
 
+  openEvent(event: any) {
+    console.log('openEvent open!');
+  }
 
 }
