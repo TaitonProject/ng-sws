@@ -1,26 +1,36 @@
-.snackbar-module{
+.sws-snackbar {
   position: fixed;
   right: 20px;
-  bottom: 20px;
-  font-size: 17px;
-  padding: 15px 20px;
+  z-index: 999999;
+  bottom: 10px;
+  font-size: 15px;
+  color: #fff;
+  max-width: 250px;
+}
+.sws-snackbar-inner{  
+  padding: 14px 20px 10px;
   border-radius: 6px;
-  color: #7b7b7b;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  &__close {
+    margin: 0;
+    position: absolute;
+    right: 5px;
+    top: -3px;
+    font-size: 26px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+  }
+  &__message {
+    margin: 0;
+  }
 }
-.snackbar-success{
-  background: #c3ffd2;
+.snackbar-success {
+  background: #00a92a;
 }
-.snackbar-error{
-  background: #ff857b;
-}
-.position-left{
-  left: 20px;
-  right: initial;
-}
-.position-right{
-  right: 20px;
-  bottom: 20px;
-}
-a.close{
-  cursor: pointer;
+.snackbar-error {
+  background: #f53424;
 }

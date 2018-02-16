@@ -1,16 +1,6 @@
 <div class="container">
   <form [formGroup]="form">
-    <sws-input [control]="form.controls['org']" [label]="'Название'" [id]="'org'">
-      <sws-field-errors *ngIf="form.controls['org'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <sws-input [control]="form.controls['ff']" [label]="'Название'" [id]="'ff'" [maxLength]="10">
-      <sws-field-errors *ngIf="form.controls['ff'].hasError('required')">Поле обязательное для заполнения
-      </sws-field-errors>
-    </sws-input>
-    <h3>{{form.get('org')}}</h3>
-    <button (click)="setDisable()">disable</button>
-    <button (click)="setEnable()">enable</button>
+    <input formControlName="org">
   </form>
   <!--
   <hr/>
@@ -56,16 +46,16 @@
 
   <!--<h3>Аккордион</h3>
   <sws-accordion>
-    <sws-accordion-group [heading]="'Аккордион 1'" [hasError]="form.controls['ff'].invalid" [type]="'arrow'"  (hasErrorOutput)="hasErrorOutput($event)">
+    <sws-accordion-group [heading]="'Аккордион 1'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 1
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 2'"   [type]="'arrow'">
+    <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 2
     </sws-accordion-group>
     <sws-accordion-group [heading]="'Аккордино 3'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 3
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 4'"   (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)">
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
   </sws-accordion>-->
@@ -107,12 +97,11 @@
 <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
   <h3>РЕГИОН: {{region | json}}</h3>-->
 
-  <!--<h3>Snackbar</h3>
+  <h3>Snackbar</h3>
 
-  <button (click)="getWord('example')">Button</button>
+  <button (click)="addSnackBar('success','Успешноdsfds fsdf sf ds dsf sdfd s ds fdsf сохранено')">Успешно</button>
+  <button (click)="addSnackBar('error','Ошибка',10000)">Ошибка</button>
 
-  <sws-snackbar [snackbarOptions]="snackbarOptions" [errorObs]="errorObs" [successObs]="successObs"></sws-snackbar>
--->
 </div>
 
 <!--<app-parent></app-parent>-->

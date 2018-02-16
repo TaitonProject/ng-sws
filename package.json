@@ -15,6 +15,7 @@
     "build:loading": "rimraf dist && ng-packagr -p libs/sws-loading/package.json",
     "build:table": "rimraf dist && ng-packagr -p libs/sws-table/package.json",
     "build:accordion": "rimraf dist && ng-packagr -p libs/sws-accordion/package.json",
+    "build:snackbar": "rimraf dist && ng-packagr -p libs/sws-snackbar/package.json",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
