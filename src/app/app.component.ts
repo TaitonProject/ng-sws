@@ -22,6 +22,8 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
+  min = 0;
+  max = 20;
 
   constructor(private service: AppService) {
     this.refresh = new EventEmitter<any>();
@@ -86,6 +88,8 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+    this.min = min;
+    this.max = max;
     return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));
 
     // return Observable.combineLatest(this.service.loadData(form, page));

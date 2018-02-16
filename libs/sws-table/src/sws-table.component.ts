@@ -22,6 +22,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() navigatePage = false;
   @Input() refresh: EventEmitter<any>;
   @Input() showAll: boolean;
+  @Input() spinnerType = 'round';
 
   @Output() data: EventEmitter<Array<any>>;
 

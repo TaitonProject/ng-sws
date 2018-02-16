@@ -45,8 +45,8 @@
 
   <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
-  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
-    <div *ngFor="let user of users?.slice(10,20)">{{user | json}}</div>
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true" >
+    <div *ngFor="let user of users?.list">{{user | json}}</div>
   </sws-table>
 
  <!--<h3>Loading</h3>

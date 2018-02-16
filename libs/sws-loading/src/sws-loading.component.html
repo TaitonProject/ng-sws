@@ -1,7 +1,16 @@
 <div *ngIf="notFound" class="algcenter">{{textNotFound}}</div>
-<div *ngIf="error" class="algcenter">{{textError}}<span (click)="loadData()" style="cursor: pointer; color:#FF8F3A"> Попробуйте еще раз</span>
+<div *ngIf="error" class="algcenter">{{textError}}
+    <span (click)="loadData()" style="cursor: pointer; color:#FF8F3A"> Попробуйте еще раз</span>
+</div>
+<div style="position: relative; min-height: 200px; overflow: hidden; transition: all 1s cubic-bezier(.25,.8,.25,1);">
+    <div [@scont] class="{{spinnerType}}" *ngIf="loading">
+        <div *ngIf="spinnerType == 'dots'" class="bounce1"></div>
+        <div *ngIf="spinnerType == 'dots'" class="bounce2"></div>
+        <div *ngIf="spinnerType == 'dots'" class="bounce3"></div>
+    </div>
+    <div [@cont] *ngIf="!notFound && !loading && !error">
+        <ng-content></ng-content>
+    </div>
 </div>
 
-<div *ngIf="loading" class="loader center"></div>
-<ng-content *ngIf="!notFound && !loading && !error"></ng-content>
-
+<!-- <ng-content *ngIf="!notFound && !loading && !error" ></ng-content> -->
