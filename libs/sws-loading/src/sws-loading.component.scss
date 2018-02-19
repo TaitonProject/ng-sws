@@ -47,34 +47,12 @@
     z-index: 11;
   }
 }
-// .dots {
-//   height: 100%;
-//   width: 100%;
-//   background: rgba(39, 39, 39, 0.1);
-//   position: absolute;
-//   top: 0;
-//   transition: all 1s cubic-bezier(.25,.8,.25,1);
-//   &:after {
-//     content: '...';
-//     position: absolute;
-//     top: calc(50% - 35px);
-//     left: calc(50% - 35px);
-//     border: 8px solid #fff;
-//     border-left: 8px solid #000;
-//     transform: rotate(35deg);
-//     // border-radius: 50%;
-//     width: 70px;
-//     height: 70px;
-//     animation: spin 1s cubic-bezier(.25,.8,.25,1) infinite;
-//     z-index: 11;
-//   }
-// }
-
 
 .dots {
   margin: 5px;
   padding: 5px;
   position: absolute;
+  z-index: 11;
   height: 100%;
   width: 100%;
   display: flex;
@@ -119,8 +97,6 @@
     transform: scale(1.0);
   }
 }
-
-
 
 @keyframes spin {
   0% { transform: rotate(0deg); }

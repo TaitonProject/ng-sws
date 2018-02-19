@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { LoadingState } from './models/loading-state';
 import 'rxjs/add/operator/distinctUntilChanged';
 import { Subscription } from 'rxjs/Subscription';
-import { trigger, transition, style, animate, state, query, stagger, keyframes } from '@angular/animations';
+import { trigger, transition, style, animate, state, query, stagger, keyframes, group } from '@angular/animations';
 
 
 @Component({
@@ -12,49 +12,31 @@ import { trigger, transition, style, animate, state, query, stagger, keyframes }
   styleUrls: ['./sws-loading.component.scss'],
   animations: [
     trigger('cont', [
-      // transition(':enter', [
-      //   style({opacity: '1'}),
-      //   animate(1550)
-      // ]),
-      // transition(':leave', [
-      //   animate(550, style({opacity: '0'}))
-      // ])
-
-      // transition('* => *', [
-      //   query(':enter', style({ opacity: 0 })),
-      //   query(':enter', [
-      //     animate('5000ms cubic-bezier(.25,.8,.25,1)', keyframes([
-      //       style({ opacity: 0 }),
-      //       // style({ opacity: .5, , offset: 0.3 }),
-      //       style({ opacity: 1}),
-      //     ]))], { optional: true }),
-      // ])
-      transition('* => *', [
-
+      transition('start <=> finish', [
         query(':enter', style({ opacity: 0 }), { optional: true }),
 
-        query(':enter', stagger('10ms', [
+        query(':enter', stagger('50ms', [
           animate('450ms cubic-bezier(.25,.8,.25,1)', keyframes([
             style({ opacity: 0, transform: 'translateY(-75%)', offset: 0 }),
             style({ opacity: .5, transform: 'translateY(-30%)', offset: 0.3 }),
             style({ opacity: 1, transform: 'translateY(0)', offset: 1.0 }),
           ]))]), { optional: true }),
 
-        query(':leave', stagger('100ms', [
-          animate('450ms cubic-bezier(.25,.8,.25,1)', keyframes([
-            style({ opacity: 1, transform: 'translateY(0)', offset: 0 }),
-            // style({ opacity: .5, transform: 'translateY(35px)', offset: 0.3 }),
-            style({ opacity: 0, transform: 'translateY(-75%)', offset: 1.0 }),
-          ]))]), { optional: true })
+        // query(':leave', stagger('100ms', [
+        //   animate('450ms cubic-bezier(.25,.8,.25,1)', keyframes([
+        //     style({ opacity: 1, transform: 'translateY(0)', offset: 0 }),
+        //     // style({ opacity: .5, transform: 'translateY(35px)', offset: 0.3 }),
+        //     style({ opacity: 0, transform: 'translateY(-75%)', offset: 1.0 }),
+        //   ]))]), { optional: true })
       ])
     ]),
     trigger('scont', [
       transition(':enter', [
         style({ opacity: '0' }),
-        animate(350)
+        animate(450)
       ]),
       transition(':leave', [
-        animate(350, style({ opacity: '0' }))
+        animate(450, style({ opacity: '0' }))
       ])
     ])
   ]
