@@ -45,6 +45,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.paginator.changePage.subscribe(res => console.log('from pagin change', res));
     let complete = false;
     this.activatedRoute.queryParamMap.pipe(takeWhile(() => !complete), debounceTime(20)).subscribe((params: ParamMap) => {
       this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
@@ -70,10 +71,18 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
       this.obsData.subscribe((res) => {
         if (!this.showAll) {
           if (typeof res === 'number') {
-            this.obsLoadingData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+            this.obsLoadingData = this.func(
+              this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
+            );
           } else {
             this.paginator.clickPage(1);
-            this.page.next(1);
+            // this.page.next(1);
+            if (this.form.contains('page')) {
+              this.form.get('page').patchValue(1);
+            }
+            /*this.obsLoadingData = this.func(
+              this.form.value, this.calculateMin(1), this.calculateMax(1)
+            );*/
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);

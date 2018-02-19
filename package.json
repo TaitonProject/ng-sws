@@ -42,8 +42,8 @@
     "sws-accordion": "^1.0.0",
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
-    "sws-loading": "^1.0.0",
-    "sws-pagin": "^1.0.1",
+    "sws-loading": "^1.1.3",
+    "sws-pagin": "^1.3.0",
     "sws-table": "^1.0.0",
     "zone.js": "^0.8.14"
   },

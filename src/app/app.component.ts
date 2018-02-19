@@ -23,7 +23,7 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
-  min = 0;
+  min = 1;
   max = 20;
 
   constructor(private service: AppService, private snackbarService: SnackbarService) {
