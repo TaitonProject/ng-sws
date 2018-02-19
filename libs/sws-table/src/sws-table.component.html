@@ -2,4 +2,4 @@
   <ng-content></ng-content>
 </sws-loading>
 <sws-pagination #paginator [ngClass]="{'hide': !resultsLength && showAll}" [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"
-                (changePage)="page.next($event)"></sws-pagination>
+  [paginText]="paginText" (changePage)="page.next($event)"></sws-pagination>

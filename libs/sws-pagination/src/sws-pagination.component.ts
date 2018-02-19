@@ -15,6 +15,7 @@ export class SwsPaginationComponent implements OnInit {
   @Input() page = 1;
   @Input() title: string;
   @Input() navigated = true;
+  @Input() paginText = 'Элементов на странице';
 
   @Output() changePage: EventEmitter<number> = new EventEmitter();
 
