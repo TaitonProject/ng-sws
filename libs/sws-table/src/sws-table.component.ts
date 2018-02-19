@@ -76,6 +76,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
             );
           } else {
             this.paginator.clickPage(1);
+            this.paginator.changePage.next(1);
             // this.page.next(1);
             if (this.form.contains('page')) {
               this.form.get('page').patchValue(1);

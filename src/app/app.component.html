@@ -33,7 +33,7 @@
   <h3>{{form.get('date').value}}</h3>-->
 
 
-  <h3>Таблица</h3>
+  <h3>Таблица 111</h3>
   <button (click)="refresh.emit()">refresh</button>
   <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true" [spinnerType]="'dots'">
     <div *ngFor="let user of users?.list">{{user | json}}</div>
