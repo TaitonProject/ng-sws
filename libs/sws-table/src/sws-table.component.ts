@@ -75,12 +75,15 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
               this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
             );
           } else {
-            this.paginator.clickPage(1);
+            // this.paginator.clickPage(1);
+            this.paginator.calculateIndexes(1);
             this.paginator.changePage.next(1);
             // this.page.next(1);
-            if (this.form.contains('page')) {
-              this.form.get('page').patchValue(1);
-            }
+
+            // if (this.form.contains('page')) {
+            //   this.form.get('page').patchValue(1);
+            // }
+
             /*this.obsLoadingData = this.func(
               this.form.value, this.calculateMin(1), this.calculateMax(1)
             );*/
