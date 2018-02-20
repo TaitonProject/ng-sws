@@ -17,12 +17,85 @@
 }
 
 .loader {
-  border: 8px solid #f3f3f3; /* Light grey */
+  border: 8px solid     #f3f3f3; /* Light grey */
   border-top: 8px solid #006f25; /* Blue */
   border-radius: 50%;
   width: 70px;
   height: 70px;
   animation: spin 1s linear infinite;
+}
+.round {
+  height: 100%;
+  width: 100%;
+  background: rgba(39, 39, 39, 0.1);
+  position: absolute;
+  top: 0;
+  transition: all 1s cubic-bezier(.25,.8,.25,1);
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 35px);
+    border: 8px solid #fff;
+    border-left: 8px solid #000;
+    transform: rotate(35deg);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    animation: spin 1s cubic-bezier(.25,.8,.25,1) infinite;
+    z-index: 11;
+  }
+}
+
+.dots {
+  margin: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 11;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(39, 39, 39, 0.1);
+}
+
+.dots > div {
+  width: 12px;
+  height: 12px;
+  margin: 0 2px;
+  background-color: #333;
+
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite cubic-bezier(.47,.13,.58,1) both;
+  animation: sk-bouncedelay 1.4s infinite cubic-bezier(.47,.13,.58,1) both;
+}
+
+.dots .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.dots .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% { 
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% { 
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
 }
 
 @keyframes spin {

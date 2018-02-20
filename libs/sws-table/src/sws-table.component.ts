@@ -7,7 +7,7 @@ import 'rxjs/add/observable/merge';
 // import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {SwsPaginationComponent} from 'sws-pagin';
-import {debounceTime} from 'rxjs/operators';
+import {debounceTime, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-table',
@@ -16,13 +16,13 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
-
   @Input() form: FormGroup;
   @Input() func: ((form: any, min?: number, max?: number) => any);
   @Input() pageSize = 10;
   @Input() navigatePage = false;
   @Input() refresh: EventEmitter<any>;
   @Input() showAll: boolean;
+  @Input() spinnerType = 'round';
 
   @Output() data: EventEmitter<Array<any>>;
 
@@ -45,8 +45,9 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    this.paginator.changePage.subscribe(res => console.log('from pagin change', res));
     let complete = false;
-    this.activatedRoute.queryParamMap.takeWhile(() => !complete).pipe(debounceTime(20)).subscribe((params: ParamMap) => {
+    this.activatedRoute.queryParamMap.pipe(takeWhile(() => !complete), debounceTime(20)).subscribe((params: ParamMap) => {
       this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
       this.subChange();
       complete = true;
@@ -70,9 +71,22 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
       this.obsData.subscribe((res) => {
         if (!this.showAll) {
           if (typeof res === 'number') {
-            this.obsLoadingData = this.func(this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue()));
+            this.obsLoadingData = this.func(
+              this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
+            );
           } else {
-            this.paginator.clickPage(1);
+            // this.paginator.clickPage(1);
+            this.paginator.calculateIndexes(1);
+            this.paginator.changePage.next(1);
+            // this.page.next(1);
+
+            // if (this.form.contains('page')) {
+            //   this.form.get('page').patchValue(1);
+            // }
+
+            /*this.obsLoadingData = this.func(
+              this.form.value, this.calculateMin(1), this.calculateMax(1)
+            );*/
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);

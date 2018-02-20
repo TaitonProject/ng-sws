@@ -26,20 +26,28 @@
     </div>
   </sws-modal> -->
 
-<!--  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
+  <!--  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
     <sws-field-errors *ngIf="form.controls['date'].hasError('required')">Поле обязательное для заполнения
     </sws-field-errors>
   </sws-datepicker>
   <h3>{{form.get('date').value}}</h3>-->
 
-
+<style>
+  li:last-child {
+    background: #000;
+  }
+</style>
   <h3>Таблица</h3>
   <button (click)="refresh.emit()">refresh</button>
-  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
-    <div *ngFor="let user of users?.slice(10,20)">{{user | json}}</div>
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true" [spinnerType]="'dots'">
+    <ul style="margin-bottom: 20px;list-style: none;">
+      <li *ngFor="let user of users?.list" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
+        <div>{{user | json}}</div>
+      </li>
+    </ul>
   </sws-table>
 
- <!--<h3>Loading</h3>
+  <!--<h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
     <div>Загружено!</div>
   </sws-loading>-->
@@ -58,7 +66,7 @@
     <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
-  </sws-accordion>
+  </sws-accordion>-->
 
   <!--<h3>Табы</h3>
   <tabs [contentStyle]="'tab-content'" [titleStyle]="'tabs_nav'">
@@ -94,7 +102,7 @@
     </tab>
   </tabs>-->
 
-<!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
+  <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
   <h3>РЕГИОН: {{region | json}}</h3>-->
 
   <h3>Snackbar</h3>

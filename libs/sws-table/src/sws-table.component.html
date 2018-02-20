@@ -1,4 +1,4 @@
-<sws-loading [download]="obsLoadingData" [dataObservable]="obsLoadingData" (dataOut)="dataOut($event)">
+<sws-loading [download]="obsLoadingData" [dataObservable]="obsLoadingData" [spinnerType]="spinnerType"  (dataOut)="dataOut($event)">
   <ng-content></ng-content>
 </sws-loading>
 <sws-pagination #paginator [ngClass]="{'hide': !resultsLength && showAll}" [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"

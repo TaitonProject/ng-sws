@@ -23,6 +23,8 @@ export class AppComponent implements OnInit, Loadable {
   obs: Observable<number>;
   region: any;
   refresh: EventEmitter<any>;
+  min = 1;
+  max = 20;
 
   constructor(private service: AppService, private snackbarService: SnackbarService) {
     this.refresh = new EventEmitter<any>();
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit, Loadable {
     this.form = new FormGroup({
       org: new FormControl()
     });
+    this.form.valueChanges.subscribe(res => console.log('form change', res));
   }
 
   createFunc() {
@@ -53,6 +56,8 @@ export class AppComponent implements OnInit, Loadable {
   }
 
   loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+    this.min = min;
+    this.max = max;
     return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));
 
     // return Observable.combineLatest(this.service.loadData(form, page));
@@ -63,5 +68,8 @@ export class AppComponent implements OnInit, Loadable {
     }));*/
   }
 
+  openEvent(event: any) {
+    console.log('openEvent open!');
+  }
 
 }
