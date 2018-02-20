@@ -45,17 +45,17 @@
   </sws-loading>-->
 
   <h3>Аккордион</h3>
-  <sws-accordion>
+  <sws-accordion [isOpenAll]="true">
     <sws-accordion-group [heading]="'Аккордион 1'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 1
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 2'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 2
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 3'" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 3'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 3
     </sws-accordion-group>
-    <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)">
+    <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
   </sws-accordion>
@@ -99,7 +99,7 @@
 
   <h3>Snackbar</h3>
 
-  <button (click)="addSnackBar('success','Успешноdsfds fsdf sf ds dsf sdfd s ds fdsf сохранено')">Успешно</button>
+  <button (click)="addSnackBar('success','Файл успешно удален')">Успешно</button>
   <button (click)="addSnackBar('error','Ошибка',10000)">Ошибка</button>
 
 </div>

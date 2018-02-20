@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SwsAccordionGroupComponent } from './sws-accordion-group/sws-accordion-group.component';
 
 @Component({
@@ -10,6 +10,7 @@ export class SwsAccordionComponent {
 
   openIndex: number;
   groups: Array<SwsAccordionGroupComponent> = [];
+  @Input() isOpenAll: boolean = false;
 
   addGroup(group: SwsAccordionGroupComponent): void {
     this.groups.push(group);
@@ -27,7 +28,10 @@ export class SwsAccordionComponent {
         group.isOpen = false;
         group.showAccord = 'hdn';
       }
-    }); */    
+    }); */
+    if (this.isOpenAll) {
+      return;
+    }
     let findIndex;
     for (let i = 0; i < this.groups.length; i++) {
       if (this.groups[i] !== openGroup) {
