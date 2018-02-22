@@ -1,21 +1,19 @@
 {
-  "name": "sws-accordion",
-  "version": "1.0.12",
+  "name": "sws-loading-udfl",
+  "version": "1.0.1",
   "author": "Alexander <taitonproject@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "@angular/core": "^5.2.0",
     "@angular/common": "^5.2.0",
-    "@angular/animations": "^5.2.0"
+    "rxjs": "^5.5.2"
   },
-  "keywords":"Angular, Angular2, Angular 2, Angular4, Angular 4, Angular5, Angular 5, accordion",
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
-    "dest": "dist/sws-accordion",
+    "dest": "../../dist/sws-loading-udfl",
     "workingDirectory": "../.ng_build",
     "lib": {
       "entryFile": "src/public_api.ts"
-    },
-    "dest": "../dist/sws-accordion"
+    }
   }
 }
