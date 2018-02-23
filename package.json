@@ -13,7 +13,9 @@
     "build:hint": "rimraf dist && ng-packagr -p libs/sws-hint/package.json",
     "build:datepicker": "rimraf dist && ng-packagr -p libs/sws-datepicker/package.json",
     "build:loading": "rimraf dist && ng-packagr -p libs/sws-loading/package.json",
+    "build:loading-udfl": "rimraf dist && ng-packagr -p libs/sws-table-udfl/sws-loading-udfl/package.json",
     "build:table": "rimraf dist && ng-packagr -p libs/sws-table/package.json",
+    "build:table-udfl": "rimraf dist && ng-packagr -p libs/sws-table-udfl/sws-table-udfl/package.json",
     "build:accordion": "rimraf dist && ng-packagr -p libs/sws-accordion/package.json",
     "build:snackbar": "rimraf dist && ng-packagr -p libs/sws-snackbar/package.json",
     "test": "ng test",
@@ -43,6 +45,7 @@
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
     "sws-loading": "^1.1.3",
+    "sws-loading-udfl": "^1.0.1",
     "sws-pagin": "^1.3.0",
     "sws-table": "^1.0.0",
     "zone.js": "^0.8.14"

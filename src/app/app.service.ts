@@ -19,7 +19,7 @@ export class AppService {
     // return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {params: form, headers: header});
     // return this.http.get<Array<any>>(this.apiUrl + '/posts?' + 'min=' + min + '&max=' + max, {headers: header});
     return this.http.get<Array<any>>(this.erzUrl + 'gk/table?region=ryazanskaya-oblast&regionKey=144706001&'
-      + 'min=' + min + '&max=' + max, { headers: header });
+      + 'min=' + 420 + '&max=' + 500, { headers: header });
 
   }
 

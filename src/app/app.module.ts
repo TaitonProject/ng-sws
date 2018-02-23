@@ -19,7 +19,7 @@ import { ParentComponent } from './parent/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AdHostDirective } from './ad-host.directive';
 import { SwsYmapsModule } from '../../libs/sws-ymaps/src/sws-ymaps.module';
-import { SwsTableModule } from '../../libs/sws-table/src/sws-table.module';
+import { SwsTableModule } from '../../libs/sws-table-udfl/sws-table-udfl/src/sws-table.module';
 import { SwsSnackbarModule } from '../../libs/sws-snackbar/src/sws-snackbar.module';
 import {SwsTable2Module} from '../../libs/sws-table2/src/sws-table2.module';
 

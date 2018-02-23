@@ -1,0 +1,5 @@
+<sws-loading-udfl [download]="obsLoadingData" [dataObservable]="obsLoadingData"  (dataOut)="dataOut($event)">
+  <ng-content></ng-content>
+</sws-loading-udfl>
+<sws-pagination #paginator [ngClass]="{'hide': !resultsLength && showAll}" [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"
+                (changePage)="page.next($event)"></sws-pagination> 

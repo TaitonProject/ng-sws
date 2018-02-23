@@ -3,4 +3,4 @@
     <a id="{{tab.id}}">{{tab.title}}</a>
   </li>
 </ul>
-<ng-content [ngClass]="{contentStyle: true}"></ng-content>
+<ng-content [ngClass]="{contentStyle: true}" [class.active]="tab.active"></ng-content>

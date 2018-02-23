@@ -2,6 +2,6 @@
   sws-table2 works!
 </p>
 <!--<ng-container *ngIf="!resultsLength && showAll">-->
-<sws-pagination *ngIf="false" #paginator  [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"
+<sws-pagination #paginator  [collectionSize]="resultsLength" [pageSize]="pageSize" [step]="5" [navigated]="navigatePage"
                 (changePage)="page.next($event)"></sws-pagination>
 <!--</ng-container>-->
