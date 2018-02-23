@@ -1,6 +1,6 @@
 <div class="sws_tabs">
   <ul class="tabs_nav">
-    <li *ngFor="let tab of tabs; let index = index" [ngClass]="{'active': tab.active}" (click)="selectTab(tab, index); clickIndex.emit(i);">
+    <li *ngFor="let tab of tabs; let index = index" [ngClass]="{'active': tab.active}" (click)="selectTab(tab); clickIndex.emit(index);">
       <a id="{{tab.id}}">{{tab.title}}</a>
     </li>
   </ul>
