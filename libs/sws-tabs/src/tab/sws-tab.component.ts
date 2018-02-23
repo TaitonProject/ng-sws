@@ -1,79 +1,52 @@
 import {
-  Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges,
-  ChangeDetectorRef
+  Component, Input, Output, EventEmitter, ElementRef, Renderer2, AfterViewInit
 } from '@angular/core';
 import {LoadingState} from 'sws-loading';
 import {Observable} from 'rxjs/Observable';
-
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'tab',
   templateUrl: './sws-tab.component.html',
   styleUrls: ['./sws-tab.component.css']
 })
-export class SwsTabComponent extends LoadingState implements OnInit, OnChanges {
+export class SwsTabComponent extends LoadingState implements AfterViewInit {
 
-  @Input() active = false;
-  @Input() dataObs: Observable<any>;
+  @Input() id: any;
+  @Input()
+  set active(value) {
+    console.log('active ser');
+    this._active = value;
+    if (this._active) {
+      this.active$.next(true);
+    } else {
+      this.active$.next(false);
+    }
+  }
+
+  get active(): boolean {
+    return this._active;
+  }
+
   @Input() title: string;
-  @Input() id: string;
+  @Input() dataObs: Observable<any>;
   @Output() dataOut: EventEmitter<any> = new EventEmitter();
 
-  data: any;
+  active$: Subject<boolean> = new Subject();
+  _active = false;
   download = false;
 
-  constructor(private cdRef: ChangeDetectorRef) {
+  constructor(public elementRef: ElementRef, private renderer: Renderer2) {
     super();
   }
 
-  ngOnInit() {
-
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    for (let propName in changes) {
-      switch (propName) {
-        case 'active': {
-          if (this.active && this.dataObs && !this.loading) {
-            this.download = true;
-            this.cdRef.detectChanges();
-          }
-          break;
-        }
-        /**
-         * Сеттер для dataObservable, проверяем прошлое значение observable, ставим новое
-         * Если данные с таким observable были загружены, то не загружаем
-         * */
-
-        /*case 'dataObs': {
-          if (changes['dataObs'].previousValue == this.dataObs) {
-            this.isLoadingData = true;
-          } else {
-            changes['dataObs'].currentValue = this.dataObs;
-            this.dataObs = changes['dataObs'].previousValue;
-            this.isLoadingData = false;
-          }
-          break;
-        }*/
+  ngAfterViewInit(): void {
+    this.active$.subscribe(res => {
+      if (res) {
+        this.renderer.addClass(this.elementRef.nativeElement, 'active');
+      } else {
+        this.renderer.removeClass(this.elementRef.nativeElement, 'active');
       }
-    }
+    });
   }
-
-  /**
-   * Если вкладка активна, observable не undefined,
-   * Данные с такой формой\запросом еще не были загружены,
-   * И в данный момент не загружаются - возвращаем true
-   * */
-  needThisLoad(): boolean {
-    if (this.active && this.dataObs && !this.loading && this.download) {
-      return true;
-    }
-    return false;
-  }
-
-  setData(data: any) {
-    this.data = data;
-    this.dataOut.emit(data);
-  }
-
 }

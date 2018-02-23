@@ -1,6 +1,10 @@
-<ul class="{{titleStyle}}" >
-  <li *ngFor="let tab of tabs; let index = index" [ngStyle]="{'cursor': 'pointer'}" [ngClass]="{'disabled': index == disabledTabNum}" (click)="selectTab(tab, index)" [class.active]="tab.active">
-    <a id="{{tab.id}}">{{tab.title}}</a>
-  </li>
-</ul>
-<ng-content [ngClass]="{contentStyle: true}" [class.active]="tab.active"></ng-content>
+<div class="sws_tabs">
+  <ul class="tabs_nav">
+    <li *ngFor="let tab of tabs; let index = index" [ngClass]="{'active': tab.active}" (click)="selectTab(tab, index); clickIndex.emit(i);">
+      <a id="{{tab.id}}">{{tab.title}}</a>
+    </li>
+  </ul>
+  <div class="tabs_content">
+    <ng-content></ng-content>
+  </div>
+</div>
