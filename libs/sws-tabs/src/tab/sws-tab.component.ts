@@ -3,7 +3,7 @@ import {
 } from '@angular/core';
 import {LoadingState} from 'sws-loading';
 import {Observable} from 'rxjs/Observable';
-import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'tab',
@@ -13,9 +13,9 @@ import {Subject} from 'rxjs/Subject';
 export class SwsTabComponent extends LoadingState implements AfterViewInit {
 
   @Input() id: any;
+
   @Input()
   set active(value) {
-    console.log('active ser');
     this._active = value;
     if (this._active) {
       this.active$.next(true);
@@ -32,7 +32,7 @@ export class SwsTabComponent extends LoadingState implements AfterViewInit {
   @Input() dataObs: Observable<any>;
   @Output() dataOut: EventEmitter<any> = new EventEmitter();
 
-  active$: Subject<boolean> = new Subject();
+  active$: BehaviorSubject<boolean> = new BehaviorSubject(false);
   _active = false;
   download = false;
 
@@ -41,12 +41,17 @@ export class SwsTabComponent extends LoadingState implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.setActiveClass(this.active$.getValue());
     this.active$.subscribe(res => {
-      if (res) {
-        this.renderer.addClass(this.elementRef.nativeElement, 'active');
-      } else {
-        this.renderer.removeClass(this.elementRef.nativeElement, 'active');
-      }
+      this.setActiveClass(res);
     });
+  }
+
+  setActiveClass(active: boolean) {
+    if (active) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'active');
+    } else {
+      this.renderer.removeClass(this.elementRef.nativeElement, 'active');
+    }
   }
 }
