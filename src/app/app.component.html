@@ -1,8 +1,14 @@
+<div>
+  <a [routerLink]="['test']">test</a>
+  <a [routerLink]="['all']">all</a>
+</div>
+<router-outlet></router-outlet>
+<!--
 <div class="container">
   <form [formGroup]="form">
     <input formControlName="org">
   </form>
-  <!--
+  &lt;!&ndash;
   <hr/>
   <div class="pos-relative">
     <p>
@@ -19,18 +25,18 @@
       <span sws-hint="tooltip-bottom" sws-hint-pos="bottom">Наведи, появится ещё tooltip</span>
     </p>
   </div>
-  <hr/>-->
-  <!-- <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
+  <hr/>&ndash;&gt;
+  &lt;!&ndash; <sws-modal *ngIf="showModal" [options]="modalOptions" (onModalClose)="toggleModalVisible(false)" (onModalApply)="toggleModalVisible(false); onModalApply($event)">
     <div class="text-center">
       <p>Ответ {{modalOptions.dataModal}}</p>
     </div>
-  </sws-modal> -->
+  </sws-modal> &ndash;&gt;
 
-  <!--  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
+  &lt;!&ndash;  <sws-datepicker [control]="form.controls['date']" [label]="'Название'" [id]="'date'">
     <sws-field-errors *ngIf="form.controls['date'].hasError('required')">Поле обязательное для заполнения
     </sws-field-errors>
   </sws-datepicker>
-  <h3>{{form.get('date').value}}</h3>-->
+  <h3>{{form.get('date').value}}</h3>&ndash;&gt;
 
 <style>
   li:last-child {
@@ -47,10 +53,10 @@
     </ul>
   </sws-table>
 
-  <!--<h3>Loading</h3>
+  &lt;!&ndash;<h3>Loading</h3>
   <sws-loading [dataObservable]="obs" [download]="obs">
     <div>Загружено!</div>
-  </sws-loading>-->
+  </sws-loading>&ndash;&gt;
 
   <h3>Аккордион</h3>
   <sws-accordion [isOpenAll]="true">
@@ -66,9 +72,9 @@
     <sws-accordion-group [heading]="'Аккордино 4'" (openEvent)="openEvent($event)" [isOpen]="true">
       ШОК-КОНТЕНТ 4
     </sws-accordion-group>
-  </sws-accordion>-->
+  </sws-accordion>
 
-  <!--<h3>Табы</h3>
+  <h3>Табы</h3>
   <tabs [contentStyle]="'tab-content'" [titleStyle]="'tabs_nav'">
     <tab [title]="'Жилые комплексы: 0'">
       Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы Жилые комплексы
@@ -100,10 +106,10 @@
     <tab [title]="'Бренды и застройщики: 0'">
       Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики Бренды и застройщики
     </tab>
-  </tabs>-->
+  </tabs>
 
-  <!--  <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
-  <h3>РЕГИОН: {{region | json}}</h3>-->
+    <sws-ymaps [loadDataObs]="service.loadRegions()" (eventRegion)="setRegion($event)"></sws-ymaps>
+  <h3>РЕГИОН: {{region | json}}</h3>
 
   <h3>Snackbar</h3>
 
@@ -111,5 +117,5 @@
   <button (click)="addSnackBar('error','Ошибка',10000)">Ошибка</button>
 
 </div>
+-->
 
-<!--<app-parent></app-parent>-->

@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {AppComponent} from './app.component';
 
-const routes: Routes = [{path: '', component: AppComponent}];
+const routes: Routes = [
+  {path: '', pathMatch: 'full', component: AppComponent},
+  {path: 'all', loadChildren: './sections/sections.module#SectionsModule'},
+  {path: 'test', loadChildren: './test/test.module#TestModule'}
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{useHash: true})],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule {
+}
