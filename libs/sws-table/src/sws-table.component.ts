@@ -3,10 +3,11 @@ import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
-// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {SwsPaginationComponent} from 'sws-pagin';
+// import {SwsPaginationComponent} from 'sws-pagin';
 import {debounceTime, takeWhile} from 'rxjs/operators';
+import 'rxjs/add/observable/merge';
 
 @Component({
   selector: 'sws-table',
@@ -75,8 +76,9 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
               this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
             );
           } else {
-            this.paginator.calculateIndexes(1);
-            this.paginator.changePage.next(1);
+            this.paginator.clickPage(1);
+            // this.paginator.calculateIndexes(1);
+            // this.paginator.changePage.next(1);
             // this.page.next(1);
           }
         } else {
@@ -88,7 +90,6 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   dataOut(data: any) {
     if (!this.showAll) {
-      console.log('data type', data);
       if (data[1] == null && data[0] != null) {
         this.resultsLength = data[0].length;
       } else if (data[1] != null) {

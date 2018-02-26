@@ -93,7 +93,6 @@ export class SwsLoadingComponent extends LoadingState implements OnInit, OnChang
     if (this.dataObservable !== undefined) {
       this.subscription.add(this.dataObservable.pipe(distinctUntilChanged()).subscribe(
         response => {
-          console.log('response', response);
           if (response[0] instanceof HttpResponse || response[1] instanceof HttpResponse) {
             if (response[0].status === 204 || response[1].status === 204) {
               super.finishLoad(null);
