@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'sws-pagination',
@@ -9,7 +10,8 @@ import {debounceTime} from 'rxjs/operators';
 })
 export class SwsPaginationComponent implements OnInit {
 
-  @Input() collectionSize: number;
+
+  private _collectionSize: number;
   @Input() pageSize: number;
   @Input() step = 5;
   @Input() page = 1;
@@ -18,6 +20,22 @@ export class SwsPaginationComponent implements OnInit {
   @Input() paginText = 'Элементов на странице';
 
   @Output() changePage: EventEmitter<number> = new EventEmitter();
+
+  get collectionSize(): number {
+    return this._collectionSize;
+  }
+
+  @Input()
+  set collectionSize(value: number) {
+    this._collectionSize = value;
+    if (this.navigated === true) {
+      this.route.queryParamMap.pipe(debounceTime(20)).subscribe(params => {
+        this.calculateIndexes(+params.get('page'));
+      });
+    } else {
+      this.calculateIndexes(1);
+    }
+  }
 
   startIndex: number;
   endIndex: number;
@@ -29,22 +47,14 @@ export class SwsPaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.changePage.subscribe(res => {console.log('changePage', res)});
 
-    if (this.navigated === true) {
-      this.route.queryParamMap.pipe(debounceTime(20)).subscribe(params => {
-        this.calculateIndexes(+params.get('page'));
-      });
-    } else {
-      this.calculateIndexes(1);
-    }
   }
 
   calculateIndexes(page: number): void {
     page = page != 0 ? page : 1;
     this.page = page;
-    this.pagesCount = Math.round(this.collectionSize / this.pageSize);
-    this.pagesCount = this.pagesCount < ( this.collectionSize / this.pageSize ) ? this.pagesCount + 1 : this.pagesCount;
+    this.pagesCount = Math.round(this._collectionSize / this.pageSize);
+    this.pagesCount = this.pagesCount < ( this._collectionSize / this.pageSize ) ? this.pagesCount + 1 : this.pagesCount;
     if (page > 1 && page <= this.step) {
       this.fillPages(1, false);
     } else {
