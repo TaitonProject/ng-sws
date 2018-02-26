@@ -3,8 +3,8 @@ import {Routes, RouterModule} from '@angular/router';
 import {AppComponent} from './app.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', component: AppComponent},
-  {path: 'all', loadChildren: './sections/sections.module#SectionsModule'},
+  {path: '', pathMatch: 'full', redirectTo: 'test'},
+  {path: 'sections', loadChildren: './sections/sections.module#SectionsModule'},
   {path: 'test', loadChildren: './test/test.module#TestModule'}
 ];
 

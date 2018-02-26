@@ -3,10 +3,9 @@ import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
-import 'rxjs/add/observable/merge';
-// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
+import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {SwsPaginationComponent} from 'sws-pagin';
+// import {SwsPaginationComponent} from 'sws-pagin';
 import {debounceTime, takeWhile} from 'rxjs/operators';
 
 @Component({
@@ -24,6 +23,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() showAll: boolean;
   @Input() spinnerType = 'round';
   @Input() paginText = 'Элементов на странице';
+  @Input() response = false;
 
   @Output() data: EventEmitter<Array<any>>;
 
@@ -46,7 +46,6 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.paginator.changePage.subscribe(res => console.log('from pagin change', res));
     let complete = false;
     this.activatedRoute.queryParamMap.pipe(takeWhile(() => !complete), debounceTime(20)).subscribe((params: ParamMap) => {
       this.page = new BehaviorSubject(params.get('page') ? +params.get('page') : 1);
@@ -76,18 +75,9 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
               this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
             );
           } else {
-            // this.paginator.clickPage(1);
             this.paginator.calculateIndexes(1);
             this.paginator.changePage.next(1);
             // this.page.next(1);
-
-            // if (this.form.contains('page')) {
-            //   this.form.get('page').patchValue(1);
-            // }
-
-            /*this.obsLoadingData = this.func(
-              this.form.value, this.calculateMin(1), this.calculateMax(1)
-            );*/
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);
@@ -98,6 +88,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   dataOut(data: any) {
     if (!this.showAll) {
+      console.log('data type', data);
       if (data[1] == null && data[0] != null) {
         this.resultsLength = data[0].length;
       } else if (data[1] != null) {

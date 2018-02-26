@@ -9,6 +9,7 @@ import { Loadable } from '../../libs/sws-table/src/models/loadable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { SwsSnackbarComponent } from '../../libs/sws-snackbar/src/sws-snackbar.component';
 import { SnackbarService } from '../../libs/sws-snackbar/src/services/snackbar.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit, Loadable {
     this.users = data;
   }
 
-  loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+  loadData(form: any, min?: number, max?: number): Observable<any> {
     this.min = min;
     this.max = max;
     return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));

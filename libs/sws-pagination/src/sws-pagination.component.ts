@@ -29,6 +29,8 @@ export class SwsPaginationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.changePage.subscribe(res => {console.log('changePage', res)});
+
     if (this.navigated === true) {
       this.route.queryParamMap.pipe(debounceTime(20)).subscribe(params => {
         this.calculateIndexes(+params.get('page'));
@@ -83,8 +85,9 @@ export class SwsPaginationComponent implements OnInit {
       this.page = page;
       if (this.navigated) {
         this.navigateByPage(this.page);
+      } else {
+        this.calculateIndexes(this.page);
       }
-      this.calculateIndexes(this.page);
       this.changePage.emit(this.page);
     }
   }
