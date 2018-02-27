@@ -1,0 +1,12 @@
+<h1>Test works!</h1>
+<form [formGroup]="form">
+  <input formControlName="org" type="text">
+</form>
+
+<sws-table [func]="func" [form]="form" [refresh]="refresh" [response]="true" (data)="setData($event)" [navigatePage]="true" [paginText]="'Застройщиков на странице'">
+  <ul style="margin-bottom: 20px;list-style: none;">
+    <li *ngFor="let user of users" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
+      <div>{{user | json}}</div>
+    </li>
+  </ul>
+</sws-table>

@@ -9,6 +9,7 @@ import { Loadable } from '../../libs/sws-table/src/models/loadable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { SwsSnackbarComponent } from '../../libs/sws-snackbar/src/sws-snackbar.component';
 import { SnackbarService } from '../../libs/sws-snackbar/src/services/snackbar.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',

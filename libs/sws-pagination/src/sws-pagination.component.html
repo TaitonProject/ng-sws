@@ -1,5 +1,5 @@
 <nav class="pagination__wrap" aria-label="Page navigation">
-  <div class="pagination__hint">Элементов на странице {{(page * pageSize - pageSize + 1) + ' - ' + ( page * pageSize > collectionSize ?
+  <div class="pagination__hint">{{paginText}} {{(page * pageSize - pageSize + 1) + ' - ' + ( page * pageSize > collectionSize ?
     collectionSize : page * pageSize )}} / {{collectionSize}}</div>
   <ul class="pagination pagination__list">
     <li *ngIf="page != 1"><a (click)="clickPage(1)"><span aria-hidden="true" title="в начало"><<</span></a></li>

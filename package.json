@@ -44,10 +44,10 @@
     "sws-accordion": "^1.0.0",
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
-    "sws-loading": "^1.1.3",
+    "sws-loading": "1.7.2",
     "sws-loading-udfl": "^1.0.1",
-    "sws-pagin": "^1.3.0",
-    "sws-table": "^1.0.0",
+    "sws-pagin": "1.7.2",
+    "sws-table": "1.7.2",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
