@@ -17,6 +17,8 @@ export class AppService {
   }
 
   loadData(form: any, min: number, max: number): Observable<any> {
+    min = form['min'] ? form['min'] : min;
+    max = form['max'] ? form['max'] : max;
     // min = 500;
     // max = 520;
     const header = new HttpHeaders();
