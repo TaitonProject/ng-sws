@@ -68,21 +68,21 @@ export class SwsLoadingComponent extends LoadingState implements OnInit, OnChang
 
   completeLoad(data: any) {
     console.log('completeLoad data', data);
-    data = this.checkTypeData(data);
     this.dataOut.emit(data);
+    data = this.checkTypeData(data);
     super.finishLoad(data);
   }
 
   errorLoad(data: any, error?: any) {
     console.log('errorLoad data', data);
     console.log('errorLoad error', error);
-    this.dataOut.emit(data);
+    // this.dataOut.emit(data);
     super.errorLoad(error);
   }
 
   checkTypeData(data: any): any {
     if (this.isTable) {
-      if (data[0] === null || data[1] === null) {
+      if (!data[0] || !data[1]) {
         return null;
       } else {
         return data;

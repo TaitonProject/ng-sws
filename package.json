@@ -45,7 +45,7 @@
     "sws-input": "^0.1.2",
     "sws-label-directive": "^0.1.2",
     "sws-loading": "1.7.2",
-    "sws-loading-udfl": "^1.0.1",
+    "sws-loading-udfl": "^1.2.0",
     "sws-pagin": "1.7.2",
     "sws-table": "1.7.2",
     "zone.js": "^0.8.14"

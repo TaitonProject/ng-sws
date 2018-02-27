@@ -1,10 +1,11 @@
 <div *ngIf="notFound" class="algcenter">
     {{textNotFound}}
 </div>
-<div *ngIf="error" class="algcenter">
+<!--<div *ngIf="error" class="algcenter">
     {{textError}}
     <span (click)="loadData()" style="cursor: pointer; color:#FF8F3A"> Попробуйте еще раз</span>
-</div>
+</div>-->
+<div *ngIf="error" class="algcenter">{{textNotFound}}</div>
 <div style="position: relative; min-height: 200px; overflow: hidden;">
     <div class="round" *ngIf="loading">
     </div>
