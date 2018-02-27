@@ -57,15 +57,15 @@ export class SwsLoadingComponent extends LoadingState implements OnInit, OnChang
   loadData() {
     super.startLoad();
     if (this.dataObservable !== undefined) {
-      this.subscription.add(this.dataObservable.distinctUntilChanged().subscribe((response: Response) => {
-          if (response.status === 204){
-              super.finishLoad(null);
-          } else {
-          this.data = response.body;
-          this.dataOut.emit(response.body);
-          }
+      this.subscription.add(this.dataObservable.distinctUntilChanged().subscribe(response => {
+        console.log('response', response);
+          this.data = response;
+          this.dataOut.emit(response);
+          },
+        error => {
+          console.log('error', error);
+          super.errorLoad(error)
         },
-        error => super.errorLoad(error),
         () => super.finishLoad(this.data)));
     } else {
       super.finishLoad({});

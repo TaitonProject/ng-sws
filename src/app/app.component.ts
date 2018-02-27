@@ -51,11 +51,13 @@ export class AppComponent implements OnInit, Loadable {
     this.func = this.loadData.bind(this);
   }
 
-  setData(data: Array<any>) {
-    this.users = data;
+  setData(data: any) {
+    if (data && data.list){
+      this.users = data.list;
+    }
   }
 
-  loadData(form: any, min?: number, max?: number): Observable<[Array<any>, number]> {
+  loadData(form: any, min?: number, max?: number): Observable<any> {
     this.min = min;
     this.max = max;
     return Observable.combineLatest(this.service.loadData(form, min, max), this.service.loadCountData(form));

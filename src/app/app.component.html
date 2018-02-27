@@ -38,10 +38,20 @@
   }
 </style>
   <h3>Таблица</h3>
+<!--   <button (click)="refresh.emit()">refresh</button>
+  <sws-table [func]="func" [form]="form" [refresh]="refresh" [showAll]="true" (data)="setData($event)" [navigatePage]="true">
+    <ul style="margin-bottom: 20px;list-style: none;">
+      <li *ngFor="let user of users" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
+        <div>{{user | json}}</div>
+      </li>
+    </ul>
+  </sws-table> -->
+
+  <h3>Таблица 21312</h3>
   <button (click)="refresh.emit()">refresh</button>
   <sws-table [func]="func" [form]="form" [refresh]="refresh" (data)="setData($event)" [navigatePage]="true">
     <ul style="margin-bottom: 20px;list-style: none;">
-      <li *ngFor="let user of users?.list" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
+      <li *ngFor="let user of users" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
         <div>{{user | json}}</div>
       </li>
     </ul>
