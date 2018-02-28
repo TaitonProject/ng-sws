@@ -4,8 +4,8 @@
   "author": "Alexander <taitonproject@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sws-pagin": "^1.7.2",
-    "sws-loading-udfl": "^1.0.4",
+    "sws-pagin": "^1.1.1",
+    "sws-loading-udfl": "^1.2.3",
     "rxjs": "^5.5.2"
   },
   "peerDependencies": {
@@ -13,8 +13,8 @@
     "@angular/common": "^5.2.0",
     "@angular/form": "^5.2.0",
     "rxjs": "^5.5.2",
-    "sws-pagin": "^1.7.2",
-    "sws-loading-ufl": "^1.0.4"
+    "sws-pagin": "^1.1.1",
+    "sws-loading-udfl": "^1.2.3"
   },
   "ngPackage": {
     "$schema": "./node_modules/ng-packagr/ng-package.schema.json",

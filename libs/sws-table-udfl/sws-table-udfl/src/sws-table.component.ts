@@ -1,13 +1,12 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subscription } from 'rxjs/Subscription';
-// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { SwsPaginationComponent } from 'sws-pagin';
-import { debounceTime, takeWhile } from 'rxjs/operators';
+import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/add/observable/merge';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {SwsPaginationComponent} from 'sws-pagin';
+import {debounceTime, takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'sws-table',
@@ -78,9 +77,8 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             // this.paginator.clickPage(1);
             this.paginator.calculateIndexes(1);
-            this.paginator.changePage.next(1);
-            this.paginator.navigateByPage(1);
-            // this.page.next(1);
+            // this.paginator.changePage.next(1);
+            this.page.next(1);
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);
@@ -91,14 +89,19 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   dataOut(data: any) {
     if (!this.showAll) {
-      if (data[1] == null && data[0] != null) {
-        this.resultsLength = data[0].length;
-      } else if (data[1] != null) {
-        this.resultsLength = data[1];
+      if (data) {
+        if (data[1] == null && data[0] != null) {
+          this.resultsLength = data[0].length;
+        } else if (data[1] != null) {
+          this.resultsLength = data[1];
+        } else {
+          this.resultsLength = 0;
+        }
+        this.data.emit(data[0]);
       } else {
-        this.resultsLength = null;
+        this.data.emit(data);
+        this.resultsLength = 0;
       }
-      this.data.emit(data[0]);
     } else {
       this.data.emit(data);
     }

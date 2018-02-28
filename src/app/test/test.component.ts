@@ -28,7 +28,9 @@ export class TestComponent implements OnInit {
 
   createForm() {
     this.form = new FormGroup({
-      org: new FormControl()
+      org: new FormControl(),
+      min: new FormControl(),
+      max: new FormControl()
     });
     this.form.valueChanges.subscribe(res => console.log('form change', res));
   }

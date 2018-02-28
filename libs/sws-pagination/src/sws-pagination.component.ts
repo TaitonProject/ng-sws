@@ -1,7 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {debounceTime} from 'rxjs/operators';
-import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'sws-pagination',
@@ -51,7 +50,7 @@ export class SwsPaginationComponent implements OnInit {
   }
 
   calculateIndexes(page: number): void {
-    page = page != 0 ? page : 1;
+    page = page !== 0 ? page : 1;
     this.page = page;
     this.pagesCount = Math.round(this._collectionSize / this.pageSize);
     this.pagesCount = this.pagesCount < ( this._collectionSize / this.pageSize ) ? this.pagesCount + 1 : this.pagesCount;
@@ -61,10 +60,10 @@ export class SwsPaginationComponent implements OnInit {
       if (page > this.pagesCount) {
         return;
       }
-      if (( page % this.step ) == 0) {
+      if (( page % this.step ) === 0) {
         page--;
       }
-      while (( page % this.step ) != 0) {
+      while (( page % this.step ) !== 0) {
         page--;
       }
       this.fillPages(page + 1, false);
@@ -91,7 +90,7 @@ export class SwsPaginationComponent implements OnInit {
    * */
 
   clickPage(page: number) {
-    if ((page > 0 || page <= this.pagesCount) && (page != this.page)) {
+    if ((page > 0 || page <= this.pagesCount) && (page !== this.page)) {
       this.page = page;
       if (this.navigated) {
         this.navigateByPage(this.page);
