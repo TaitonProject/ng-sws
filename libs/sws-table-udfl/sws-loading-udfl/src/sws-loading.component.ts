@@ -12,8 +12,8 @@ import {Subscription} from 'rxjs/Subscription';
 export class SwsLoadingComponent extends LoadingState implements OnInit, OnChanges, OnDestroy {
 
   @Input() dataObservable: Observable<any> | Observable<Array<any>> | Observable<[Array<any>, number]>;
-  @Input() textNotFound = 'По текущим условиям поиска, записей не найдено.';
-  @Input() textError = 'Ошибка загрузки данных, повторите попытку чуть позже.';
+  @Input() textNotFound = 'Данные отсутствуют.';
+  @Input() textError = 'Ошибка загрузки данных. Повторите попытку чуть позже.';
   @Input() download = false;
   @Input() isTable: boolean;
   @Output() dataOut: EventEmitter<any> = new EventEmitter();
