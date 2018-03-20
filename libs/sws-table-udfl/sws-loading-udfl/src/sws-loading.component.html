@@ -9,7 +9,7 @@
 <div style="position: relative; min-height: 200px; overflow: hidden;">
     <div class="round" *ngIf="loading">
     </div>
-    <div *ngIf="!notFound && !error ">
+    <div *ngIf="!notFound">
         <ng-content></ng-content>
     </div>
 </div>
