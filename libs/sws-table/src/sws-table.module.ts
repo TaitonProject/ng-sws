@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {SwsTableComponent} from './sws-table.component';
 import {HttpClientModule} from '@angular/common/http';
 import {SwsLoadingModule} from 'sws-loading';
-import {SwsPaginationModule} from 'sws-ngb-paginator';
+import {SwsPaginationModule} from 'sws-ngb-pagination';
 
 @NgModule({
   imports: [
