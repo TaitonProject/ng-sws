@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "build:pagination": "rimraf dist && ng-packagr -p libs/sws-pagination/package.json",
+    "build:ngb-pagination": "rimraf dist && ng-packagr -p libs/sws-ng-pagination/package.json",
     "build:input": "rimraf dist && ng-packagr -p libs/sws-input/package.json",
     "build:error": "rimraf dist && ng-packagr -p libs/sws-form-field-errors/package.json",
     "build:label": "rimraf dist && ng-packagr -p libs/sws-label-directive/package.json",
@@ -47,6 +48,7 @@
     "sws-label-directive": "^0.1.4",
     "sws-loading": "1.7.2",
     "sws-loading-udfl": "^1.2.4",
+    "sws-ngb-paginator": "^1.0.0",
     "sws-pagin": "1.7.2",
     "sws-table": "1.7.2",
     "zone.js": "^0.8.25"

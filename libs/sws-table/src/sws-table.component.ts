@@ -3,12 +3,10 @@ import {FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
-// import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-// import {SwsPaginationComponent} from 'sws-pagin';
 import {debounceTime, takeWhile} from 'rxjs/operators';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from '../../sws-ng-pagination/src/sws-pagination.component';
+import {SwsPaginationComponent} from 'sws-ngb-paginator';
 
 @Component({
   selector: 'sws-table',

@@ -5,7 +5,8 @@ import {HttpClientModule} from '@angular/common/http';
 // import {SwsLoadingModule} from '../../sws-loading/src/sws-loading.module';
 // import {SwsPaginationModule} from '../../sws-pagination/src/sws-pagination.module';
 import {SwsLoadingModule} from 'sws-loading';
-import {SwsPaginationModule} from '../../sws-ng-pagination/src/sws-pagination.module';
+import {SwsPaginationModule} from 'sws-ngb-paginator';
+// import {SwsPaginationModule} from '../../sws-ng-pagination/src/sws-pagination.module';
 // import {SwsPaginationModule} from 'sws-pagin';
 // import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 

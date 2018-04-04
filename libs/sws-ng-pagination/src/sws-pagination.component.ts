@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'sws-pagination',
@@ -19,12 +18,11 @@ export class SwsPaginationComponent implements OnInit {
 
   @Output() changePageEvent: EventEmitter<number> = new EventEmitter();
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router) {
 
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParamMap.subscribe((params: ParamMap) => console.log('params', params));
     this.subChangePage();
   }
 
@@ -34,10 +32,6 @@ export class SwsPaginationComponent implements OnInit {
 
   subChangePage() {
     this.changePageEvent.subscribe((page: number) => this.changePage(page));
-    /*this.page.subscribe((page: number) => {
-      console.log('change page', page);
-      this.changePage(page);
-    });*/
   }
 
   changePage(page: number) {
