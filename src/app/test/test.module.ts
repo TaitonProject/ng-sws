@@ -5,8 +5,8 @@ import {TestRoutingModule} from './test-routing.module';
 import {TestComponent} from './test.component';
 // import {SwsTableModule} from '../../../libs/sws-table/src/sws-table.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {SwsTableModule} from '../../../libs/sws-table/src/sws-table.module';
-// import {SwsTableModule} from 'sws-table';
+// import {SwsTableModule} from '../../../libs/sws-table/src/sws-table.module';
+import {SwsTableModule} from 'sws-table';
 
 @NgModule({
   imports: [
