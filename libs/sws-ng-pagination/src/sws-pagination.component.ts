@@ -35,6 +35,7 @@ export class SwsPaginationComponent implements OnInit {
   }
 
   changePage(page: number) {
+    this.page = page;
     this.navigateByPage(page);
   }
 
