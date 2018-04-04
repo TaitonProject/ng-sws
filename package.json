@@ -48,7 +48,7 @@
     "sws-label-directive": "^0.1.4",
     "sws-loading": "1.7.2",
     "sws-loading-udfl": "^1.2.4",
-    "sws-ngb-paginator": "^1.0.0",
+    "sws-ngb-pagination": "^1.0.6",
     "sws-pagin": "1.7.2",
     "sws-table": "1.8.2",
     "zone.js": "^0.8.25"

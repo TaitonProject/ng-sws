@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {debounceTime, takeWhile} from 'rxjs/operators';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from 'sws-ngb-paginator';
+import {SwsPaginationComponent} from 'sws-ngb-pagination';
 
 @Component({
   selector: 'sws-table',
