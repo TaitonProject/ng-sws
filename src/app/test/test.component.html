@@ -5,9 +5,9 @@
 </form>
 
 <sws-table [func]="func" [form]="form" (data)="setData($event)">
-  <ul style="margin-bottom: 20px;list-style: none;">
-    <li *ngFor="let user of users" style="position: relative;border-bottom: 1px solid #f1f1f1;font-size: 13px;line-height: 19px;">
-      <div>{{user | json}}</div>
+  <ul>
+    <li *ngFor="let user of users">
+      <div>{{user.id}}</div>
     </li>
   </ul>
 </sws-table>

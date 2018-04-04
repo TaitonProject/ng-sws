@@ -5,9 +5,10 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subscription} from 'rxjs/Subscription';
 // import {SwsPaginationComponent} from '../../sws-pagination/src/sws-pagination.component';
 import {ActivatedRoute, ParamMap} from '@angular/router';
-import {SwsPaginationComponent} from 'sws-pagin';
+// import {SwsPaginationComponent} from 'sws-pagin';
 import {debounceTime, takeWhile} from 'rxjs/operators';
 import 'rxjs/add/observable/merge';
+import {SwsPaginationComponent} from '../../sws-ng-pagination/src/sws-pagination.component';
 
 @Component({
   selector: 'sws-table',
@@ -76,11 +77,8 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
               this.form.value, this.calculateMin(this.page.getValue()), this.calculateMax(this.page.getValue())
             );
           } else {
-            // this.paginator.clickPage(1);
-            this.paginator.calculateIndexes(1);
-            this.paginator.changePage.next(1);
+            this.paginator.changePageEvent.next(1);
             this.paginator.navigateByPage(1);
-            // this.page.next(1);
           }
         } else {
           this.obsLoadingData = this.func(this.form.value);

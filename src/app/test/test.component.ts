@@ -32,7 +32,7 @@ export class TestComponent implements OnInit {
       min: new FormControl(),
       max: new FormControl()
     });
-    this.form.valueChanges.subscribe(res => console.log('form change', res));
+    this.form.valueChanges.subscribe(res => this.loadData(res, 1, 10));
   }
 
   createFunc() {

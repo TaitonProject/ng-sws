@@ -1,0 +1,19 @@
+{
+  "name": "sws-ngb-pagin",
+  "version": "2.0.0",
+  "author": "Alexander <taitonproject@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": "^5.2.0",
+    "@angular/common": "^5.2.0",
+    "@angular/router": "^5.2.0"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../dist/sws-ngb-pagination",
+    "workingDirectory": "../.ng_build",
+    "lib": {
+      "entryFile": "src/public_api.ts"
+    }
+  }
+}
