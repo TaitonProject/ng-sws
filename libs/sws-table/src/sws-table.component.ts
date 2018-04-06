@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 import {debounceTime, takeWhile} from 'rxjs/operators';
 import 'rxjs/add/observable/merge';
-import {SwsPaginationComponent} from 'sws-ngb-pagination';
+import {SwsNgbPaginationComponent} from 'sws-ngb-pagination';
 
 @Component({
   selector: 'sws-table',
@@ -27,7 +27,7 @@ export class SwsTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Output() data: EventEmitter<Array<any>>;
 
-  @ViewChild('paginator') paginator: SwsPaginationComponent;
+  @ViewChild('paginator') paginator: SwsNgbPaginationComponent;
 
   obsData: Observable<any>;
   obsLoadingData: Observable<any>;

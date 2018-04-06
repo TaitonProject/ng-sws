@@ -1,6 +1,6 @@
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {SwsPaginationComponent} from './sws-pagination.component';
+import {SwsNgbPaginationComponent} from './sws-ngb-pagination.component';
 import {RouterModule} from '@angular/router';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,14 +10,14 @@ import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     NgbPaginationModule.forRoot()
   ],
-  declarations: [SwsPaginationComponent],
-  exports: [SwsPaginationComponent],
+  declarations: [SwsNgbPaginationComponent],
+  exports: [SwsNgbPaginationComponent],
 })
-export class SwsPaginationModule {
+export class SwsNgbPaginationModule {
   public static forRoot(): ModuleWithProviders {
 
     return {
-      ngModule: SwsPaginationModule,
+      ngModule: SwsNgbPaginationModule,
     };
   }
 }

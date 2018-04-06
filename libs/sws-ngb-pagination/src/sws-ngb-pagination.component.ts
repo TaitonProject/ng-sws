@@ -2,11 +2,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'sws-pagination',
-  templateUrl: './sws-pagination.component.html',
-  styleUrls: ['./sws-pagination.component.scss']
+  selector: 'sws-ngb-pagination',
+  templateUrl: './sws-ngb-pagination.component.html',
+  styleUrls: ['./sws-ngb-pagination.component.scss']
 })
-export class SwsPaginationComponent implements OnInit {
+export class SwsNgbPaginationComponent implements OnInit {
 
   @Input() collectionSize: number;
   @Input() pageSize: number;

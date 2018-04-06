@@ -1,4 +1,4 @@
 <sws-loading [download]="obsLoadingData" [dataObservable]="obsLoadingData" [spinnerType]="spinnerType"  (dataOut)="dataOut($event)">
   <ng-content></ng-content>
 </sws-loading>
-<sws-pagination *ngIf="(page | async) && resultsLength" #paginator [ngClass]="{'hide': showAll}" [collectionSize]="resultsLength" [pageSize]="pageSize" [page]="page | async" (changePageEvent)="page.next($event)"></sws-pagination>
+<sws-ngb-pagination *ngIf="(page | async) && resultsLength" #paginator [ngClass]="{'hide': showAll}" [collectionSize]="resultsLength" [pageSize]="pageSize" [page]="page | async" (changePageEvent)="page.next($event)"></sws-ngb-pagination>
